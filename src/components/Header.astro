@@ -1,21 +1,25 @@
 ---
-
+import HeaderButton from "./HeaderButton.astro";
+import HeaderSeparator from "./HeaderSeparator.astro";
 ---
 
 <header
-    class="sticky top-3 py-4 px-4 max-w-full lg:py-8 flex flex-col justify-between items-center shadow-md m-3 rounded mb-10"
+    class="sticky bg-lightblack top-0 pt-4 px-4 w-full lg:py-8 flex flex-col justify-between items-center text-white noto-sans"
 >
-    <h1 class="mr-5 mb-2 text-3xl">Joaquin Genova G.</h1>
-    <nav class="flex flex-row gap-2 justify-start items-start text-black">
-        <a href="#about-me"
-            class="flex flex-row gap-1 items-center hover:bg-orange-300 p-2 rounded"
-            >About Me
+    <div class="mb-2">
+        <h1 class="text-3xl typewriter kode-mono-700"><strong>Joaquin Genova G.</strong></h1>
+    </div>
+    <div class="mb-3">
+        <h2 class="text-md kode-mono-700"><strong>Desarrollador de Software</strong></h2>
+    </div>
+    <nav class="flex flex-row sm:gap-2 justify-center items-center text-center kode-mono-700">
+        <HeaderButton href="#about-me">
+            <span class="hidden md:inline">Sobre mi</span>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="w-5"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="#000000"
+                stroke="#ffffff"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -27,17 +31,15 @@
                 <path d="M12 9h.01"></path>
                 <path d="M11 12h1v4h1"></path>
             </svg>
-        </a>
-        <span class="p-2">|</span>
-        <a href="#projects"
-            class="flex flex-row items-center gap-1 hover:bg-orange-300 p-2 rounded"
-            >Proyectos
+        </HeaderButton>
+        <HeaderSeparator />
+        <HeaderButton href="#projects">
+            <span class="hidden md:inline">Proyectos</span>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="w-5"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="#000000"
+                stroke="#ffffff"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -50,17 +52,15 @@
                     d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2"
                 ></path>
             </svg>
-        </a>
-        <span class="p-2">|</span>
-        <a href="#experience"
-            class="flex flex-row items-center gap-1 hover:bg-orange-300 p-2 rounded"
-            >Experiencia
+        </HeaderButton>
+        <HeaderSeparator />
+        <HeaderButton href="#experience">
+            <span class="hidden md:inline">Experiencia</span>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="w-5"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="#000000"
+                stroke="#ffffff"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -71,17 +71,15 @@
                     d="M5 6m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z"
                 ></path>
             </svg>
-        </a>
-        <span class="p-2">|</span>
-        <a href="#studies"
-            class="flex flex-row items-center gap-1 hover:bg-orange-300 p-2 rounded"
-            >Estudios
+        </HeaderButton>
+        <HeaderSeparator />
+        <HeaderButton href="#studies">
+            <span class="hidden md:inline">Estudios</span>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
                 class="w-5"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="#000000"
+                stroke="#ffffff"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -90,22 +88,74 @@
                 <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
                 <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
             </svg>
-        </a>
+        </HeaderButton>
+        <HeaderSeparator />
+        <HeaderButton href="#cv">
+            CV
+            <svg class="w-5 hidden md:inline" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                <path d="M7 11l5 5l5 -5" />
+                <path d="M12 4l0 12" />
+            </svg>
+        </HeaderButton>
     </nav>
+    <div id="header-underline" class="w-screen h-[2px]"></div>
 </header>
 
 <style>
-    @font-face {
-        font-family: "Anta";
-        src: url("/public/Anta-Regular.ttf");
+    @keyframes underline {
+        0%   {background-color: var(--color-lightblack); left:0px; top:0px;}
+        25%  {background-color: #6d6d6d; left:200px; top:200px;}
+        50%  {background-color: #999; left:200px; top:200px;}
+        75%  {background-color: #ccc; left:0px; top:200px;}
+        100% {background-color: white; left:0px; top:0px;}
     }
 
-    header {
-        font-family: "Anta", sans-serif;
-        border-radius: 53px;
-        background: #fed7aa;
-        box-shadow:
-            16px 16px 32px #d8b791,
-            -16px -16px 32px #d8b791;
+    @media (prefers-reduced-motion: no-preference) {
+        #header-underline {
+            animation: underline 5s ease infinite;
+        }
+    }
+    
+    @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: scroll()) {
+            #header-underline {
+                animation: underline linear both;
+                animation-timeline: scroll();
+            }
+        }
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Noto+Sans+Mono:wght@100..900&display=swap');
+
+    .kode-mono-700 {
+        font-family: "Kode Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .typewriter {
+        overflow: hidden; /* Ensures the content is not revealed until the animation */
+        border-right: .15em solid white; /* The typwriter cursor */
+        white-space: nowrap; /* Keeps the content on a single line */
+        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+        letter-spacing: .15em; /* Adjust as needed */
+        animation: 
+            typing 3.5s steps(40, end),
+            blink-caret .75s step-end infinite;
+    }
+
+    /* The typing effect */
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white; }
     }
 </style>
