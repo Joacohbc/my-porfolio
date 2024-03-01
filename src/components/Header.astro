@@ -4,7 +4,7 @@ import HeaderSeparator from "./HeaderSeparator.astro";
 ---
 
 <header
-    class="sticky bg-lightblack top-0 pt-4 px-4 w-full lg:py-8 flex flex-col justify-between items-center text-white noto-sans"
+    class="sticky bg-lightblack top-0 pt-4 px-4 w-full lg:py-8 flex flex-col justify-between items-center text-white noto-sans z-10"
 >
     <div class="mb-2">
         <h1 class="text-xl sm:text-3xl typewriter kode-mono-700"><strong>Joaquin Genova G.</strong></h1>
@@ -104,6 +104,9 @@ import HeaderSeparator from "./HeaderSeparator.astro";
 </header>
 
 <style>
+    @charset "UTF-8";
+    @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Noto+Sans+Mono:wght@100..900&display=swap');
+    
     @keyframes underline {
         0%   {background-color: var(--color-lightblack); left:0px; top:0px;}
         25%  {background-color: #6d6d6d; left:200px; top:200px;}
@@ -127,8 +130,6 @@ import HeaderSeparator from "./HeaderSeparator.astro";
         }
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Noto+Sans+Mono:wght@100..900&display=swap');
-
     .kode-mono-700 {
         font-family: "Kode Mono", monospace;
         font-optical-sizing: auto;
@@ -137,11 +138,11 @@ import HeaderSeparator from "./HeaderSeparator.astro";
     }
 
     .typewriter {
-        overflow: hidden; /* Ensures the content is not revealed until the animation */
-        border-right: .15em solid white; /* The typwriter cursor */
-        white-space: nowrap; /* Keeps the content on a single line */
-        margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-        letter-spacing: .15em; /* Adjust as needed */
+        overflow: hidden; 
+        border-right: .15em solid white; 
+        white-space: nowrap; 
+        margin: 0 auto;
+        letter-spacing: .15em;
         animation: 
             typing 3.5s steps(40, end),
             blink-caret .75s step-end infinite;
