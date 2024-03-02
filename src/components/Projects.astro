@@ -7,6 +7,7 @@ import AstroIcon from '../components/icons/AstroIcon.astro'
 import CSharpIcon from '../components/icons/CSharpIcon.astro'
 import NodeJsIcon from '../components/icons/NodeJsIcon.astro'
 import JavascriptIcon from '../components/icons/JavascriptIcon.astro'
+import LinuxIcon from '../components/icons/LinuxIcon.astro'
 import CSSIcon from '../components/icons/CSSIcon.astro'
 import HTMLIcon from '../components/icons/HTMLIcon.astro'
 import GolangIcon from '../components/icons/GolangIcon.astro'
@@ -70,6 +71,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <GolangIcon />
                 <JSONIcon />
                 <BashIcon />
+                <LinuxIcon />
             </div>
         </article>
 
@@ -172,7 +174,7 @@ import JSONIcon from './icons/JSONIcon.astro'
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
                 <h3 class="text-2xl font-bold text-white">Proyecto de Tecnicatura de UTEC</h3>
-                <p class="text-white mb-3 text-left">Proyecto final del Proyecto de Tecnicatura de UTEC. Es una aplicacion Cliente-Servidor el cual el servidor es consumido por 3 clientes diferentes. Además expone una REST API con autenticación JWT para la gestion 
+                <p class="text-white mb-3 text-left">Proyecto grupal para la Tecnicatura de UTEC. Es una aplicacion Cliente-Servidor el cual el servidor es consumido por 3 clientes diferentes. Además expone una REST API con autenticación JWT para la gestion 
                     de sesiones.
                     <ul class="text-white">
                         <li> - Una aplicacion de escritorio desarrollada con Java Swing</li>
@@ -200,6 +202,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <KotlinIcon />
                 <RESTIcon />
                 <SQLIcon />
+                <GitIcon />
             </div>
         </article>
 
@@ -241,6 +244,19 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <RESTIcon />
             </div>
         </article>
+
+        <article class="flex flex-col gap-3 items-center col-span-2 other-project">
+            <div class="flex flex-row gap-2 justify-center items-start">
+                <a href="https://github.com/Joacohbc" class="text-white inline-flex">
+                    <h3 class="text-2xl font-bold text-white">Otros Proyectos</h3>
+                </a>
+                <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                </svg>
+            </div>
+        </article>
+
     </div>
 </section>
 
@@ -276,6 +292,11 @@ import JSONIcon from './icons/JSONIcon.astro'
         transition: color 0.3s;
     }
     
+    .other-project {
+        filter: drop-shadow(0 0 5px #f53030);
+        transition: color 0.3s;
+    }
+
     a :hover {    
         filter: drop-shadow(0 0 5px #f53030);
         text-decoration: underline; 
