@@ -1,0 +1,23 @@
+---
+interface Props {
+    month: string;
+}
+
+const { month } = Astro.props;
+---
+
+<article class="text-white text-left ml-5 mb-5">
+    <div class="mr-2 font-bold">{month}</div>
+    <div class="ml-7">
+        <div class="flex flex-row gap-2 items-center justify-start">
+            <slot/>
+        </div>
+    </div>
+</article>
+
+<style>
+    article:hover {
+        filter: drop-shadow(0 0 5px #f70404); 
+        transition: color 0.3s;
+    }
+</style>

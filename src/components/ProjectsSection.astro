@@ -1,29 +1,32 @@
 ---
-import ReactIcon from '../components/icons/ReactIcon.astro'
-import TailwindIcon from '../components/icons/TailwindIcon.astro'
-import BootstrapIcon from '../components/icons/BootstrapIcon.astro'
-import BashIcon from '../components/icons/BashIcon.astro'
-import AstroIcon from '../components/icons/AstroIcon.astro'
-import CSharpIcon from '../components/icons/CSharpIcon.astro'
-import NodeJsIcon from '../components/icons/NodeJsIcon.astro'
-import JavascriptIcon from '../components/icons/JavascriptIcon.astro'
-import LinuxIcon from '../components/icons/LinuxIcon.astro'
-import CSSIcon from '../components/icons/CSSIcon.astro'
-import HTMLIcon from '../components/icons/HTMLIcon.astro'
-import GolangIcon from '../components/icons/GolangIcon.astro'
-import JavaIcon from '../components/icons/JavaIcon.astro'
-import SpringIcon from '../components/icons/SpringIcon.astro'
-import DockerIcon from '../components/icons/DockerIcon.astro'
-import SQLIcon from '../components/icons/SQLIcon.astro'
-import GitIcon from '../components/icons/GitIcon.astro'
+import ReactIcon from './icons/ReactIcon.astro'
+import TailwindIcon from './icons/TailwindIcon.astro'
+import BootstrapIcon from './icons/BootstrapIcon.astro'
+import BashIcon from './icons/BashIcon.astro'
+import AstroIcon from './icons/AstroIcon.astro'
+import CSharpIcon from './icons/CSharpIcon.astro'
+import NodeJsIcon from './icons/NodeJsIcon.astro'
+import JavascriptIcon from './icons/JavascriptIcon.astro'
+import LinuxIcon from './icons/LinuxIcon.astro'
+import CSSIcon from './icons/CSSIcon.astro'
+import HTMLIcon from './icons/HTMLIcon.astro'
+import GolangIcon from './icons/GolangIcon.astro'
+import JavaIcon from './icons/JavaIcon.astro'
+import SpringIcon from './icons/SpringIcon.astro'
+import DockerIcon from './icons/DockerIcon.astro'
+import SQLIcon from './icons/SQLIcon.astro'
+import GitIcon from './icons/GitIcon.astro'
 import HeaderSeparator from './HeaderSeparator.astro'
 import KotlinIcon from './icons/KotlinIcon.astro'
 import RESTIcon from './icons/RESTIcon.astro'
 import JSONIcon from './icons/JSONIcon.astro'
 ---
 
+<!-- 
+    TODO: Hacer que cada Card de proyecto sea un componente. Y asi sea mas facil de mantener y de agregar nuevos proyectos.
+-->
 <section class="font-serif">
-    <h2 class="text-5xl font-bold text-center text-white mb-10">Proyectos Destacados</h2>
+    <h1 class="text-5xl font-bold text-center text-white mb-10">Proyectos Destacados</h1>
     <p class="text-white text-center text-md">
         Aquí encontrarás algunos de los proyectos que he realizado, algunos de ellos son personales y otros son proyectos de la universidad.
     </p>
@@ -31,7 +34,7 @@ import JSONIcon from './icons/JSONIcon.astro'
     <div class="grid grid-cols-1 place-content-center mt-8 gap-5 lg:grid-cols-2">
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">Mi Porfolio</h3>
+                <h2 class="text-2xl font-bold text-white">Mi Porfolio</h2>
                 <p class="text-white mb-3 text-left">Una web elegante y minimalista para conocerme un poco mejor como Desarrollador. Podrás encontrar información sobre mi, 
                     mis proyectos, mis estudios y mi experiencia laboral.</p>
                 <a href="https://joacohbc-porfolio.vercel.app" class="text-white inline-flex">
@@ -55,7 +58,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">Goto</h3>
+                <h2 class="text-2xl font-bold text-white">Goto</h2>
                 <p class="text-white mb-3 text-left">Goto es un "Gestor de rutas" para CLI que permite gestionar rutas con identificadores (abreviatura o índice). 
                     Usando en conjunto con comando <span class="italic font-mono"></span> amplia mucho las capacidad para moverse entre directorios vía CLI.</p>
                 <a href="https://github.com/Joacohbc/goto" class="text-white inline-flex">
@@ -78,7 +81,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">DolphyText</h3>
+                <h2 class="text-2xl font-bold text-white">DolphyText</h2>
                 <p class="text-white mb-3 text-left">Es un bloc de notas con esteroides, básicamente un editor de texto enriquecido (RTF).
                     Programe una versión C# para Windows. Al yo ser usuario de Linux, también programe una versión multiplataforma con Java (Java Swing).</p>
                 <div>
@@ -117,7 +120,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">Devences Project</h3>
+                <h2 class="text-2xl font-bold text-white">Devences Project</h2>
                 <p class="text-white mb-3 text-left">Proyecto final del Bachillerato Informático de la UTU. Una aplicación de escritorio con el objetivo de gestionar un hotel,
                     desde el Login de los empleados, hasta los clientes, reservas, horarios y servicios.</p>
                 <a href="https://github.com/Joacohbc/Devences" class="text-white inline-flex">
@@ -142,7 +145,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">GOSF v2</h3>
+                <h2 class="text-2xl font-bold text-white">GOSF v2</h2>
                 <p class="text-white mb-3 text-left">Servidor de archivos multi-usuario con autenticación con JWT al estilo de Google Drive. Con la capacidad de compartir archivos
                     entre usuarios. Inicialmente empezó como un proyecto sencillo con JS/CSS/HTML básico y fue migrado a React.js con Bootstrap, ambos desarrollos separados en ramas
                     diferentes:
@@ -175,7 +178,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">Proyecto de Tecnicatura de UTEC</h3>
+                <h2 class="text-2xl font-bold text-white">Proyecto de Tecnicatura de UTEC</h2>
                 <p class="text-white mb-3 text-left">Proyecto grupal para la Tecnicatura de UTEC. Es una aplicación Cliente-Servidor el cual el servidor es consumido por 3 
                     clientes diferentes. Además expone una REST API con autenticación JWT para la gestión de sesiones. 
                     <ul class="text-white">
@@ -210,7 +213,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center san-valetin-page">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">San Valetin Page</h3>
+                <h2 class="text-2xl font-bold text-white">San Valetin Page</h2>
                 <p class="text-white mb-3 text-left">Un pequeño minijuego para descongelar el frío corazón de mi Crush. Tengo 8 Vidas, 8 NO's y un único SÍ, pero mucho
                     mucho rosa, gatitos y corazones.</p>
                 <a href="https://joacohbc.github.io/yxj-valentines-day/" class="text-white inline-flex">
@@ -229,7 +232,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center project-card">
             <div class="flex flex-col gap-2 justify-center items-start">
-                <h3 class="text-2xl font-bold text-white">Alkemy challenge-java</h3>
+                <h2 class="text-2xl font-bold text-white">Alkemy challenge-java</h2>
                 <p class="text-white mb-3 text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en Spring Boot que permite navegar por
                     personajes y películas de Disney.</p>
                 <a href="https://github.com/Joacohbc/challenge-java" class="text-white inline-flex">
@@ -252,7 +255,7 @@ import JSONIcon from './icons/JSONIcon.astro'
         <article class="flex flex-col gap-3 items-center lg:col-span-2 other-project">
             <div class="flex flex-row gap-2 justify-center items-start">
                 <a href="https://github.com/Joacohbc" class="text-white inline-flex">
-                    <h3 class="text-2xl font-bold text-white">Otros Proyectos</h3>
+                    <h2 class="text-2xl font-bold text-white">Otros Proyectos</h2>
                 </a>
                 <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

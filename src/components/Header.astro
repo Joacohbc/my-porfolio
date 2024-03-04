@@ -1,6 +1,8 @@
 ---
 import HeaderButton from "./HeaderButton.astro";
 import HeaderSeparator from "./HeaderSeparator.astro";
+import WorkIcon from "../components/icons/WorkIcon.astro";
+import StudyIcon from "./icons/StudyIcon.astro";
 ---
 
 <header
@@ -56,38 +58,12 @@ import HeaderSeparator from "./HeaderSeparator.astro";
         <HeaderSeparator />
         <HeaderButton href="#experience">
             <span class="hidden md:inline">Experiencia</span>
-            <svg
-                class="w-5"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffffff"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M3 19l18 0"></path>
-                <path
-                    d="M5 6m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z"
-                ></path>
-            </svg>
+            <WorkIcon />
         </HeaderButton>
         <HeaderSeparator />
         <HeaderButton href="#studies">
             <span class="hidden md:inline">Estudios</span>
-            <svg
-                class="w-5"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffffff"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
-                <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
-            </svg>
+            <StudyIcon />
         </HeaderButton>
         <HeaderSeparator />
         <HeaderButton href="#cv">

@@ -1,20 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import AboutMe from "../components/AboutMe.astro";
-import Projects from "../components/Projects.astro";
+import AboutMe from "../components/AboutMeSection.astro";
+import Projects from "../components/ProjectsSection.astro";
+import Experience from "../components/ExperienceSection.astro";
 import Footer from "../components/Footer.astro";
 import SpeadInsights from "@vercel/speed-insights/astro";
 ---
 
 <Layout title="Joaquin Genova's Porfolio">
     <SpeadInsights />
-    <main id="about-me" class="animate-fade-down animate-once animate-ease-linear mb-40">
+    <main id="about-me" class="animate-fade-down animate-once animate-ease-linear mb-24">
         <AboutMe />
     </main>
-    <div id="projects" class="animate-fade-down animate-once animate-ease-linear">
+    <div id="about-me" class="animate-fade-down animate-once animate-ease-linear mb-24">
         <Projects/>
     </div>
-    <div id="#xperience"></div>
+    <div id="experience">
+        <Experience />
+    </div>
     <div id="studies"></div>
 
     <Footer />

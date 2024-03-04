@@ -1,0 +1,82 @@
+---
+import ExperienceLeftCard from '../components/ExperienceLeftCard.astro'
+import ExperienceRightCard from '../components/ExperienceRightCard.astro'
+import StudyIcon from '../components/icons/StudyIcon.astro'
+import WorkIcon from './icons/WorkIcon.astro'
+---
+<section>
+    <h1 class="text-5xl font-bold text-center mb-5 text-white">Linea de Tiempo</h1>
+
+    <div class="flex flex-col justify-start">
+        <div class="text-center text-white text-2xl mx-3">2019</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max text-right">
+                <ExperienceLeftCard month='Enero'>
+                    Bachillerato Tecnológico - UTU
+                    <StudyIcon/>
+                </ExperienceLeftCard>
+            </div>
+            <div class="w-1/2 border-l-2 min-h-max"></div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2021</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max"></div>
+            <div class="w-1/2 border-l-2 min-h-max">
+                <ExperienceRightCard month='Diciembre'>
+                    <StudyIcon/>
+                    Bachillerato Tecnológico - UTU
+                </ExperienceRightCard>
+            </div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2022</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max">
+                <ExperienceLeftCard month='Enero'>
+                    Licenciatura en TI - UTEC
+                    <StudyIcon/>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month='Julio'>
+                    Caso de Estudio - UTEC
+                    <StudyIcon/>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month='Diciembre'>
+                    Proyecto de Desarrollo y Testing - UTEC
+                    <StudyIcon/>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month=''>
+                    IT Trainee - TCS
+                    <WorkIcon/>
+                </ExperienceLeftCard>
+            </div>
+            <div class="w-1/2 border-l-2 min-h-max"></div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2023</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max"></div>
+            <div class="w-1/2 border-l-2 min-h-max">
+                <ExperienceRightCard month='Julio'>
+                    <StudyIcon/>
+                    Proyecto de Infraestructura - UTEC
+                </ExperienceRightCard>
+                <ExperienceRightCard month='Agosto'>
+                    <WorkIcon/>
+                    Salesforce Developer (Metlife) - TCS
+                </ExperienceRightCard>
+                <ExperienceRightCard month='Diciembre'>
+                    <StudyIcon/>
+                    Proyecto Final de Tecnicatura - UTEC
+                </ExperienceRightCard>
+            </div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2024</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max">
+                <ExperienceLeftCard month='Mayo'>
+                    Titulacion de Tecnicatura - UTEC
+                    <StudyIcon/>
+                </ExperienceLeftCard>
+            </div>
+            <div class="w-1/2 border-l-2 min-h-max"></div>
+        </div>
+    </div>
+</section>
