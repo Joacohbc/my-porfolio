@@ -24,13 +24,12 @@ import JSONIcon from './icons/JSONIcon.astro'
 
 <!-- 
     TODO: Hacer que cada Card de proyecto sea un componente. Y asi sea mas facil de mantener y de agregar nuevos proyectos.
-    TODO: Borrar alguno de los proyectos que no me parezca relevante (eliminar Porfolio, Dophy, etc).
     TODO: Cuando de click en el link de github, que abra en una nueva pestaña.
     TODO: Cuando de click muestre alguna informacion mas detallada del proyecto (en un modal por ejemplo).
 -->
 <section class="font-serif">
     <h1 class="text-5xl font-bold text-center text-white mb-10">Proyectos Destacados</h1>
-    <p class="text-white text-center text-md">
+    <p class="text-white text-center text-lg">
         Aquí encontrarás algunos de los proyectos que he realizado, algunos de ellos son personales y otros son proyectos de la universidad.
     </p>
 
@@ -48,7 +47,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                         <li> - GOSFv1 HTML/CSS/JS</li>
                     </ul>
                 </p>
-                <a href="https://github.com/Joacohbc/gosfv2" class="text-white inline-flex">
+                <a href="https://github.com/Joacohbc/gosfv2" class="text-white inline-flex" target="_blank">
                     <span class="mr-1">Github</span> 
                     <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -83,7 +82,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                         <br/>
                     </ul>
                 </p>
-                <a href="https://git.utec.edu.uy/joaquin.genova/techrandom-pft-2023.git" class="text-white inline-flex">
+                <a href="https://git.utec.edu.uy/joaquin.genova/techrandom-pft-2023.git" class="text-white inline-flex" target="_blank">
                     <span class="mr-1">GitLab</span> 
                     <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -110,7 +109,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <h2 class="text-2xl font-bold text-white">Goto</h2>
                 <p class="text-white mb-3 text-left">Goto es un "Gestor de rutas" para CLI que permite gestionar rutas con identificadores (abreviatura o índice). 
                     Usando en conjunto con comando <span class="italic font-mono"></span> amplia mucho las capacidad para moverse entre directorios vía CLI.</p>
-                <a href="https://github.com/Joacohbc/goto" class="text-white inline-flex">
+                <a href="https://github.com/Joacohbc/goto" class="text-white inline-flex" target="_blank">
                     <span class="mr-1">Github</span> 
                     <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -133,7 +132,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <h2 class="text-2xl font-bold text-white">Devences Project</h2>
                 <p class="text-white mb-3 text-left">Proyecto final del Bachillerato Informático de la UTU. Una aplicación de escritorio con el objetivo de gestionar un hotel,
                     desde el Login de los empleados, hasta los clientes, reservas, horarios y servicios.</p>
-                <a href="https://github.com/Joacohbc/Devences" class="text-white inline-flex">
+                <a href="https://github.com/Joacohbc/Devences" class="text-white inline-flex" target="_blank">
                     <span class="mr-1">Github</span> 
                     <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -158,7 +157,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <h2 class="text-2xl font-bold text-white">San Valetin Page</h2>
                 <p class="text-white mb-3 text-left">Un pequeño minijuego para descongelar el frío corazón de mi Crush. Tengo 8 Vidas, 8 NO's y un único SÍ, pero mucho
                     mucho rosa, gatitos y corazones.</p>
-                <a href="https://joacohbc.github.io/yxj-valentines-day/" class="text-white inline-flex">
+                <a href="https://joacohbc.github.io/yxj-valentines-day/" class="text-white inline-flex" target="_blank">
                     <span class="mr-1">Page</span> 
                     <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -177,7 +176,7 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <h2 class="text-2xl font-bold text-white">Alkemy challenge-java</h2>
                 <p class="text-white mb-3 text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en Spring Boot que permite navegar por
                     personajes y películas de Disney.</p>
-                <a href="https://github.com/Joacohbc/challenge-java" class="text-white inline-flex">
+                <a href="https://github.com/Joacohbc/challenge-java" class="text-white inline-flex" target="_blank">
                     <span class="mr-1">Github</span> 
                     <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -196,7 +195,7 @@ import JSONIcon from './icons/JSONIcon.astro'
 
         <article class="flex flex-col gap-3 items-center lg:col-span-2 other-project">
             <div class="flex flex-row gap-2 justify-center items-start">
-                <a href="https://github.com/Joacohbc" class="text-white inline-flex">
+                <a href="https://github.com/Joacohbc" class="text-white inline-flex" target="_blank">
                     <h2 class="text-2xl font-bold text-white">Otros Proyectos</h2>
                 </a>
                 <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
