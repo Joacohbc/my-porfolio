@@ -3,7 +3,6 @@ import ReactIcon from './icons/ReactIcon.astro'
 import TailwindIcon from './icons/TailwindIcon.astro'
 import BootstrapIcon from './icons/BootstrapIcon.astro'
 import BashIcon from './icons/BashIcon.astro'
-import AstroIcon from './icons/AstroIcon.astro'
 import CSharpIcon from './icons/CSharpIcon.astro'
 import RedisIcon from './icons/RedisIcon.astro'
 import TypescriptIcon from './icons/TypescriptIcon.astro'
@@ -16,15 +15,13 @@ import SpringIcon from './icons/SpringIcon.astro'
 import DockerIcon from './icons/DockerIcon.astro'
 import SQLIcon from './icons/SQLIcon.astro'
 import GitIcon from './icons/GitIcon.astro'
-import HeaderSeparator from './HeaderSeparator.astro'
 import KotlinIcon from './icons/KotlinIcon.astro'
 import RESTIcon from './icons/RESTIcon.astro'
 import JSONIcon from './icons/JSONIcon.astro'
+import ProjectsCard from './ProjectsCard.astro'
 ---
 
 <!-- 
-    TODO: Hacer que cada Card de proyecto sea un componente. Y asi sea mas facil de mantener y de agregar nuevos proyectos.
-    TODO: Cuando de click en el link de github, que abra en una nueva pestaña.
     TODO: Cuando de click muestre alguna informacion mas detallada del proyecto (en un modal por ejemplo).
 -->
 <section class="font-serif">
@@ -33,31 +30,31 @@ import JSONIcon from './icons/JSONIcon.astro'
         Aquí encontrarás algunos de los proyectos que he realizado, algunos de ellos son personales y otros son proyectos de la universidad.
     </p>
 
+    
     <div class="grid grid-cols-1 place-content-center mt-8 gap-5 lg:grid-cols-2">
-        <article class="flex flex-col gap-3 items-center project-card">
-            <div class="flex flex-col gap-2 justify-center items-start">
-                <h2 class="text-2xl font-bold text-white">GOSF v2</h2>
-                <p class="text-white mb-3 text-left">Servidor de archivos multi-usuario con autenticación con JWT al estilo de Google Drive. Con la capacidad de compartir archivos
+        <ProjectsCard title='GOSF v2' link='https://github.com/Joacohbc/gosfv2'>
+            <div slot="description" class="text-white text-left">
+                <p>Servidor de archivos multi-usuario con autenticación con JWT al estilo de Google Drive. Con la capacidad de compartir archivos
                     entre usuarios. Inicialmente empezó como un proyecto sencillo con JS/CSS/HTML básico y fue migrado a React.js con Bootstrap, ambos desarrollos separados en ramas
                     diferentes:
-                
-                    <ul class="text-white">
-                        <li> - GOSFv2 React/Boostrap</li>
-                        <li> - GOSFv2 HTML/CSS/JS</li>
-                        <li> - GOSFv1 HTML/CSS/JS</li>
-                    </ul>
                 </p>
-                <a href="https://github.com/Joacohbc/gosfv2" class="text-white inline-flex" target="_blank">
-                    <span class="mr-1">Github</span> 
-                    <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M12 10l-6 10l-3 -5l6 -10z" />
-                        <path d="M9 15h12l-3 5h-12" />
-                        <path d="M15 15l-6 -10h6l6 10z" />
-                    </svg>
-                </a>
+
+                <ul class="mt-5">
+                    <li> - GOSFv2 React/Boostrap</li>
+                    <li> - GOSFv2 HTML/CSS/JS</li>
+                    <li> - GOSFv1 HTML/CSS/JS</li>
+                </ul>
             </div>
-            <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+            <div slot="link_info" class="text-white inline-flex" >
+                <span class="mr-1">Github</span> 
+                <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 10l-6 10l-3 -5l6 -10z" />
+                    <path d="M9 15h12l-3 5h-12" />
+                    <path d="M15 15l-6 -10h6l6 10z" />
+                </svg>
+            </div>
+            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <ReactIcon />
                 <BootstrapIcon />
                 <GolangIcon />
@@ -67,33 +64,23 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <TypescriptIcon />
                 <RedisIcon />
             </div>
-        </article>
+        </ProjectsCard>
 
-        <article class="flex flex-col gap-3 items-center project-card">
-            <div class="flex flex-col gap-2 justify-center items-start">
-                <h2 class="text-2xl font-bold text-white">Proyecto de Tecnicatura de UTEC</h2>
-                <p class="text-white mb-3 text-left">Proyecto grupal para la Tecnicatura de UTEC. Es una aplicación Cliente-Servidor el cual el servidor es consumido por 3 
+        <ProjectsCard title='Proyecto de Tecnicatura de UTEC' link='https://git.utec.edu.uy/joaquin.genova/techrandom-pft-2023.git'>
+            <div slot="description" class="text-white text-left">
+                <p>Proyecto grupal para la Tecnicatura de UTEC. Es una aplicación Cliente-Servidor el cual el servidor es consumido por 3 
                     clientes diferentes. Además expone una REST API con autenticación JWT para la gestión de sesiones. 
-                    <ul class="text-white">
-                        <li> - Una aplicación de escritorio desarrollada con Java Swing</li>
-                        <li> - Un servidor desarollado con Java EE / Hibernate / Java Beans</li>
-                        <li> - Una aplicación Web desarollada con JSF (Primefaces) </li>
-                        <li> - Una aplicación Mobile desarollada con Kotlin</li>
-                        <br/>
-                    </ul>
                 </p>
-                <a href="https://git.utec.edu.uy/joaquin.genova/techrandom-pft-2023.git" class="text-white inline-flex" target="_blank">
-                    <span class="mr-1">GitLab</span> 
-                    <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M7 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" />
-                        <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
-                        <path d="M14 10a2 2 0 1 0 -2 -2" />
-                        <path d="M12 12a2 2 0 1 0 2 -2" />
-                    </svg>
-                </a>
+
+                <ul class="mt-5">
+                    <li> - Una aplicación de escritorio desarrollada con Java Swing</li>
+                    <li> - Un servidor desarollado con Java EE / Hibernate / Java Beans</li>
+                    <li> - Una aplicación Web desarollada con JSF (Primefaces) </li>
+                    <li> - Una aplicación Mobile desarollada con Kotlin</li>
+                    <br/>
+                </ul>
             </div>
-            <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <JavaIcon/>
                 <HTMLIcon />
                 <CSSIcon />
@@ -102,96 +89,51 @@ import JSONIcon from './icons/JSONIcon.astro'
                 <SQLIcon />
                 <GitIcon />
             </div>
-        </article>
+        </ProjectsCard>
 
-        <article class="flex flex-col gap-3 items-center project-card">
-            <div class="flex flex-col gap-2 justify-center items-start">
-                <h2 class="text-2xl font-bold text-white">Goto</h2>
-                <p class="text-white mb-3 text-left">Goto es un "Gestor de rutas" para CLI que permite gestionar rutas con identificadores (abreviatura o índice). 
-                    Usando en conjunto con comando <span class="italic font-mono"></span> amplia mucho las capacidad para moverse entre directorios vía CLI.</p>
-                <a href="https://github.com/Joacohbc/goto" class="text-white inline-flex" target="_blank">
-                    <span class="mr-1">Github</span> 
-                    <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M8 9l3 3l-3 3" />
-                        <path d="M13 15l3 0" />
-                        <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-                    </svg>
-                </a>
-            </div>
-            <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+        <ProjectsCard title='Goto' link='https://github.com/Joacohbc/goto'>
+            <p slot="description" class="text-white text-left">Goto es un "Gestor de rutas" para CLI que permite gestionar rutas con identificadores (abreviatura o índice). 
+                Usando en conjunto con comando <span class="italic font-mono">cd</span> amplia mucho las capacidad para moverse entre directorios vía CLI.</p>
+            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <GolangIcon />
                 <JSONIcon />
                 <BashIcon />
                 <LinuxIcon />
             </div>
-        </article>
+        </ProjectsCard>
 
-        <article class="flex flex-col gap-3 items-center project-card">
-            <div class="flex flex-col gap-2 justify-center items-start">
-                <h2 class="text-2xl font-bold text-white">Devences Project</h2>
-                <p class="text-white mb-3 text-left">Proyecto final del Bachillerato Informático de la UTU. Una aplicación de escritorio con el objetivo de gestionar un hotel,
-                    desde el Login de los empleados, hasta los clientes, reservas, horarios y servicios.</p>
-                <a href="https://github.com/Joacohbc/Devences" class="text-white inline-flex" target="_blank">
-                    <span class="mr-1">Github</span> 
-                    <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 21l18 0" />
-                        <path d="M5 21v-14l8 -4v18" />
-                        <path d="M19 21v-10l-6 -4" />
-                        <path d="M9 9l0 .01" />
-                        <path d="M9 12l0 .01" />
-                        <path d="M9 15l0 .01" />
-                        <path d="M9 18l0 .01" />
-                    </svg>
-                </a>
-            </div>
-            <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+        <ProjectsCard title='Devences Project' link='https://github.com/Joacohbc/Devences'>
+            <p slot="description" class="text-white text-left">Proyecto final del Bachillerato Informático de la UTU. Una aplicación de escritorio con el objetivo de gestionar un hotel,
+                desde el Login de los empleados, hasta los clientes, reservas, horarios y servicios.</p>
+            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <CSharpIcon/>
                 <SQLIcon />
             </div>
-        </article>
-        
+        </ProjectsCard>
+
         <article class="flex flex-col gap-3 items-center san-valetin-page">
-            <div class="flex flex-col gap-2 justify-center items-start">
-                <h2 class="text-2xl font-bold text-white">San Valetin Page</h2>
-                <p class="text-white mb-3 text-left">Un pequeño minijuego para descongelar el frío corazón de mi Crush. Tengo 8 Vidas, 8 NO's y un único SÍ, pero mucho
-                    mucho rosa, gatitos y corazones.</p>
-                <a href="https://joacohbc.github.io/yxj-valentines-day/" class="text-white inline-flex" target="_blank">
-                    <span class="mr-1">Page</span> 
-                    <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                    </svg>
-                </a>
-            </div>
-            <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
-                <ReactIcon />
-                <TailwindIcon/>
-            </div>
+            <a href="https://joacohbc.github.io/yxj-valentines-day/" target="_blank">
+                <div class="flex flex-col gap-2 justify-center items-start mb-5">
+                    <h2 class="text-2xl font-bold text-white">San Valetin Page</h2>
+                    <p class="text-white mb-3 text-left">Un pequeño minijuego para descongelar el frío corazón de mi Crush. Tengo 8 Vidas, 8 NO's y un único SÍ, pero mucho
+                        mucho rosa, gatitos y corazones.</p>
+                </div>
+                <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+                    <ReactIcon />
+                    <TailwindIcon/>
+                </div>
+            </a>
         </article>
 
-        <article class="flex flex-col gap-3 items-center project-card">
-            <div class="flex flex-col gap-2 justify-center items-start">
-                <h2 class="text-2xl font-bold text-white">Alkemy challenge-java</h2>
-                <p class="text-white mb-3 text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en Spring Boot que permite navegar por
-                    personajes y películas de Disney.</p>
-                <a href="https://github.com/Joacohbc/challenge-java" class="text-white inline-flex" target="_blank">
-                    <span class="mr-1">Github</span> 
-                    <svg class="w-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M11 18.004h-4.343c-2.572 -.004 -4.657 -2.011 -4.657 -4.487c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99a3.468 3.468 0 0 1 3.307 2.444" />
-                        <path d="M20 21l2 -2l-2 -2" />
-                        <path d="M17 17l-2 2l2 2" />
-                    </svg>
-                </a>
-            </div>
-            <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+        <ProjectsCard title='Alkemy challenge-java' link='https://github.com/Joacohbc/challenge-java'>
+            <p slot="description" class="text-white text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en Spring Boot que permite navegar por
+                personajes y películas de Disney.</p>
+            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <JavaIcon />
                 <SpringIcon />
                 <RESTIcon />
             </div>
-        </article>
+        </ProjectsCard>
 
         <article class="flex flex-col gap-3 items-center lg:col-span-2 other-project">
             <div class="flex flex-row gap-2 justify-center items-start">
@@ -222,24 +164,6 @@ import JSONIcon from './icons/JSONIcon.astro'
         transition: color 0.3s;
     }
     
-    .san-valetin-page > a:hover {    
-        filter: drop-shadow(0 0 5px #f1bcef);
-        text-decoration: underline; 
-        transition: color 0.3s;
-    }
-
-    .project-card {
-        border: 1px solid #3ca2eb;    
-        padding: 1rem;
-        border-radius: 10px;
-        background-color: var(--color-bg-darkblack);
-    }
-
-    .project-card:hover {    
-        filter: drop-shadow(0 0 5px #3ca2eb); 
-        transition: color 0.3s;
-    }
-    
     .other-project {
         filter: drop-shadow(0 0 5px #f53030);
         transition: color 0.3s;
@@ -250,4 +174,5 @@ import JSONIcon from './icons/JSONIcon.astro'
         text-decoration: underline; 
         transition: color 0.3s;
     }
+
 </style>
