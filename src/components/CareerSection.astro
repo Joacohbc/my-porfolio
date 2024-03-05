@@ -1,11 +1,10 @@
 ---
-import { Picture } from "astro:assets";
 import ExperienceLeftCard from "./CareerLeftCard.astro";
 import ExperienceRightCard from "./CareerRightCard.astro";
 import StudyIcon from "./icons/StudyIcon.astro";
 import WorkIcon from "./icons/WorkIcon.astro";
 ---
-<!-- TODO: Agregar Pre-aceleracion de Alkemy -->
+
 <section class="font-serif">
     <h1 class="text-5xl font-bold text-center mb-5 text-white">Trayectoria</h1>
 
@@ -59,6 +58,15 @@ import WorkIcon from "./icons/WorkIcon.astro";
                     </p>
                 </ExperienceLeftCard>
                 <ExperienceLeftCard month="Julio" name="Caso de Estudio" from="UTEC">
+                    <StudyIcon slot="icon" />
+                    <p slot="description" class="text-sm md:text-lg">
+                        Proyecto que consistió en el análisis, diseño e
+                        implementación de un sistema de información para una
+                        empresa real (Casos de Uso, Req. Funcionales y No
+                        Funcionales, Suite de Pruebas).
+                    </p>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month="Agosto" name="Pre-acleracion de Java Backend" from="Alkemy">
                     <StudyIcon slot="icon" />
                     <p slot="description" class="text-sm md:text-lg">
                         Proyecto que consistió en el análisis, diseño e
