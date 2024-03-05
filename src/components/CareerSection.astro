@@ -1,0 +1,133 @@
+---
+import { Picture } from 'astro:assets'
+import ExperienceLeftCard from './CareerLeftCard.astro'
+import ExperienceRightCard from './CareerRightCard.astro'
+import StudyIcon from './icons/StudyIcon.astro'
+import WorkIcon from './icons/WorkIcon.astro'
+---
+<section>
+    <h1 class="text-5xl font-bold text-center mb-5 text-white">Trayectoria</h1>
+
+    <div class="flex flex-col justify-start">
+        <div class="text-center text-white text-2xl mx-3">2019</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max">
+                <ExperienceLeftCard month='Enero'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Bachillerato Tecnológico - UTU</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Incio de estudios en el Bachillerato Tecnológico de la UTU. Donde aprendi las bases de la programación, bases de datos, redes, sistemas operativos y hardware.
+                    </p>
+                </ExperienceLeftCard>
+            </div>
+            <div class="w-1/2 border-l-2 min-h-max"></div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2021</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max"></div>
+            <div class="w-1/2 border-l-2 min-h-max">
+                <ExperienceRightCard month='Diciembre'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Bachillerato Tecnológico - UTU</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Fin de estudios en el Bachillerato Tecnológico de la UTU. Con la defensa de un proyecto multidisciplinario a lo largo de todo el año.
+                    </p>
+                </ExperienceRightCard>
+            </div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2022</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max">
+                <ExperienceLeftCard month='Enero'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Licenciatura en TI - UTEC</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Inicio de estudios en la Licenciatura en Tecnologías de la Información de la UTEC. Donde profundize en mis conocimientos en programación, redes, sistemas operativos, hardware, 
+                        bases de datos, seguridad informática, testing y desarrollo de web.
+                    </p>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month='Julio'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Caso de Estudio - UTEC</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Proyecto que consitio en la analisis, diseño e implementación de un sistema de información para una empresa real (Casos de Uso, Req. Funcionales y No Funcionales, Suit de Pruebas).
+                    </p>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month='Diciembre'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Proyecto de Desarrollo y Testing - UTEC</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Proyecto que consitio en la implementación del sistema de información, en una aplicacion cliente-servidor para Escritorio, diseñado en el Caso de Estudio.
+                    </p>
+                </ExperienceLeftCard>
+                <ExperienceLeftCard month=''>
+                    <h2 slot="name" class="text-lg md:text-2xl">IT Trainee - TCS</h2>
+                    <WorkIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Inicio de pasantia en Tata Consultancy Services, donde aprendi sobre el desarrollo en la paltaforma de Salesforce.
+                    </p>
+                </ExperienceLeftCard>
+            </div>
+            <div class="w-1/2 border-l-2 min-h-max"></div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2023</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max"></div>
+            <div class="w-1/2 border-l-2 min-h-max">
+                <ExperienceRightCard month='Abril'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Platform Developer I - TCS</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Preparacion y aprobacion de la Platform Developer I de Salesforce.
+                    </p>
+                </ExperienceRightCard>
+                <ExperienceRightCard month='Julio'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Proyecto de Infraestructura - UTEC</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Proyecto que consistio en el diseño de una infraestructura (Direcionamiento, Servidores Virtuales, Dominio de Active Directory, Demo en GSN3). 
+                        Ademas de la implementación del Frontend con JSF como cliente del servidor desarrollado en el Proyecto de Desarrollo y Testing.
+                    </p>
+                </ExperienceRightCard>
+                <ExperienceRightCard month='Agosto'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Salesforce Developer - TCS</h2>
+                    <WorkIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Ingreso al proyecto en la plataforma de Salesforce para Metlife Mexico.
+                    </p>
+                </ExperienceRightCard>
+                <ExperienceRightCard month='Diciembre'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Proyecto Final de Tecnicatura - UTEC</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Proyecto que fue la continuación del Proyecto de Infraestructura. Donde se agrego la implementación: un aplicativo Mobile con Kotlin, implementacion virtual de servidores DNS, DHCP, AD y Firewall en GNS3. 
+                    </p>
+                </ExperienceRightCard>
+                <ExperienceRightCard month=''>
+                    <h2 slot="name" class="text-lg md:text-2xl">JavaScript Certification - TCS</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Preparacion y aprobacion de la JavaScript Developer I de Salesforce.
+                    </p>
+                </ExperienceRightCard>
+            </div>
+        </div>
+        <div class="text-center text-white text-2xl mx-3">2024</div>
+        <div class="flex flex-row">
+            <div class="w-1/2 border-r-2 min-h-max">
+                <ExperienceLeftCard month='Mayo'>
+                    <h2 slot="name" class="text-lg md:text-2xl">Titulacion de Tecnicatura - UTEC</h2>
+                    <StudyIcon slot='icon'/>
+                    <p slot="description" class="text-sm md:text-lg">
+                        Evento de entrega de titulo de Tecnicatura en Tecnologías de la Información.
+                    </p>
+                </ExperienceLeftCard>
+            </div>
+            <div class="w-1/2 border-l-2 min-h-max"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+</style>

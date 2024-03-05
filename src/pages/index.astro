@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import AboutMe from "../components/AboutMeSection.astro";
 import Projects from "../components/ProjectsSection.astro";
-import Experience from "../components/ExperienceSection.astro";
+import Career from "../components/CareerSection.astro";
 import Footer from "../components/Footer.astro";
 import SpeadInsights from "@vercel/speed-insights/astro";
 ---
@@ -12,13 +12,12 @@ import SpeadInsights from "@vercel/speed-insights/astro";
     <main id="about-me" class="animate-fade-down animate-once animate-ease-linear mb-24">
         <AboutMe />
     </main>
-    <div id="about-me" class="animate-fade-down animate-once animate-ease-linear mb-24">
+    <div id="projects" class="animate-fade-down animate-once animate-ease-linear mb-24">
         <Projects/>
     </div>
-    <div id="experience">
-        <Experience />
+    <div id="career">
+        <Career />
     </div>
-    <div id="studies"></div>
 
     <Footer />
 </Layout>
