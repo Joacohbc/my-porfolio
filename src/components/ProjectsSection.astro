@@ -126,8 +126,8 @@ import ProjectsCard from './ProjectsCard.astro'
         </article>
 
         <ProjectsCard title='Alkemy challenge-java' link='https://github.com/Joacohbc/challenge-java'>
-            <p slot="description" class="text-white text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en Spring Boot que permite navegar por
-                personajes y películas de Disney.</p>
+            <p slot="description" class="text-white text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en 
+                Spring Boot que permite navegar por personajes y películas de Disney.</p>
             <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <JavaIcon />
                 <SpringIcon />
@@ -169,10 +169,9 @@ import ProjectsCard from './ProjectsCard.astro'
         transition: color 0.3s;
     }
 
-    a :hover {    
+    article > div > a :hover {    
         filter: drop-shadow(0 0 5px #f53030);
         text-decoration: underline; 
         transition: color 0.3s;
     }
-
 </style>
