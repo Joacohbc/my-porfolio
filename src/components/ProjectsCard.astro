@@ -7,7 +7,7 @@ interface Props {
 const { title, link } = Astro.props;
 ---
 
-<article class="flex flex-col gap-3 items-center project-card">
+<article class="flex flex-col gap-3 items-center project-card bg-transparent">
     <a href={link}  target="_blank">
         <div class="flex flex-col gap-2 justify-center items-start mb-5">
             <h2 class="text-2xl font-bold text-white">{title}</h2>
@@ -22,7 +22,6 @@ const { title, link } = Astro.props;
         border: 1px solid #3ca2eb;    
         padding: 1rem;
         border-radius: 10px;
-        background-color: var(--color-bg-darkblack);
     }
 
     .project-card:hover {    
