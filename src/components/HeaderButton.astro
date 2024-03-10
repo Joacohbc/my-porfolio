@@ -1,12 +1,13 @@
 ---
 interface Props {
     href: string;
+    title: string;
 }
 
-const { href } = Astro.props;
+const { href, title } = Astro.props;
 ---
 
-<a class="flex flex-row items-center gap-2 hover:drop-shadow-sm p-2 rounded" href={href}>
+<a class="flex flex-row items-center gap-2 hover:drop-shadow-sm p-2 rounded" href={href} title={title}>
     <slot />
 </a>
 
