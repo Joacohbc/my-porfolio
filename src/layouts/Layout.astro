@@ -20,7 +20,7 @@ const { title = "Porfolio de Joaquin G.", header = true, index = true } = Astro.
 
 		<meta name="description" content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="robots" content="index, follow">
+		{ index && <meta name="robots" content="index, follow"/> }
 
 		<link rel="canonical" href="https://joaquingenova.dev" />
 		<link rel="alternate" href="https://joaquingenova.dev" hreflang="es" />
