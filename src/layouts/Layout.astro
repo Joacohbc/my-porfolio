@@ -3,8 +3,12 @@ import Header from '../components/Header.astro';
 import SpeadInsights from "@vercel/speed-insights/astro";
 
 interface Props {
-	title: string;
+	title?: string;
+	header?: boolean;
+	index?: boolean;
 }
+
+const { title = "Porfolio de Joaquin G.", header = true, index = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -12,7 +16,7 @@ interface Props {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>Porfolio de Joaquin G.</title>
+		<title>{title}</title>
 
 		<meta name="description" content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -26,6 +30,7 @@ interface Props {
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="Porfolio de Joaquin Genova">
 		<meta property="og:description" content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI">
+		
 		<!-- <meta property="og:image" content=""> -->
 		<meta property="og:site_name" content="Porfolio de Joaquin Genova">
 		<meta property="og:locale" content="es_ES">
@@ -41,7 +46,7 @@ interface Props {
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body class="bg-lightblack">
-		<Header/>
+		{header && <Header/> }
 		<div class="w-10/12 md:w-8/12 mx-auto">
 			<slot />
 		</div> 
