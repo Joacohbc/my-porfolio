@@ -7,15 +7,17 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-    <main class="animate-fade-down animate-once animate-ease-linear mb-24">
-        <AboutMe />
-    </main>
-    <div class="mb-24">
+    <section id="about-me" data-section="about-me">
+        <main  class="animate-fade-down animate-once animate-ease-linear mb-24">
+            <AboutMe />
+        </main>
+    </section>
+    <section id="projects" data-section="projecs" class="mb-24">
         <Projects/>
-    </div>
-    <div>
+    </section>
+    <section id="career" data-section="career">
         <Career />
-    </div>
+    </section>
     <Footer />
 </Layout>
 
