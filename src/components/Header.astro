@@ -100,18 +100,30 @@ const navItems = [
                     navItems.forEach((item) => {
                         if (item.getAttribute("aria-label") == entry.target.id) {
                             item.classList.add("current-section");
+                            (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
                         } else {
                             item.classList.remove("current-section");
+                            (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
                         }
                     });
                 }
             });
         };
 
-        const observer = new IntersectionObserver(callback, {});
+        const observer = new IntersectionObserver(callback, {
+            root: null, // viewport
+            rootMargin: "0px", // no margin
+            threshold: 0.1, // 10% of the section must be visible
+        });
 
-        sections.forEach((section) => {
-            observer.observe(section);
+        document.addEventListener("scroll", () => {
+            if(window.scrollY <= 0) {
+                return;
+            } 
+
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
         });
 
         document.onvisibilitychange = () => {
@@ -147,7 +159,7 @@ const navItems = [
 
     .underline-animation:hover {
         font-weight: bold;
-        filter: drop-shadow(0 0 5px #eb8b3c); 
+        filter: drop-shadow(0 0 5px #eb8b3c);
         transition: color 0.3s;
     }
 
@@ -159,7 +171,8 @@ const navItems = [
 
     .current-section {
         font-weight: bold;
-        filter: drop-shadow(0 0 5px #eb8b3c); 
+        color: #eb8b3c;
+        filter: drop-shadow(0 0 15px #eb8b3c); 
         transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
