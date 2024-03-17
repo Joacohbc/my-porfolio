@@ -13,7 +13,8 @@ const navItems = [
                 <path d="M12 9h.01"></path>
                 <path d="M11 12h1v4h1"></path>
         </svg>`,
-        separator: true,
+        last: false,
+        first: true,
     },
     {
         title: "Proyectos",
@@ -24,7 +25,8 @@ const navItems = [
             <path d="M7 4a2 2 0 0 0 -2 2v3a2 3 0 0 1 -2 3a2 3 0 0 1 2 3v3a2 2 0 0 0 2 2"></path>
             <path d="M17 4a2 2 0 0 1 2 2v3a2 3 0 0 0 2 3a2 3 0 0 0 -2 3v3a2 2 0 0 1 -2 2"></path>
         </svg>`,
-        separator: true,
+        last: false,
+        first: false,
     },
     {
         title: "Trayectoria",
@@ -39,7 +41,8 @@ const navItems = [
             <path d="M9 6h6"></path>
             <path d="M9 9h3"></path>
         </svg>`,
-        separator: true,
+        last: false,
+        first: false,
     },
     {
         title: "CV",
@@ -51,25 +54,28 @@ const navItems = [
             <path d="M7 11l5 5l5 -5"></path>
             <path d="M12 4l0 12"></path>
         </svg>`,
-        separator: false,
+        last: true,
+        first: false,
     },
 ];
 ---
 
 <header
-    class="sticky top-0 w-full py-4 flex flex-col justify-between items-center text-white font-mono z-10 rounded-full"
+    class="sticky top-0 w-full pt-4 flex flex-col justify-between items-center text-white font-mono z-10"
 >
     <nav
-        class="flex flex-row sm:gap-2 justify-center items-center text-center kode-mono-700 mb-2"
+        class="flex flex-row sm:gap-2 justify-center items-center text-center kode-mono-700 mb-2 px-5 py-1 rounded-full"
     >
         {
         navItems.map((link) => (
             <div class="flex flex-row">
+                { link.first && <HeaderSeparator alwaysHide={true}/>}
                 <HeaderButton href={link.url} title={link.title}>
                 <span class="hidden md:inline">{link.label}</span>
                 <Fragment set:html={link.svg}/>
-            </HeaderButton>
-            {link.separator && <HeaderSeparator />}
+                </HeaderButton>
+                { !link.last && <HeaderSeparator />}
+                {  link.last && <HeaderSeparator alwaysHide={true}/>}
             </div>
         ))
         }
@@ -77,49 +83,6 @@ const navItems = [
 
     <div id="header-underline" class="w-screen h-[2px]"></div>
 </header>
-
-<script>
-    document.addEventListener("astro:page-load", () => {
-        const sections = document.querySelectorAll("section");
-        const navItems = document.querySelectorAll("header nav a");
-
-        const callback = (entries: any[]) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    navItems.forEach((item) => {
-                        if (
-                            item.getAttribute("aria-label") == entry.target.id
-                        ) {
-                            item.classList.add("text-yellow-500");
-                        } else {
-                            item.classList.remove("text-yellow-500");
-                        }
-                    });
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(callback, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0.3,
-        });
-
-        sections.forEach((section) => {
-            observer.observe(section);
-        });
-
-        document.onvisibilitychange = () => {
-            if (document.visibilityState === "hidden") {
-                observer.disconnect();
-            } else {
-                sections.forEach((section) => {
-                    observer.observe(section);
-                });
-            }
-        };
-    });
-</script>
 
 <style>
     nav {
@@ -130,7 +93,7 @@ const navItems = [
 
     @keyframes nav-shadown {
         to {
-            @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+            @apply shadow-lg ring-1 backdrop-blur bg-lightblack/70;
         }
     }
 </style>

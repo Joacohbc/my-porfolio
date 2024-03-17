@@ -1,1 +1,8 @@
-<span class="p-2 hidden md:block" aria-hidden="true">|</span>
+---
+interface Props {
+    alwaysHide?: boolean;
+}
+
+const { alwaysHide } = Astro.props;
+---
+<span class={`p-2 hidden ${!alwaysHide && "md:block"}`} aria-hidden="true">|</span>
