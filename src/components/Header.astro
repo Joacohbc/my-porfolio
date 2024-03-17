@@ -114,7 +114,6 @@ const navItems = [
             observer.observe(section);
         });
 
-        // Cleanup function
         document.onvisibilitychange = () => {
             if (document.visibilityState === "hidden") {
                 observer.disconnect();
