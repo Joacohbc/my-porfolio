@@ -1,5 +1,5 @@
 ---
-import Header from '../components/Header.astro';
+import Header from "../components/Header.astro";
 import SpeadInsights from "@vercel/speed-insights/astro";
 
 interface Props {
@@ -8,7 +8,11 @@ interface Props {
 	index?: boolean;
 }
 
-const { title = "Porfolio de Joaquin G.", header = true, index = true } = Astro.props;
+const {
+	title = "Porfolio de Joaquin G.",
+	header = true,
+	index = true,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -18,38 +22,47 @@ const { title = "Porfolio de Joaquin G.", header = true, index = true } = Astro.
 		<meta name="viewport" content="width=device-width" />
 		<title>{title}</title>
 
-		<meta name="description" content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI" />
-		<link rel="icon" href="/favicon.ico"/>
-		{ index && <meta name="robots" content="index, follow"/> }
+		<meta
+			name="description"
+			content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI"
+		/>
+		<link rel="icon" href="/favicon.ico" />
+		{index && <meta name="robots" content="index, follow" />}
 
 		<link rel="canonical" href="https://joaquingenova.dev" />
 		<link rel="alternate" href="https://joaquingenova.dev" hreflang="es" />
 
 		<!-- Facebook Meta Tags -->
-		<meta property="og:url" content="https://joaquingenova.dev">
-		<meta property="og:type" content="website">
-		<meta property="og:title" content="Porfolio de Joaquin Genova">
-		<meta property="og:description" content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI">
-		
+		<meta property="og:url" content="https://joaquingenova.dev" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Porfolio de Joaquin Genova" />
+		<meta
+			property="og:description"
+			content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI"
+		/>
+
 		<!-- <meta property="og:image" content=""> -->
-		<meta property="og:site_name" content="Porfolio de Joaquin Genova">
-		<meta property="og:locale" content="es_ES">
+		<meta property="og:site_name" content="Porfolio de Joaquin Genova" />
+		<meta property="og:locale" content="es_ES" />
 
 		<!-- Twitter Meta Tags -->
-		<meta name="twitter:card" content="summary_large_image">
-		<meta property="twitter:domain" content="joaquingenova.dev">
-		<meta property="twitter:url" content="https://joaquingenova.dev">
-		<meta name="twitter:title" content="Porfolio de Joaquin Genova">
-		<meta name="twitter:description" content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI">
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="joaquingenova.dev" />
+		<meta property="twitter:url" content="https://joaquingenova.dev" />
+		<meta name="twitter:title" content="Porfolio de Joaquin Genova" />
+		<meta
+			name="twitter:description"
+			content="Porfolio de Joaquin Genova, un apasionado Desarrollador de Software y Técnico Superior en TI"
+		/>
 		<!-- <meta name="twitter:image" content=""> -->
 
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body class="bg-lightblack">
-		{header && <Header/> }
+		{header && <Header />}
 		<div class="w-10/12 md:w-8/12 mx-auto">
 			<slot />
-		</div> 
+		</div>
 		<SpeadInsights />
 	</body>
 </html>
@@ -60,21 +73,27 @@ const { title = "Porfolio de Joaquin G.", header = true, index = true } = Astro.
 		--color-bg-darkblack: #0f0f0f;
 	}
 
-	html { 
-		scroll-behavior: smooth; 
+	html {
+		scroll-behavior: smooth;
 		overflow-x: hidden;
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
 	@font-face {
-        font-family: "Anta";
-        src: url("/fonts/Anta-Regular.woff2");
-    }
-	
+		font-family: "Anta";
+		src: url("/fonts/Anta-Regular.woff2");
+	}
+
 	.font-anta {
 		font-family: "Anta", sans-serif;
 	}
 
-	@Font-face {
+	@font-face {
 		font-family: "Noto Sans";
 		src: url("/fonts/NotoSansMono.woff2");
 	}
