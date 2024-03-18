@@ -68,16 +68,22 @@ const navItems = [
     </h2>
 </div>
 
-<header class="sticky font-serif pt-2 top-0 w-full flex flex-col justify-between items-center text-white z-10">
-    <nav class="flex flex-row sm:gap-2 justify-center items-center text-center mb-2 px-5 py-1 rounded-full">
+<header
+    class="sticky font-serif pt-2 top-0 w-full flex flex-col justify-between items-center text-white z-10"
+>
+    <nav
+        class="flex flex-row sm:gap-2 justify-center items-center text-center mb-2 px-5 py-1 rounded-full"
+    >
         {
             navItems.map((link) => (
                 <div class="flex flex-row">
                     {link.first && <HeaderSeparator alwaysHide={true} />}
-                    <a class="flex flex-row items-center gap-2 hover:drop-shadow-sm p-2 rounded underline-animation" 
-                        href={link.url} 
-                        title={link.title} 
-                        aria-label={link.label}>
+                    <a
+                        class="flex flex-row items-center gap-2 hover:drop-shadow-sm p-2 rounded underline-animation"
+                        href={link.url}
+                        title={link.title}
+                        aria-label={link.label}
+                    >
                         <span class="hidden md:inline">{link.title}</span>
                         <Fragment set:html={link.svg} />
                     </a>
@@ -94,46 +100,57 @@ const navItems = [
         const sections = document.querySelectorAll("section");
         const navItems = document.querySelectorAll("header nav a");
 
-
         // const entiesVisibles = new Map();
+        // const callback = (entries: IntersectionObserverEntry[]) => {
+        //     entries.forEach((entry) => {
+        //         if (entry.isIntersecting) {
+        //             navItems.forEach((item) => {
+        //                 if (item.getAttribute("aria-label") == entry.target.id) {
+        //                     item.classList.add("current-section");
+        //                     // Get SVG Node and change color
+        //                     (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
+        //                 } else {
+        //                     item.classList.remove("current-section");
+        //                     // Get SVG Node and change color
+        //                     (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
+        //                 }
+        //             });
+        //         }
+        //     });
+        // };
+
+        const entiesVisibles = new Map();
         const callback = (entries: IntersectionObserverEntry[]) => {
 
-            // entries.forEach((entry) => {
-            //     const isVisible = entry.isIntersecting && entry.boundingClientRect.top >= 0;
-            //     entiesVisibles.set(entry.target.id, {
-            //         isVisible,
-            //         isIntersecting: entry.isIntersecting,
-            //         top: entry.boundingClientRect.top,
-            //         bottom: entry.boundingClientRect.bottom,
-            //     });
-            // });
-
-            // console.log(entiesVisibles);
-            // navItems.forEach((item) => {
-            //     if (entiesVisibles.get(item.getAttribute("aria-label")).isVisible) {
-            //         item.classList.add("current-section");
-            //         // Get SVG Node and change color
-            //         (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
-            //     } else {
-            //         item.classList.remove("current-section");
-            //         // Get SVG Node and change color
-            //         (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
-            //     }
-            // });
-
+            // Update the map with the new entries
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    navItems.forEach((item) => {
-                        if (item.getAttribute("aria-label") == entry.target.id) {
-                            item.classList.add("current-section");
-                            // Get SVG Node and change color
-                            (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
-                        } else {
-                            item.classList.remove("current-section");
-                            // Get SVG Node and change color
-                            (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
-                        }
-                    });
+                entiesVisibles.set(entry.target.id, entry);
+            });
+
+            // Get the visible sections
+            const visibleSections = Array.from(entiesVisibles.values()).filter((entry) => entry.isIntersecting);
+
+            // Calculate percentage of the section visible
+            const visibleSectionsPercentage = visibleSections.map((entry) => {
+                const visibleHeight = entry.intersectionRect.height;
+                const totalHeight = entry.boundingClientRect.height;
+                return visibleHeight / totalHeight;
+            });
+
+            // Get the section with the most visible percentage
+            const maxVisibleSection = visibleSections[visibleSectionsPercentage.indexOf(Math.max(...visibleSectionsPercentage))];
+            
+            // Set the current section based on the most visible section
+            navItems.forEach((item) => {
+                if (item.getAttribute("aria-label") == maxVisibleSection.target.id) {
+                    item.classList.add("current-section");
+                    // Get SVG Node and change color
+                    (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
+                } else {
+                    item.classList.remove("current-section");
+                    
+                    // Get SVG Node and change color
+                    (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
                 }
             });
         };
@@ -144,15 +161,23 @@ const navItems = [
             threshold: 0.1, // 10% of the section must be visible
         });
 
-        document.addEventListener("scroll", () => {
-            if(window.scrollY <= 0) {
-                return;
-            } 
+        // If the page is not at the top, wait for the user to scroll to start observing the sections
+        if (window.scrollY <= 0) {
+            document.addEventListener("scroll", () => {
+                if (window.scrollY <= 0) {
+                    return;
+                }
 
+                sections.forEach((section) => {
+                    observer.observe(section);
+                });
+            });
+        } else {
+            // If the page is already scrolled, start observing the sections
             sections.forEach((section) => {
                 observer.observe(section);
             });
-        });
+        }
 
         document.onvisibilitychange = () => {
             if (document.visibilityState === "hidden") {
@@ -174,7 +199,7 @@ const navItems = [
     }
 
     .underline-animation::after {
-        content: '';
+        content: "";
         position: absolute;
         transform: scaleX(0);
         width: 100%;
@@ -200,7 +225,7 @@ const navItems = [
     .current-section {
         font-weight: bold;
         color: #eb8b3c;
-        filter: drop-shadow(0 0 15px #eb8b3c); 
+        filter: drop-shadow(0 0 15px #eb8b3c);
         transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
