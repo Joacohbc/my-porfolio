@@ -100,25 +100,6 @@ const navItems = [
         const sections = document.querySelectorAll("section");
         const navItems = document.querySelectorAll("header nav a");
 
-        // const entiesVisibles = new Map();
-        // const callback = (entries: IntersectionObserverEntry[]) => {
-        //     entries.forEach((entry) => {
-        //         if (entry.isIntersecting) {
-        //             navItems.forEach((item) => {
-        //                 if (item.getAttribute("aria-label") == entry.target.id) {
-        //                     item.classList.add("current-section");
-        //                     // Get SVG Node and change color
-        //                     (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
-        //                 } else {
-        //                     item.classList.remove("current-section");
-        //                     // Get SVG Node and change color
-        //                     (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
-        //                 }
-        //             });
-        //         }
-        //     });
-        // };
-
         const entiesVisibles = new Map();
         const callback = (entries: IntersectionObserverEntry[]) => {
 
@@ -155,6 +136,7 @@ const navItems = [
             });
         };
 
+        // Oberve the sections to know which one is visible and set the current section
         const observer = new IntersectionObserver(callback, {
             root: null,
             rootMargin: "0px",
