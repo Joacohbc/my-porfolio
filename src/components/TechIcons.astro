@@ -15,24 +15,20 @@ import LinuxIcon from '../components/icons/LinuxIcon.astro'
 import SalesforceIcon from '../components/icons/SalesforceIcon.astro'
 ---
 
-<div class="text-white grid grid-flow-row grid-cols-3 content-center gap-5 lg:flex lg:flex-row lg:items-center lg:justify-center mt-5">
+<div class="text-white grid grid-flow-row grid-cols-3 content-center gap-5 sm:grid-cols-4 xl:flex xl:flex-row xl:items-center xl:justify-center mt-5">
     <ReactIcon />
     <TailwindIcon />
-    <div class="flex flex-wrap flex-row justify-center items-center gap-1 p-2 border rounded">
-        <JavascriptIcon />
-        <CSSIcon />
-        <HTMLIcon />
-    </div>
-    <div class="flex flex-wrap flex-row justify-center items-center gap-1 p-2 border rounded">
-        <JavaIcon />
-        <SpringIcon />
-    </div>
+    <GitIcon />
+    <JavascriptIcon />
+    <CSSIcon />
+    <HTMLIcon />
+    <JavaIcon />
+    <SpringIcon />
     <GolangIcon />
     <DockerIcon />
     <SQLIcon />
-    <GitIcon />
     <LinuxIcon />
-    <div class="max-lg:col-span-3">
+    <div class="col-span-3 sm:col-span-4">
         <SalesforceIcon />
     </div>
 </div>
