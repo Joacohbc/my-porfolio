@@ -122,37 +122,37 @@ const navItems = [
         const entiesVisibles = new Map();
         const callback = (entries: IntersectionObserverEntry[]) => {
 
-            // Update the map with the new entries
-            entries.forEach((entry) => {
-                entiesVisibles.set(entry.target.id, entry);
-            });
+            // // Update the map with the new entries
+            // entries.forEach((entry) => {
+            //     entiesVisibles.set(entry.target.id, entry);
+            // });
 
-            // Get the visible sections
-            const visibleSections = Array.from(entiesVisibles.values()).filter((entry) => entry.isIntersecting);
+            // // Get the visible sections
+            // const visibleSections = Array.from(entiesVisibles.values()).filter((entry) => entry.isIntersecting);
 
-            // Calculate percentage of the section visible
-            const visibleSectionsPercentage = visibleSections.map((entry) => {
-                const visibleHeight = entry.intersectionRect.height;
-                const totalHeight = entry.boundingClientRect.height;
-                return visibleHeight / totalHeight;
-            });
+            // // Calculate percentage of the section visible
+            // const visibleSectionsPercentage = visibleSections.map((entry) => {
+            //     const visibleHeight = entry.intersectionRect.height;
+            //     const totalHeight = entry.boundingClientRect.height;
+            //     return visibleHeight / totalHeight;
+            // });
 
-            // Get the section with the most visible percentage
-            const maxVisibleSection = visibleSections[visibleSectionsPercentage.indexOf(Math.max(...visibleSectionsPercentage))];
+            // // Get the section with the most visible percentage
+            // const maxVisibleSection = visibleSections[visibleSectionsPercentage.indexOf(Math.max(...visibleSectionsPercentage))];
             
-            // Set the current section based on the most visible section
-            navItems.forEach((item) => {
-                if (item.getAttribute("aria-label") == maxVisibleSection.target.id) {
-                    item.classList.add("current-section");
-                    // Get SVG Node and change color
-                    (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
-                } else {
-                    item.classList.remove("current-section");
+            // // Set the current section based on the most visible section
+            // navItems.forEach((item) => {
+            //     if (item.getAttribute("aria-label") == maxVisibleSection.target.id) {
+            //         item.classList.add("current-section");
+            //         // Get SVG Node and change color
+            //         (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
+            //     } else {
+            //         item.classList.remove("current-section");
                     
-                    // Get SVG Node and change color
-                    (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
-                }
-            });
+            //         // Get SVG Node and change color
+            //         (item.childNodes[3] as Element).setAttribute("stroke", "#ffffff");
+            //     }
+            // });
         };
 
         const observer = new IntersectionObserver(callback, {
