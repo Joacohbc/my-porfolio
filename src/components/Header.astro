@@ -127,7 +127,6 @@ const navItems = [
                     item.classList.add("current-section");
                     // Get SVG Node and change color
                     (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
-                    window.location.hash = item.getAttribute("aria-label");
                 } else {
                     item.classList.remove("current-section");
                     
