@@ -9,7 +9,7 @@ interface Props {
 const { month, from, name, side } = Astro.props;
 ---
 
-<div class="flex flex-row max-sm:border-l-2 max-sm:p-3">
+<div class="flex flex-row max-sm:border-l-2 max-sm:pl-3">
     <div class="flex flex-row flex-1">
         <div class={`${side == "right" ? "hidden sm:block" : ''} w-full sm:w-1/2 sm:border-r-2 sm:min-h-max`}>
             {side === "left" &&
