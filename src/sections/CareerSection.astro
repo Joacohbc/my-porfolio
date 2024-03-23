@@ -1,6 +1,7 @@
 ---
 import ExperienceLeftCard from "../components/CareerLeftCard.astro";
 import ExperienceRightCard from "../components/CareerRightCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import StudyIcon from "../components/icons/StudyIcon.astro";
 import WorkIcon from "../components/icons/WorkIcon.astro";
 ---
@@ -19,150 +20,128 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
         </svg>
     </div>
 
-    <div class="flex flex-col justify-start">
-        <div class="text-center text-white text-2xl mx-3">2019</div>
-        <div class="flex flex-row">
-            <div class="w-1/2 border-r-2 min-h-max">
-                <ExperienceLeftCard month="Enero" name="Bachillerato Tecnológico" from="UTU">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Inicio de estudios en el Bachillerato Tecnológico de la
-                        UTU. Donde aprendí las bases de la programación, bases
-                        de datos, redes, sistemas operativos y hardware.
-                    </p>
-                </ExperienceLeftCard>
-            </div>
-            <div class="w-1/2 border-l-2 min-h-max"></div>
-        </div>
-        <div class="text-center text-white text-2xl mx-3">2021</div>
-        <div class="flex flex-row">
-            <div class="w-1/2 border-r-2 min-h-max"></div>
-            <div class="w-1/2 border-l-2 min-h-max">
-                <ExperienceRightCard month="Diciembre" name="Bachillerato Tecnológico" from="UTU" >
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Fin de estudios en el Bachillerato Tecnológico de la
-                        UTU. Con la defensa de un proyecto multidisciplinario a
-                        lo largo de todo el año.
-                    </p>
-                </ExperienceRightCard>
-                <ExperienceRightCard month="Diciembre" name="Preliminary English Test - B1" from="Cambridge" >
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Aprobación del examen de inglés Preliminary English Test
-                        - B1 de Cambridge.
-                    </p>
-                </ExperienceRightCard>
-            </div>
-        </div>
-        <div class="text-center text-white text-2xl mx-3">2022</div>
-        <div class="flex flex-row">
-            <div class="w-1/2 border-r-2 min-h-max">
-                <ExperienceLeftCard month="Marzo" name="Licenciatura en TI" from="UTEC">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Inicio de estudios en la Licenciatura en Tecnologías de
-                        la Información de la UTEC. Donde me anote con el objetivo de profundizar en mis
-                        conocimientos en programación, redes, sistemas
-                        operativos, hardware, bases de datos, seguridad
-                        informática, testing y desarrollo de web.
-                    </p>
-                </ExperienceLeftCard>
-                <ExperienceLeftCard month="Julio" name="Caso de Estudio" from="UTEC">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Proyecto que consistió en el análisis, diseño e
-                        implementación de un sistema de información para una
-                        empresa real (Casos de Uso, Req. Funcionales y No
-                        Funcionales, Suite de Pruebas).
-                    </p>
-                </ExperienceLeftCard>
-                <ExperienceLeftCard month="Agosto" name="Pre-acleracion de Java Backend" from="Alkemy">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Pre-aceleración de Java Backend en Alkemy. Un proyecto individual donde
-                        aprendí sobre sobre Spring Boot, Hibernate, JPA, Maven, JWT, etc implementando una FULL API REST
-                        sobre peliculas y personajes de Disney.
-                    </p>
-                </ExperienceLeftCard>
-                <ExperienceLeftCard month="Diciembre" name="Proyecto de Desarrollo y Testing" from="UTEC">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Proyecto que consistió en la implementación del sistema
-                        de información, en una aplicación cliente-servidor (MVC) para
-                        Escritorio, diseñado en el Caso de Estudio.
-                    </p>
-                </ExperienceLeftCard>
-                <ExperienceLeftCard month="Diciembre" name="IT Trainee" from="TCS">
-                    <WorkIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Inicio de pasantía en Tata Consultancy Services, donde
-                        aprendí sobre el desarrollo en la plataforma de
-                        Salesforce.
-                    </p>
-                </ExperienceLeftCard>
-            </div>
-            <div class="w-1/2 border-l-2 min-h-max"></div>
-        </div>
-        <div class="text-center text-white text-2xl mx-3">2023</div>
-        <div class="flex flex-row">
-            <div class="w-1/2 border-r-2 min-h-max"></div>
-            <div class="w-1/2 border-l-2 min-h-max">
-                <ExperienceRightCard month="Abril" name="Platform Developer I" from="TCS">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Preparación y aprobación de la Plataform Developer I de
-                        Salesforce.
-                    </p>
-                </ExperienceRightCard>
-                <ExperienceRightCard month="Julio" name="Proyecto de Infraestructura" from="UTEC">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Proyecto que consistió en el diseño de una
-                        infraestructura (Direccionamiento, Servidores Virtuales,
-                        Dominio de Active Directory, Demo en GSN3). Además de la
-                        implementación del Frontend con JSF como cliente (con el patrón MVC) del
-                        servidor desarrollado en el Proyecto de Desarrollo y
-                        Testing.
-                    </p>
-                </ExperienceRightCard>
-                <ExperienceRightCard month="Agosto" name="Salesforce Developer" from="TCS">
-                    <WorkIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Ingreso al proyecto en la plataforma de Salesforce
-                    </p>
-                </ExperienceRightCard>
-                <ExperienceRightCard month="Diciembre" name="Proyecto Final de Tecnicatura" from="UTEC">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Proyecto que fue la continuación del Proyecto de
-                        Infraestructura. Donde se agregó la implementación: un
-                        aplicativo Mobile con Kotlin (que consumia REST), implementación virtual de
-                        servidores DNS, DHCP, AD y Firewall en GNS3.
-                    </p>
-                </ExperienceRightCard>
-                <ExperienceRightCard month="Diciembre" name="JavaScript Certification" from="TCS">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Preparación y aprobación de la JavaScript Developer I de
-                        Salesforce.
-                    </p>
-                </ExperienceRightCard>
-            </div>
-        </div>
-        <div class="text-center text-white text-2xl mx-3">2024</div>
-        <div class="flex flex-row">
-            <div class="w-1/2 border-r-2 min-h-max">
-                <ExperienceLeftCard month="Mayo" name="Titulación de Tecnicatura" from="UTEC">
-                    <StudyIcon slot="icon" />
-                    <p slot="description" class="text-sm md:text-lg">
-                        Evento de entrega de título de Tecnicatura en
-                        Tecnologías de la Información.
-                    </p>
-                </ExperienceLeftCard>
-            </div>
-            <div class="w-1/2 border-l-2 min-h-max"></div>
-        </div>
+    <div class="flex flex-col">
+        <div class="text-center text-white text-2xl sm:mx-3 max-sm:border-b-2 max-sm:border-dotted">2019</div>
+        <ProjectCard month="Enero" name="Bachillerato Tecnológico" from="UTU" side="left">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Inicio de estudios en el Bachillerato Tecnológico de la
+                UTU. Donde aprendí las bases de la programación, bases
+                de datos, redes, sistemas operativos y hardware.
+            </p>
+        </ProjectCard>
+
+        <div class="text-center text-white text-2xl sm:mx-3 max-sm:border-t-2 max-sm:border-b-2 max-sm:border-dotted">2021</div>
+        <ProjectCard month="Diciembre" name="Bachillerato Tecnológico" from="UTU" side="right">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Fin de estudios en el Bachillerato Tecnológico de la
+                UTU. Con la defensa de un proyecto multidisciplinario a
+                lo largo de todo el año.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Diciembre" name="Preliminary English Test - B1" from="Cambridge" side="right">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Aprobación del examen de inglés Preliminary English Test - B1 de Cambridge.
+            </p>
+        </ProjectCard>
+
+        <div class="text-center text-white text-2xl sm:mx-3 max-sm:border-t-2 max-sm:border-b-2 max-sm:border-dotted">2022</div>
+        <ProjectCard month="Marzo" name="Licenciatura en TI" from="UTEC" side="left">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Inicio de estudios en la Licenciatura en Tecnologías de
+                la Información de la UTEC. Donde me anote con el objetivo de profundizar en mis
+                conocimientos en programación, redes, sistemas
+                operativos, hardware, bases de datos, seguridad
+                informática, testing y desarrollo de web.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Julio" name="Caso de Estudio" from="UTEC" side="left">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Proyecto que consistió en el análisis, diseño e
+                implementación de un sistema de información para una
+                empresa real (Casos de Uso, Req. Funcionales y No
+                Funcionales, Suite de Pruebas).
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Agosto" name="Pre-acleracion de Java Backend" from="Alkemy" side="left">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Pre-aceleración de Java Backend en Alkemy. Un proyecto individual donde
+                aprendí sobre sobre Spring Boot, Hibernate, JPA, Maven, JWT, etc implementando una FULL API REST
+                sobre peliculas y personajes de Disney.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Diciembre" name="Proyecto de Desarrollo y Testing" from="UTEC" side="left">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Proyecto que consistió en la implementación del sistema
+                de información, en una aplicación cliente-servidor (MVC) para
+                Escritorio, diseñado en el Caso de Estudio.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Diciembre" name="IT Trainee" from="TCS" side="left">
+            <WorkIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Inicio de pasantía en Tata Consultancy Services, donde
+                aprendí sobre el desarrollo en la plataforma de
+                Salesforce.
+            </p>
+        </ProjectCard>
+
+        <div class="text-center text-white text-2xl sm:mx-3 max-sm:border-t-2 max-sm:border-b-2 max-sm:border-dotted">2023</div>
+        <ProjectCard month="Abril" name="Platform Developer I" from="TCS" side="right">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Preparación y aprobación de la Plataform Developer I de
+                Salesforce.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Julio" name="Proyecto de Infraestructura" from="UTEC" side="right">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Proyecto que consistió en el diseño de una
+                infraestructura (Direccionamiento, Servidores Virtuales,
+                Dominio de Active Directory, Demo en GSN3). Además de la
+                implementación del Frontend con JSF como cliente (con el patrón MVC) del
+                servidor desarrollado en el Proyecto de Desarrollo y
+                Testing.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Agosto" name="Salesforce Developer" from="TCS" side="right">
+            <WorkIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Ingreso al proyecto en la plataforma de Salesforce
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Diciembre" name="Proyecto Final de Tecnicatura" from="UTEC" side="right">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Proyecto que fue la continuación del Proyecto de
+                Infraestructura. Donde se agregó la implementación: un
+                aplicativo Mobile con Kotlin (que consumia REST), implementación virtual de
+                servidores DNS, DHCP, AD y Firewall en GNS3.
+            </p>
+        </ProjectCard>
+        <ProjectCard month="Diciembre" name="JavaScript Certification" from="TCS" side="right">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Preparación y aprobación de la JavaScript Developer I de
+                Salesforce.
+            </p>
+        </ProjectCard>
+
+        <div class="text-center text-white text-2xl sm:mx-3 max-sm:border-t-2 max-sm:border-b-2 max-sm:border-dotted">2024</div>
+        <ProjectCard month="Mayo" name="Titulación de Tecnicatura" from="UTEC" side="left">
+            <StudyIcon slot="icon" />
+            <p slot="description" class="text-sm md:text-lg">
+                Evento de entrega de título de Tecnicatura en
+                Tecnologías de la Información.
+            </p>
+        </ProjectCard>
     </div>
 </div>
 
