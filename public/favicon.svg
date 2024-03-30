@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <path id="path-0" style="fill: none;" d="M 8.773585221401618 6.905660625877403 L 44.31481295052718 33.02998186267057"/>
+    <path id="path-1" style="fill: none;" d="M 39.36792594506339 6.990566289310322 L 76.04180612588979 -10.267730266372457"/>
+    <path id="path-2" style="fill: none;" d="M 41.46226564307539 3.3113208738838367 L 33.92887980444476 47.75829732180461"/>
+    <path id="path-3" style="fill: none;" d="M 41.603775082130255 4.528302049755674 L 9.4905675308866 28.613207713188917"/>
+    <path id="path-4" style="fill: none;" d="M 25.58490658111956 3.0000001079631335 L 50.73229560158495 36.00594819732393"/>
+    <style bx:fonts="Fira Mono">@import url(https://fonts.googleapis.com/css2?family=Fira+Mono%3Aital%2Cwght%400%2C400%3B0%2C500%3B0%2C700&amp;display=swap);</style>
+  </defs>
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M 3 12 C 3 18.928 10.5 23.258 16.5 19.794 C 19.285 18.187 21 15.215 21 12 C 21 5.072 13.5 0.742 7.5 4.206 C 4.715 5.814 3 8.785 3 12" style="fill: rgb(255, 255, 255);"/>
+  <g transform="matrix(1, 0, 0, 1, -0.239, -0.220751)">
+    <path d="M 9.186 14.107 L 7.186 12.107 L 9.186 10.107"/>
+    <path d="M 15.292 10.027 L 17.292 12.027 L 15.292 14.027"/>
+    <text style="fill: rgb(51, 51, 51); font-family: 'Fira Mono'; font-size: 5.09587px; line-height: 16.3068px; white-space: pre; transform-box: fill-box; transform-origin: 248.642% 245.366%;" transform="matrix(0.617542, -0.78751, 0.81042, 0.585849, -11.017632, -6.427086)"><textPath xlink:href="#path-4">J</textPath></text>
+  </g>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; white-space: pre;" x="-64.4090805053711" y="44.843878746032715">E</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 0.8px;" x="28.67" y="13.217"><tspan x="28.670000076293945" dy="1em">​</tspan><tspan x="28.670000076293945" dy="1em">​</tspan></text>
+</svg>
