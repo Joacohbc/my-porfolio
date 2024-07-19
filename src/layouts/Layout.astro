@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import SpeadInsights from "@vercel/speed-insights/astro";
 import HeaderNav from "../components/HeaderNav.astro";
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -63,9 +64,11 @@ const {
 		<!-- <meta name="twitter:image" content=""> -->
 
 		<meta name="generator" content={Astro.generator} />
+
+		<ViewTransitions/>
 	</head>
 	<body class="">
-		{header && <Header />}
+		{header && <Header/>}
 		{ navItems.length > 0 && <HeaderNav navItems={navItems} /> } 
 		<div class="w-full p-10 md:w-11/12 lg:w-10/12 xl:w-8/12 mx-auto">
 			<slot />
