@@ -1,7 +1,126 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import certifications from "./certifications_sections.json"
 ---
 
-<Layout title="Certificaciones" navItems={[]} indexed header>
-    
+<Layout title="Certificaciones" navItems={certifications} indexed header>
+
+    <div id="certification-modal" 
+        tabindex="-1" 
+        aria-hidden="true" 
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm">
+        
+        <div id='modal-content' class="flex justify-center items-center rounded-lg shadow-lg p-4 w-full h-full">
+            
+        </div>
+    </div>
+
+    <section id="salesforce" data-section="salesforce" >
+        <h1 class="text-4xl font-bold text-center font-serif mb-5 text-white">Certificaciones de Salesforce</h1>
+        <div class="flex flex-col items-center justify-center mb-10 gap-2">
+            <div class="grid grid-cols-2">
+                <img class="certification-img" src="/public/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
+                <img class="certification-img" src="/public/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png">
+            </div>
+            <p class="text-white text-xl text-center font-serif text-pretty mt-2">
+                Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
+                Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
+                La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
+                mas adelante con mas experiencia obtuve la certificación de 
+                <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
+            </p>
+        </div>
+    </section>
+
+    <section id="programming" data-section="programming">
+        <h1 class="text-4xl font-bold text-center font-serif mb-5 text-white">Certificaciones de Progrmacion</h1>
+        <div class="flex flex-col items-center justify-center mb-10 gap-2">
+            <div class="grid grid-cols-3">
+                <img class="certification-img" src="/public/images/certis/Certificado IBM DL0101EN _ edX-1.png">
+                <img class="certification-img" src="/public/images/certis/Certificado IBM DS0105EN _ edX-1.png">
+                <img class="certification-img" src="/public/images/certis/Certificado IBM PY0101EN _ edX-1.png">
+            </div>
+            <p class="text-white text-xl text-center font-serif text-pretty mt-2">
+                Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
+                Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
+                La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
+                mas adelante con mas experiencia obtuve la certificación de 
+                <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
+            </p>
+        </div>
+    </section>
+
+    <section id="devops" data-section="devops">
+        <h1 class="text-4xl font-bold text-center font-serif mb-5 text-white">Certificaciones de Devops</h1>
+        <div class="flex flex-col items-center justify-center mb-10 gap-2">
+            <div class="grid grid-cols-2">
+                <img class="certification-img" src="/public/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
+                <img class="certification-img" src="/public/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
+            </div>
+            <p class="text-white text-xl text-center font-serif text-pretty mt-2">
+                Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
+                Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
+                La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
+                mas adelante con mas experiencia obtuve la certificación de 
+                <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
+            </p>
+        </div>
+    </section>
 </Layout>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const openImage = (img) => {
+            const modal = document.querySelector("#certification-modal");
+
+            const imgItem = document.createElement("img");
+            imgItem.src = img.target.src;
+            imgItem.alt = "Certificación";
+            imgItem.classList.add("h-[80%]", "rounded-lg");
+
+            const modalContent = modal.querySelector("#modal-content");
+            modalContent.innerHTML = "";
+            modalContent.appendChild(imgItem);
+
+            modal.classList.remove("hidden");
+        } 
+
+        document.querySelector("#certification-modal").addEventListener("click", () => {
+            document.querySelector("#certification-modal").classList.add("hidden");
+        });
+        document.querySelectorAll(".certification-img").forEach((img) => img.addEventListener("click", openImage));
+    });
+
+</script>
+
+<style>
+    .certifications-container {
+        display: grid;
+        grid-template-columns: 512px 512px 512px;
+        grid-row: auto auto;
+        grid-column-gap: 2px;
+        grid-row-gap: 2px;
+    }
+
+    .certification-img {
+        padding: 1px;
+        border-radius:10px;
+    }
+
+    .certification-img:hover {
+        filter: drop-shadow(0 0 5px #3ca2eb); 
+        transition: all 0.3s;
+        scale: 1.01;
+    }
+
+    .shadow-border {
+        filter: drop-shadow(0 0 5px #3ca2eb); 
+        transition: color 0.3s;
+    }
+
+    .shadow-border:hover {
+        filter: drop-shadow(0 0 5px #eb8b3c); 
+        transition: color 0.3s;
+    }
+</style>
