@@ -36,6 +36,7 @@ import certifications from "./certifications_sections.json"
         <h1 class="text-4xl font-bold text-center font-serif mb-5 text-white">Certificaciones de Progrmacion</h1>
         <div class="flex flex-col items-center justify-center mb-10 gap-2">
             <div class="grid grid-cols-3">
+                <!-- TODO: Recortar la parte de impresion -->
                 <img class="certification-img" src="/public/images/certis/Certificado IBM DL0101EN _ edX-1.png">
                 <img class="certification-img" src="/public/images/certis/Certificado IBM DS0105EN _ edX-1.png">
                 <img class="certification-img" src="/public/images/certis/Certificado IBM PY0101EN _ edX-1.png">
@@ -54,6 +55,7 @@ import certifications from "./certifications_sections.json"
         <h1 class="text-4xl font-bold text-center font-serif mb-5 text-white">Certificaciones de Devops</h1>
         <div class="flex flex-col items-center justify-center mb-10 gap-2">
             <div class="grid grid-cols-2">
+                <!-- TODO: Recortar la parte de impresion -->
                 <img class="certification-img" src="/public/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
                 <img class="certification-img" src="/public/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
             </div>
@@ -69,8 +71,7 @@ import certifications from "./certifications_sections.json"
 </Layout>
 
 <script>
-
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
         const openImage = (img) => {
             const modal = document.querySelector("#certification-modal");
 
@@ -86,10 +87,13 @@ import certifications from "./certifications_sections.json"
             modal.classList.remove("hidden");
         } 
 
-        document.querySelector("#certification-modal").addEventListener("click", () => {
+        // Add event listener to the modal
+        document.querySelector("#certification-modal")?.addEventListener("click", () => {
             document.querySelector("#certification-modal").classList.add("hidden");
         });
-        document.querySelectorAll(".certification-img").forEach((img) => img.addEventListener("click", openImage));
+        
+        // Add event listener to all certification images
+        document.querySelectorAll(".certification-img")?.forEach((img) => img.addEventListener("click", openImage));
     });
 
 </script>

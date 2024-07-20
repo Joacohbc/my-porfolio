@@ -36,7 +36,7 @@ const { navItems } = Astro.props;
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("astro:page-load", () => {
         const sections = document.querySelectorAll("section");
         const navItems = document.querySelectorAll("div nav a");
 
@@ -63,7 +63,7 @@ const { navItems } = Astro.props;
             
             // Set the current section based on the most visible section
             navItems.forEach((item) => {
-                if (item.getAttribute("aria-label") == maxVisibleSection.target.id) {
+                if (item.getAttribute("aria-label") == maxVisibleSection?.target?.id) {
                     item.classList.add("current-section");
                     // Get SVG Node and change color
                     (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
