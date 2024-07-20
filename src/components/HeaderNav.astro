@@ -38,7 +38,7 @@ const { navItems } = Astro.props;
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const sections = document.querySelectorAll("section");
-        const navItems = document.querySelectorAll("nav a");
+        const navItems = document.querySelectorAll("div nav a");
 
         const entiesVisibles = new Map();
         const callback = (entries: IntersectionObserverEntry[]) => {
