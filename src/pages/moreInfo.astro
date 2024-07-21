@@ -28,14 +28,15 @@ import certifications from "./moreInfo_sections.json"
             </svg>
         </div>
 
-        <div class="flex flex-col items-center justify-center mb-10 gap-2">
-            <p class="text-white text-xl text-center font-serif text-pretty mt-2">
-                Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
-                Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
-                La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
-                mas adelante con mas experiencia obtuve la certificación de 
-                <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
-            </p>
+        <p class="text-white text-xl text-center font-serif text-pretty my-3">
+            Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
+            Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
+            La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
+            mas adelante con mas experiencia obtuve la certificación de 
+            <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
+        </p>
+
+        <div class="max-lg:hidden flex flex-col items-center justify-center mb-10 gap-2">
             <div class="max-lg:hidden">
                 <div class="grid grid-cols-2">
                     <img class="certification-img aspect-video" src="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
@@ -55,6 +56,28 @@ import certifications from "./moreInfo_sections.json"
                     <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate (3)-1.png">
                     <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate-1.png">
                     <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (2)-1.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:hidden">
+            <div>
+                <div class="carousel">
+                    <img class="carousel-item hidden" src="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado IBM PY0101EN _ edX-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado IBM DS0105EN _ edX-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado IBM DL0101EN _ edX-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (1)-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate (3)-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (2)-1.png">
+                </div>
+                <div class="flex flex-row justify-center items-center gap-2 mt-2">
+                    <button class="carousel-prev bg-blue-500 text-white p-2 rounded-lg">Anterior</button>
+                    <button class="carousel-next bg-blue-500 text-white p-2 rounded-lg">Siguiente</button>
                 </div>
             </div>
         </div>
@@ -89,6 +112,71 @@ import certifications from "./moreInfo_sections.json"
         
         // Add event listener to all certification images
         document.querySelectorAll(".certification-img")?.forEach((img) => img.addEventListener("click", openImage));
+
+        // Carousel for mobile
+        const carouselItems = document.querySelectorAll(".carousel-item");
+        carouselItems?.forEach((img) => img.addEventListener("click", openImage));
+        carouselItems[1].classList.remove("hidden");
+        
+        const carousel = document.querySelector(".carousel");
+
+        // Detect Swipe with Touch and Mouse
+        let xDown = null;
+        let yDown = null;
+
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0]?.clientX;
+            yDown = evt.touches[0]?.clientY;
+        };
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            let xUp = evt.touches[0].clientX;
+            let yUp = evt.touches[0].clientY;
+
+            let xDiff = xDown - xUp;
+            let yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0) {
+                    // Left Swipe
+                    carouselItems[current].classList.add("hidden");
+                    current = (current + 1) % carouselItems.length;
+                    carouselItems[current].classList.remove("hidden");
+                } else {
+                    // Right Swipe
+                    carouselItems[current].classList.add("hidden");
+                    current = (current - 1 + carouselItems.length) % carouselItems.length;
+                    carouselItems[current].classList.remove("hidden");
+                }
+            }
+
+            xDown = null;
+            yDown = null;
+        };
+
+        carousel.addEventListener("touchstart", handleTouchStart, false);
+        carousel.addEventListener("touchmove", handleTouchMove, false);
+        carousel.addEventListener("mousedown", handleTouchStart, false);
+        carousel.addEventListener("mouseup", handleTouchMove, false);
+
+        let current = 0;
+        document.querySelector(".carousel-next").addEventListener("click", () => {
+            carouselItems[current].classList.add("hidden");
+            current = (current + 1) % carouselItems.length;
+            carouselItems[current].classList.remove("hidden");
+            console.log(current);
+        });
+
+        document.querySelector(".carousel-prev").addEventListener("click", () => {
+            carouselItems[current].classList.add("hidden");
+            current = (current - 1 + carouselItems.length) % carouselItems.length;
+            carouselItems[current].classList.remove("hidden");
+            console.log(current);
+        });
     });
 
 </script>
@@ -103,6 +191,14 @@ import certifications from "./moreInfo_sections.json"
         filter: drop-shadow(0 0 5px #3ca2eb); 
         transition: all 0.3s;
         scale: 1.03;
+    }
+
+    .carousel {
+        @apply flex flex-row gap-2 justify-center items-center rounded-md max-w-max overflow-x-hidden;
+    }
+
+    .carousel-item hidden {
+        @apply aspect-video transition-all duration-300;
     }
 
     /* .shadow-border {
