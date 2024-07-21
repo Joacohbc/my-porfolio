@@ -14,7 +14,7 @@ import Social from '../components/Social.astro';
         </svg>
     </div>
     <div class="flex flex-col-reverse items-center justify-center mb-10 gap-2 2xl:flex-row">
-        <div class="flex flex-col gap-3 text-lg lg:text-xl 2xl:text-2xl text-white text-center text-balance 2xl:text-left">            
+        <div class="flex flex-col gap-3 text-lg lg:text-xl 2xl:text-2xl text-white text-center text-balance 2xl:text-left selection:bg-blue-700">            
             <p>
                 ¡Hola! Soy Joaquín, un <span class="font-bold underline shadow-border">Técnico Superior en TI.</span> Mi <span class="font-bold underline shadow-border">pasión</span> y 
                 <span class="font-bold underline shadow-border">curiosidad</span> me impulsan a estar al día con las últimas tecnológias y aprender cosas nuevas constantemente.
@@ -66,15 +66,17 @@ import Social from '../components/Social.astro';
 
     .shadow-border:hover {
         @apply
-        drop-shadow-[0_0_5px_rgba(235,139,60,1)]
+        drop-shadow-none
+        after:rounded-md
         after:transition-transform
         after:animate-fade
         after:animate-duration-500
         after:absolute
-        after:-skew-y-3 
+        after:-skew-y-2 
         after:-inset-1
-        after:bg-pink-500
-        after:blur-[1px]
+        after:p-3
+        after:bg-orange-600
+        after:blur-[2px]
         after:-z-50;
     }
 </style>
