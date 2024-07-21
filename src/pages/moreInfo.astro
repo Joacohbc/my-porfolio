@@ -72,6 +72,7 @@ import certifications from "./moreInfo_sections.json"
                             <path d="M15 6l-6 6l6 6" />
                         </svg>
                     </button>
+                    <span class="carousel-counter text-white text-center">1 / 11</span>
                     <button class="carousel-next">
                         <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -99,6 +100,7 @@ import certifications from "./moreInfo_sections.json"
                             <path d="M15 6l-6 6l6 6" />
                         </svg>
                     </button>
+                    <span class="carousel-counter text-white text-center">1 / 11</span>
                     <button class="carousel-next">
                         <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -113,72 +115,92 @@ import certifications from "./moreInfo_sections.json"
 </Layout>
 
 <script>
+
+    // Open the image in a modal
+    const openImage = (modal, img) => {
+        if(!modal) return;
+
+        const imgItem = document.createElement("img");
+        imgItem.src = img.target.src;
+        imgItem.alt = "Certificación";
+        imgItem.classList.add("max-w-[95%]", "max-h-[95%]", "rounded-lg");
+
+        const modalContent = modal.querySelector("#modal-content");
+        if(!modalContent) return;
+        modalContent.innerHTML = "";
+        modalContent.appendChild(imgItem);
+
+        modal.classList.remove("hidden");
+    } 
+
     document.addEventListener('astro:page-load', () => {
-        const openImage = (img) => {
-            const modal = document.querySelector("#certification-modal");
-
-            if(!modal) return;
-
-            const imgItem = document.createElement("img");
-            imgItem.src = img.target.src;
-            imgItem.alt = "Certificación";
-            imgItem.classList.add("max-w-[95%]", "max-h-[95%]", "rounded-lg");
-
-            const modalContent = modal.querySelector("#modal-content");
-            if(!modalContent) return;
-            modalContent.innerHTML = "";
-            modalContent.appendChild(imgItem);
-
-            modal.classList.remove("hidden");
-        } 
+        const modal = document.querySelector("#certification-modal");
 
         // Add event listener to the modal
-        document.querySelector("#certification-modal")?.addEventListener("click", () => {
-            document.querySelector("#certification-modal")?.classList.add("hidden");
-        });
+        document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
         
         // Add event listener to all certification images
-        document.querySelectorAll(".certification-img")?.forEach((img) => img.addEventListener("click", openImage));
+        document.querySelectorAll(".certification-img").forEach((img) => img.addEventListener("click", (img) => openImage(modal, img)));
 
-        // Carousel for mobile
-        const carouselItems = document.querySelectorAll(".carousel-item");
-        carouselItems?.forEach((img) => img.addEventListener("click", openImage));
-        carouselItems[1].classList.remove("hidden");
-        
+
+        // 
+        // Carousel for Small Screens
+        //        
         const carousel = document.querySelector(".carousel");
+        const carouselItems = document.querySelectorAll(".carousel-item");
+        const counters = document.querySelectorAll(".carousel-counter");
+        let carouselCounter = 0;
+        
+        // Add event listener to all certification images
+        carouselItems.forEach((img) => img.addEventListener("click", (img) => openImage(modal, img)));
+
+        // Show the first image
+        carouselItems[0].classList.remove("hidden");
+        
+        // Update the counter
+        const updateCounter = () => counters.forEach((counter) => counter.innerHTML = `${carouselCounter + 1} / ${carouselItems.length}`);
+        
+        const nextImageCarousel = () => {
+            carouselItems[carouselCounter].classList.add("hidden");
+            carouselCounter = (carouselCounter + 1) % carouselItems.length;
+            carouselItems[carouselCounter].classList.remove("hidden");
+            updateCounter();
+        }
+
+        const prevImageCarousel = () => {
+            carouselItems[carouselCounter].classList.add("hidden");
+            carouselCounter = (carouselCounter - 1 + carouselItems.length) % carouselItems.length;
+            carouselItems[carouselCounter].classList.remove("hidden");
+            updateCounter();
+        }
 
         // Detect Swipe with Touch and Mouse
-        let current = 1;
         let xDown = null;
         let yDown = null;
 
-        function handleTouchStart(evt) {
-            xDown = evt.touches[0]?.clientX;
-            yDown = evt.touches[0]?.clientY;
+        // Swipe Functions
+        const handleTouchStart = (evt) => {
+            if(!evt.touches) return;
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
         };
 
-        function handleTouchMove(evt) {
+        const handleTouchMove = (evt) => {
             if (!xDown || !yDown) {
                 return;
             }
 
-            let xUp = evt.touches[0].clientX;
-            let yUp = evt.touches[0].clientY;
+            const xUp = evt.touches[0].clientX;
+            const yUp = evt.touches[0].clientY;
 
-            let xDiff = xDown - xUp;
-            let yDiff = yDown - yUp;
+            const xDiff = xDown - xUp;
+            const yDiff = yDown - yUp;
 
             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                 if (xDiff > 0) {
-                    // Left Swipe
-                    carouselItems[current].classList.add("hidden");
-                    current = (current + 1) % carouselItems.length;
-                    carouselItems[current].classList.remove("hidden");
+                    nextImageCarousel();
                 } else {
-                    // Right Swipe
-                    carouselItems[current].classList.add("hidden");
-                    current = (current - 1 + carouselItems.length) % carouselItems.length;
-                    carouselItems[current].classList.remove("hidden");
+                    prevImageCarousel();
                 }
             }
 
@@ -186,24 +208,14 @@ import certifications from "./moreInfo_sections.json"
             yDown = null;
         };
 
+        // Add event listeners
         carousel.addEventListener("touchstart", handleTouchStart, false);
         carousel.addEventListener("touchmove", handleTouchMove, false);
-        carousel.addEventListener("mousedown", handleTouchStart, false);
-        carousel.addEventListener("mouseup", handleTouchMove, false);
 
-        document.querySelector(".carousel-next").addEventListener("click", () => {
-            carouselItems[current].classList.add("hidden");
-            current = (current + 1) % carouselItems.length;
-            carouselItems[current].classList.remove("hidden");
-            console.log(current);
-        });
 
-        document.querySelector(".carousel-prev").addEventListener("click", () => {
-            carouselItems[current].classList.add("hidden");
-            current = (current - 1 + carouselItems.length) % carouselItems.length;
-            carouselItems[current].classList.remove("hidden");
-            console.log(current);
-        });
+        // Add event listeners to the buttons
+        document.querySelectorAll(".carousel-next").forEach(e => e.addEventListener("click", nextImageCarousel));
+        document.querySelectorAll(".carousel-prev").forEach(e => e.addEventListener("click", prevImageCarousel));
     });
 
 </script>
