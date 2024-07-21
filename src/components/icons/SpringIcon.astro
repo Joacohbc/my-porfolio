@@ -1,8 +1,7 @@
 <div class="flex flex-col justify-center items-center spring-icon">
     <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M5 21c.5 -4.5 2.5 -8 7 -10" />
         <path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z" />
+        <path d="M5 21c.5 -4.5 2.5 -8 7 -10" />
     </svg>
     <span>Spring</span>
 </div>
@@ -12,7 +11,7 @@
         filter: drop-shadow(0 0 5px #38c649); 
         transition: color 0.3s;
     }
-
+    
     .spring-icon:hover {
         @apply
         after:rounded-md
@@ -28,6 +27,14 @@
     }
 
     .spring-icon:hover > svg { 
-        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#38c649];
+        @apply animate-wiggle-more animate-once animate-ease-linear;
+    }
+
+    .spring-icon:hover > svg > path:first-child { 
+        @apply stroke-[#6BB930] fill-[#6BB930];
+    }
+
+    .spring-icon:hover > svg > path:last-child { 
+        @apply stroke-[#38c649] fill-[#6BB930];
     }
 </style>
