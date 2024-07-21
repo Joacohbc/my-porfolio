@@ -11,7 +11,8 @@
 
 <script>
     if (location.hostname === 'test.joaquingenova.dev' || location.hostname === 'localhost') {
-        document.querySelector('a').href = 'https://joaquingenova.dev';
-        document.querySelector('a').textContent = '¿Quieres ver la versión final? (Production Enviroment)';
+        const a = document.querySelector('footer > a') as HTMLAnchorElement;
+        a.href = 'https://joaquingenova.dev';
+        a.textContent = '¿Quieres ver la versión final? (Production Enviroment)';
     }
 </script>
