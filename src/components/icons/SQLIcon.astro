@@ -12,4 +12,22 @@
         filter: drop-shadow(0 0 5px #9059fd); 
         transition: color 0.3s;
     }
+
+    .sql-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .sql-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear fill-[#9059fd];
+    }
 </style>

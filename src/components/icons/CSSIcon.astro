@@ -12,4 +12,22 @@
         filter: drop-shadow(0 0 5px #006cb9); 
         transition: color 0.3s;
     }
+
+    .css-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .css-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#F8F8F8] fill-[#264CDE];
+    }
 </style>
