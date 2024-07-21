@@ -16,13 +16,14 @@ import sections from "../pages/index_sections.json";
     <section id="projects" data-section="projecs" class="scroll-m-20 mb-24">
         <Projects/>
     </section>
-    <section id="career" data-section="career" class="scroll-m-20 mb-24">
+    <section id="career" data-section="career" class="scroll-m-20 mb-1">
         <Career />
     </section>
 
-    <section id="moreInfo" data-section="moreInfo" class="scroll-m-20">
-        <div class="flex flex-row gap-2 justify-center items-center text-3xl font-bold text-center mt-12 text-white">
-            <a href="/moreInfo" class="hover:underline">Más información</a>
+    <section id="moreInfo" data-section="moreInfo" class="scroll-m-20 mt-5">
+        <div class="flex flex-row gap-2 justify-center items-center text-3xl font-serif font-bold text-center text-white 
+            hover:drop-shadow-sm p-2 rounded underline-animation">
+            <a href="/moreInfo">Mis certificaciones, herraminetas y más</a>
             <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z" />
@@ -35,5 +36,27 @@ import sections from "../pages/index_sections.json";
 </Layout>
 
 <style>
+    .underline-animation::after {
+        content: "";
+        position: absolute;
+        transform: scaleX(0);
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        transform-origin: left right;
+        transition: transform 0.3s ease-out;
+    }
 
+    .underline-animation:hover {
+        font-weight: bold;
+        filter: drop-shadow(0 0 5px #eb8b3c);
+        transition: color 0.3s;
+    }
+
+    .underline-animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: right left;
+        background-color: white;
+    }
 </style>
