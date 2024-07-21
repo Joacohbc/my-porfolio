@@ -19,7 +19,7 @@ import certifications from "./moreInfo_sections.json"
 
     <section id="certifications" data-section="certifications" class="scroll-m-20">
         <div class="flex flex-row gap-2 justify-center items-center text-3xl font-bold text-center mb-4 text-white">
-            <h1 class="text-5xl font-bold text-center">Mis Certificaciones</h1>
+            <h1 class="text-5xl font-bold text-center">Certificaciones</h1>
             <svg class="w-12" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M19.496 13.983l1.966 3.406a1.001 1.001 0 0 1 -.705 1.488l-.113 .011l-.112 -.001l-2.933 -.19l-1.303 2.636a1.001 1.001 0 0 1 -1.608 .26l-.082 -.094l-.072 -.11l-1.968 -3.407a8.994 8.994 0 0 0 6.93 -3.999z" stroke-width="0" fill="currentColor" />
@@ -28,7 +28,7 @@ import certifications from "./moreInfo_sections.json"
             </svg>
         </div>
 
-        <p class="text-white text-xl text-center font-serif text-pretty my-3">
+        <p class="text-white text-xl text-center font-serif text-pretty my-4">
             Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
             Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
             La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
@@ -61,7 +61,7 @@ import certifications from "./moreInfo_sections.json"
         </div>
 
         <div class="lg:hidden">
-            <div>
+            <div class="flex flex-col justify-center items-center gap-2 mt-2">
                 <div class="carousel">
                     <img class="carousel-item hidden" src="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
                     <img class="carousel-item hidden" src="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png">
@@ -75,9 +75,19 @@ import certifications from "./moreInfo_sections.json"
                     <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate-1.png">
                     <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (2)-1.png">
                 </div>
-                <div class="flex flex-row justify-center items-center gap-2 mt-2">
-                    <button class="carousel-prev bg-blue-500 text-white p-2 rounded-lg">Anterior</button>
-                    <button class="carousel-next bg-blue-500 text-white p-2 rounded-lg">Siguiente</button>
+                <div>
+                    <button class="carousel-prev">
+                        <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 6l-6 6l6 6" />
+                        </svg>
+                    </button>
+                    <button class="carousel-next">
+                        <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -121,6 +131,7 @@ import certifications from "./moreInfo_sections.json"
         const carousel = document.querySelector(".carousel");
 
         // Detect Swipe with Touch and Mouse
+        let current = 1;
         let xDown = null;
         let yDown = null;
 
@@ -163,7 +174,6 @@ import certifications from "./moreInfo_sections.json"
         carousel.addEventListener("mousedown", handleTouchStart, false);
         carousel.addEventListener("mouseup", handleTouchMove, false);
 
-        let current = 0;
         document.querySelector(".carousel-next").addEventListener("click", () => {
             carouselItems[current].classList.add("hidden");
             current = (current + 1) % carouselItems.length;
@@ -193,12 +203,20 @@ import certifications from "./moreInfo_sections.json"
         scale: 1.03;
     }
 
-    .carousel {
-        @apply flex flex-row gap-2 justify-center items-center rounded-md max-w-max overflow-x-hidden;
+    .carousel-prev {
+        @apply rounded-lg;
     }
 
-    .carousel-item hidden {
-        @apply aspect-video transition-all duration-300;
+    .carousel-next {
+        @apply rounded-lg;
+    }
+
+    .carousel {
+        @apply flex flex-row gap-2 justify-center items-center rounded-md;
+    }
+
+    .carousel-item {
+        @apply animate-fade animate-duration-700;
     }
 
     /* .shadow-border {
