@@ -16,20 +16,20 @@ import Social from '../components/Social.astro';
     <div class="flex flex-col-reverse items-center justify-center mb-10 gap-2 2xl:flex-row">
         <div class="flex flex-col gap-3 text-lg lg:text-xl 2xl:text-2xl text-white text-center text-balance 2xl:text-left selection:bg-blue-700">            
             <p>
-                ¡Hola! Soy Joaquín, un <span class="font-bold underline shadow-border">Técnico Superior en TI.</span> Mi <span class="font-bold underline shadow-border">pasión</span> y 
-                <span class="font-bold underline shadow-border">curiosidad</span> me impulsan a estar al día con las últimas tecnológias y aprender cosas nuevas constantemente.
+                ¡Hola! Soy Joaquín, un <span class="keywords">Técnico Superior en TI.</span> Mi <span class="keywords">pasión</span> y 
+                <span class="keywords">curiosidad</span> me impulsan a estar al día con las últimas tecnológias y aprender cosas nuevas constantemente.
             </p>
             <p>
-                Me caracterizo por ser <span class="font-bold shadow-border">responsable</span>, <span class="font-bold shadow-border">comprometido</span>,
-                <span class="font-bold shadow-border">ordenado</span> y detallista a la hora de trabajar de forma grupal o individual. Mi capacidad de aprendizaje rápido 
+                Me caracterizo por ser <span class="keywords">responsable</span>, <span class="keywords">comprometido</span>,
+                <span class="keywords">ordenado</span> y detallista a la hora de trabajar de forma grupal o individual. Mi capacidad de aprendizaje rápido 
                 y mejora constante me distinguen. Siempre estoy en busca de desafíos con entusiasmo y un deseo constante de aprender, con el objetivo de crecer tanto profesional
                 como personalmente.
             </p>
             <p>
-                Actualmente estoy estudiando una <span class="font-bold underline shadow-border">Licenciatura en TI</span> en la Universidad Tecnológica del Uruguay (UTEC), además de ampliar mis conocimientos de 
-                manera <span class="font-bold underline shadow-border">autodidacta</span> mediante cursos online, con documentación oficial y proyectos personales. Enfocando mis estudios en el desarrollo 
-                <span class="font-bold underline shadow-border">Full-Stack</span> en lenguajes como <span class="font-bold shadow-border">Java</span>, <span class="font-bold shadow-border">Go</span>,
-                <span class="font-bold shadow-border">JavaScript</span> y bases de datos con <span class="font-bold underline shadow-border">SQL y NoSQL.</span>
+                Actualmente estoy estudiando una <span class="keywords">Licenciatura en TI</span> en la Universidad Tecnológica del Uruguay (UTEC), además de ampliar mis conocimientos de 
+                manera <span class="keywords">autodidacta</span> mediante cursos online, con documentación oficial y proyectos personales. Enfocando mis estudios en el desarrollo 
+                <span class="keywords">Full-Stack</span> en lenguajes como <span class="keywords">Java</span>, <span class="keywords">Go</span>,
+                <span class="keywords">JavaScript</span> y bases de datos con <span class="keywords">SQL y NoSQL.</span>
                 También me interesa el área de infraestructura, Linux, IA, entre otras. 
             </p>
         </div>
@@ -55,16 +55,17 @@ import Social from '../components/Social.astro';
 </div>
 
 <style>
-    .shadow-border {
+    .keywords {
         @apply 
         drop-shadow-[0_0_5px_rgba(60,162,235,1)] 
         transition-all 
         duration-100
         inline-block
-        underline;
+        underline
+        font-bold;
     }
 
-    .shadow-border:hover {
+    .keywords:hover {
         @apply
         drop-shadow-none
         after:rounded-md
@@ -76,7 +77,7 @@ import Social from '../components/Social.astro';
         after:-inset-1
         after:p-3
         after:bg-orange-600
-        after:blur-[2px]
+        after:blur-[3px]
         after:-z-50;
     }
 </style>
