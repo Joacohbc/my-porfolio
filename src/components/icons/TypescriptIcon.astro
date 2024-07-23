@@ -1,10 +1,9 @@
 <div class="flex flex-col justify-center items-center ts-icon">
     <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z" />
         <path d="M15 17.5c.32 .32 .754 .5 1.207 .5h.543c.69 0 1.25 -.56 1.25 -1.25v-.25a1.5 1.5 0 0 0 -1.5 -1.5a1.5 1.5 0 0 1 -1.5 -1.5v-.25c0 -.69 .56 -1.25 1.25 -1.25h.543c.453 0 .887 .18 1.207 .5" />
         <path d="M9 12h4" />
         <path d="M11 12v6" />
-        <path d="M21 19v-14a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2z" />
     </svg>
     <span>Typescript</span>
 </div>
@@ -13,5 +12,27 @@
     .ts-icon:hover {
         filter: drop-shadow(0 0 5px #0073ff); 
         transition: color 0.3s;
+    }
+
+    .v-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .ts-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-white;
+    }
+
+    .ts-icon:hover > svg > path:first-child {
+        @apply fill-[#0073ff] stroke-[#0073ff];
     }
 </style>

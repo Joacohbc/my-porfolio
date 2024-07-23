@@ -1,15 +1,32 @@
-<div class="flex flex-col justify-center items-center spring-icon">
+<div class="flex flex-col justify-center items-center mongo-icon">
     <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M12 3v19" />
         <path d="M18 11.227c0 3.273 -1.812 4.77 -6 9.273c-4.188 -4.503 -6 -6 -6 -9.273c0 -4.454 3.071 -6.927 6 -9.227c2.929 2.3 6 4.773 6 9.227z" />
+        <path d="M12 3v19" />
     </svg>
     <span>MongoDB</span>
 </div>
 
 <style>
-    .spring-icon:hover {
+    .mongo-icon:hover {
         filter: drop-shadow(0 0 5px #0fa54d); 
         transition: color 0.3s;
+    }
+
+    .mongo-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .mongo-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear fill-[#61AC50] stroke-[#61AC50];
     }
 </style>
