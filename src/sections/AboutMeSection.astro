@@ -35,8 +35,8 @@ import Social from '../components/Social.astro';
         </div>
         <div class="flex flex-col justify-center items-center">
             <img src="/images/photo.webp" class="rounded-full max-w-xs lg:max-w-md mb-5" alt="Foto de Perfil">         
-            <div class="inline-flex gap-1 drop-shadow-[0_0_5px_rgba(60,162,235,1)] hover:underline hover:drop-shadow-[0_0_5px_rgba(235,139,60,1)]">
-                <a class="text-center text-white text-lg" href="https://maps.app.goo.gl/FaGkXJHMDKN7tiDj7" target="_blank">Montevideo, Uruguay</a>
+            <div class="inline-flex gap-1 ">
+                <a class="text-center text-white keywords text-lg" href="https://maps.app.goo.gl/FaGkXJHMDKN7tiDj7" target="_blank">Montevideo, Uruguay</a>
                 <svg class="w-5"  viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
@@ -57,9 +57,7 @@ import Social from '../components/Social.astro';
 <style>
     .keywords {
         @apply 
-        drop-shadow-[0_0_5px_rgba(60,162,235,1)] 
-        transition-all 
-        duration-100
+        drop-shadow-[0_0_5px_rgba(60,162,235,1)]
         inline-block
         underline
         font-bold;
@@ -67,17 +65,16 @@ import Social from '../components/Social.astro';
 
     .keywords:hover {
         @apply
-        drop-shadow-none
-        after:rounded-md
-        after:transition-transform
+        underline
+        drop-shadow-[0_0_5px_rgba(235,139,60,1)]
+        after:rounded-lg
         after:animate-fade
         after:animate-duration-500
         after:absolute
-        after:-skew-y-2 
-        after:-inset-1
+        after:-inset-0
         after:p-3
-        after:bg-orange-600
-        after:blur-[3px]
+        after:bg-[#11192C]
+        after:blur-md
         after:-z-50;
     }
 </style>
