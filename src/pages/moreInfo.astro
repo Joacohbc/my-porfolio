@@ -5,7 +5,7 @@ import JavascriptIcon from "../components/icons/JavascriptIcon.astro";
 import RESTIcon from "../components/icons/RESTIcon.astro";
 import SalesforceIcon from "../components/icons/SalesforceIcon.astro";
 import Layout from "../layouts/Layout.astro"
-import certifications from "./moreInfo_sections.json"
+import certifications from "../jsons/moreInfo_sections.json"
 ---
 
 <Layout title="Porfolio de Joaquin G." navItems={certifications} indexed header>
@@ -174,12 +174,12 @@ import certifications from "./moreInfo_sections.json"
         // Carousel for Small Screens
         //        
         const carousel = document.querySelector(".carousel");
-        const carouselItems = document.querySelectorAll(".carousel-item");
+        const carouselItems = document.querySelectorAll(".carousel-item") as NodeListOf<HTMLImageElement>;
         const counters = document.querySelectorAll(".carousel-counter");
         let carouselCounter = 0;
         
         // Add event listener to all certification images
-        carouselItems.forEach((img) => img.addEventListener("click", (img) => openImage(modal, img.target.src)));
+        carouselItems.forEach((img) => img.addEventListener("click", (img) => openImage(modal, (img.target as HTMLImageElement).src)));
 
         // Show the first image
         carouselItems[0].classList.remove("hidden");
