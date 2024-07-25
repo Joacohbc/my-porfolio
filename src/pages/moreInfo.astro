@@ -68,7 +68,7 @@ const gridClasses = {
                     const certs = certificationsByType[group];
                     return (
                         <div class={`grid ${gridClasses[certs.length]}`}>
-                            { certs.map((cert) => <Certification title={cert.title} skills={cert.skills} imageUrl={cert.imageUrl} />) }
+                            { certs.map((cert) => <Certification title={cert.title} skills={cert.skills} imageUrl={cert.smallUrl} />) }
                         </div>
                     );
                 }) }

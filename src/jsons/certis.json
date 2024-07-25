@@ -2,42 +2,49 @@
     {
         "title": "Plataform Developer I",
         "imageUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png",
+        "smallUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.webp",
         "skills": ["Apex & Triggers", "Lightning Web Component", "Flows & Declarative Tools"],
         "group": "Salesforce"
     },
     {
         "title": "JavaScript Developer I",
         "imageUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png",
+        "smallUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.webp",
         "skills": ["Objects & Arrays", "DOM & Events", "Node.js"],
         "group": "Salesforce"
     },
     {
         "title": "Introduction to Kubernetes",
         "imageUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.png",
+        "smallUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.webp",
         "skills": ["Kubernetes Architecture", "Container Orchestration", "Deploying Applications"],
         "group": "Devops"
     },
     {
         "title": "Introduction to Jenkins",
         "imageUrl": "/images/certis/LFS167x_Introduction_to_Jenkins.png",
+        "smallUrl": "/images/certis/LFS167x_Introduction_to_Jenkins.webp",
         "skills": ["Continuous Integration", "Continuous Deployment", "Build Automation"],
         "group": "Devops"
     },
     {
         "title": "Python for Data Science",
         "imageUrl": "/images/certis/DS0105EN_Data_Science_Tools.png",
+        "smallUrl": "/images/certis/DS0105EN_Data_Science_Tools.webp",
         "skills": ["Python", "Data Analysis", "Machine Learning"],
         "group": "Data Science"
     },
     {
         "title": "Data Science Fundamentals",
         "imageUrl": "/images/certis/DS0105EN_Data_Science_Tools.png",
+        "smallUrl": "/images/certis/DS0105EN_Data_Science_Tools.webp",
         "skills": ["Python", "Data Analysis", "Machine Learning"],
         "group": "Data Science"
     },
     {
         "title": "Deep Learning Fundamentals",
         "imageUrl": "/images/certis/DL0101EN_Deep_Learning_Fundamentals_with_Keras.png",
+        "smallUrl": "/images/certis/DL0101EN_Deep_Learning_Fundamentals_with_Keras.webp",
         "skills": ["Neural Networks", "TensorFlow", "Keras"],
         "group": "Data Science"
     }
