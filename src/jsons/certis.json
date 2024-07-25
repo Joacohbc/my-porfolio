@@ -29,8 +29,8 @@
     },
     {
         "title": "Python for Data Science",
-        "imageUrl": "/images/certis/DS0105EN_Data_Science_Tools.png",
-        "smallUrl": "/images/certis/DS0105EN_Data_Science_Tools.webp",
+        "imageUrl": "/images/certis/PY0101EN_Python_Basics_for_Data_Sciences.png",
+        "smallUrl": "/images/certis/PY0101EN_Python_Basics_for_Data_Science.webp",
         "skills": ["Python", "Data Analysis", "Machine Learning"],
         "group": "Data Science"
     },
