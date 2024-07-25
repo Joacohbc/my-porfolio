@@ -1,14 +1,20 @@
 ---
 import Certification from "../components/Certification.astro";
 import Footer from "../components/Footer.astro";
-import JavascriptIcon from "../components/icons/JavascriptIcon.astro";
-import RESTIcon from "../components/icons/RESTIcon.astro";
-import SalesforceIcon from "../components/icons/SalesforceIcon.astro";
 import Layout from "../layouts/Layout.astro"
-import certifications from "../jsons/moreInfo_sections.json"
+import navItems from "../jsons/moreInfo_sections.json"
+import certifications from "../jsons/certis.json";
+
+// Extract the certifications from the JSON and group them by group
+// generate the HTML for the certifications (with the grid)
+const certificationsByType = certifications.reduce((acc, cert) => {
+    if(!acc[cert.group]) acc[cert.group] = [];
+    acc[cert.group].push(cert);
+    return acc;
+}, {});
 ---
 
-<Layout title="Porfolio de Joaquin G." navItems={certifications} indexed header>
+<Layout title="Porfolio de Joaquin G." navItems={navItems} indexed header>
     
     <!-- TODO: Optimizar todas las imagenes y que sean mas chicas -->
     <!-- TODO: Al hacer hover sobre las imagens poner un Hover que ponga Bluer y diga de que es las Certificaciones y un logico con algo representativo, ademas agregar las de Ingles que si no tiene imagen que al menos tenga un logo -->
@@ -45,50 +51,16 @@ import certifications from "../jsons/moreInfo_sections.json"
 
         <div class="max-lg:hidden flex flex-col items-center justify-center mb-10 gap-2">
             <div class="max-lg:hidden">
-                <div class="grid grid-cols-2">
-                    <Certification 
-                        imageUrl="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png" 
-                        title="Plataform Developer I"
-                        skills={[ 'Apex & Triggers', 'Lightning Web Component', 'Flows & Declarative Tools']}/>
+                { Object.keys(certificationsByType).map((group) => {
+                    const certs = certificationsByType[group];
+                    console.log(group, certs.length);
 
-                    <Certification 
-                        imageUrl="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png" 
-                        title="JavaScript Developer I"
-                        skills={[ 'Objects & Arrays', 'DOM & Events', 'Node.js' ]}>
-                        <div slot="skills" class="flex gap-2 flex-col flex-wrap justify-center items-center"/>
-                </div>
-                <div class="grid grid-cols-2">
-                    <Certification 
-                        imageUrl="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png" 
-                        title="Introduction to Kubernetes"
-                        skills={[
-                            "Kubernetes Architecture",
-                            "Container Orchestration",
-                            "Deploying Applications",
-                        ]}/>
-                    <Certification
-                        imageUrl="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png" 
-                        title="Introduction to Jenkins"
-                        skills={[
-                            "Continuous Integration",
-                            "Continuous Deployment",
-                            "Build Automation",
-                        ]}/>
-                </div>
-                <div class="grid grid-cols-3">
-                    <Certification 
-                        imageUrl="/images/certis/Certificado IBM PY0101EN _ edX-1.png" 
-                        title="Python for Data Science"
-                        skills={[ 'Python', 'Data Analysis', 'Machine Learning' ]}/>
-                    <Certification 
-                        imageUrl="/images/certis/Certificado IBM DS0105EN _ edX-1.png" 
-                        title="Data Science Fundamentals"
-                        skills={[ 'Python', 'Data Analysis', 'Machine Learning' ]}/>
-                    <Certification 
-                        imageUrl="/images/certis/Certificado IBM DL0101EN _ edX-1.png" 
-                        title="Deep Learning Fundamentals"
-                        skills={[ 'Neural Networks', 'TensorFlow', 'Keras' ]}/>
-                </div>
+                    return (
+                        <div class={`grid grid-cols-${certs.length}`}>
+                            { certs.map((cert) => <Certification title={cert.title} skills={cert.skills} imageUrl={cert.imageUrl} />) }
+                        </div>
+                    );
+                }) }
             </div>
         </div>
 
@@ -102,7 +74,7 @@ import certifications from "../jsons/moreInfo_sections.json"
                             <path d="M15 6l-6 6l6 6" />
                         </svg>
                     </button>
-                    <span class="carousel-counter text-white text-center">1 / 11</span>
+                    <span class="carousel-counter text-white text-center">1 / {certifications.length}</span>
                     <button class="carousel-next">
                         <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -111,13 +83,12 @@ import certifications from "../jsons/moreInfo_sections.json"
                     </button>
                 </div>
                 <div class="carousel">
-                    <img class="carousel-item hidden" src="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado IBM PY0101EN _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado IBM DS0105EN _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado IBM DL0101EN _ edX-1.png">
+                    { certifications.map ((cert, index) => (
+                        <div class={`${index != 0 && 'hidden'} carousel-item flex flex-col justify-center items-center`}>
+                            <img src={cert.imageUrl} alt={cert.title} class={`rounded-lg`} />
+                            <span class="text-white text-center pointer-events-none">{cert.skills.join(', ')}</span>
+                        </div>
+                    ))}
                 </div>
                 <div class="flex flex-row justify-center items-center mt-2">
                     <button class="carousel-prev">
@@ -126,7 +97,7 @@ import certifications from "../jsons/moreInfo_sections.json"
                             <path d="M15 6l-6 6l6 6" />
                         </svg>
                     </button>
-                    <span class="carousel-counter text-white text-center">1 / 11</span>
+                    <span class="carousel-counter text-white text-center">1 / {certifications.length}</span>
                     <button class="carousel-next">
                         <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -179,7 +150,9 @@ import certifications from "../jsons/moreInfo_sections.json"
         let carouselCounter = 0;
         
         // Add event listener to all certification images
-        carouselItems.forEach((img) => img.addEventListener("click", (img) => openImage(modal, (img.target as HTMLImageElement).src)));
+        carouselItems.forEach((img) => {
+            img.querySelector("img").addEventListener("click", (img) => openImage(modal, (img.target as HTMLImageElement).src));
+        });
 
         // Show the first image
         carouselItems[0].classList.remove("hidden");

@@ -6,3 +6,10 @@ interface NavItem {
     first?: boolean;
     last?: boolean;
 }
+
+interface Certification {
+    title: string;
+    imageUrl: string;
+    skills: string[];
+    grade: string;
+}
