@@ -98,7 +98,7 @@ const gridClasses = {
                         <div class={`${index != 0 && 'hidden'} carousel-item flex flex-col justify-center items-center`}>
                             <span class="text-white mb-1 text-lg font-bold text-center">{cert.title}</span>
                             <span class="text-white text-xs mb-1 md:text-md text-center pointer-events-none">{cert.skills.join(', ')}</span>
-                            <img src={cert.imageUrl} alt={cert.title} class={`rounded-lg`} />
+                            <img src={cert.smallUrl} alt={cert.title} class={`rounded-lg`} />
                         </div>
                     ))}
                 </div>
