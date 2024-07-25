@@ -6,19 +6,40 @@
         fill="none"
         stroke-linecap="round"
         stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M3 14c.83 .642 2.077 1.017 3.5 1c1.423 .017 2.67 -.358 3.5 -1c.83 -.642 2.077 -1.017 3.5 -1c1.423 -.017 2.67 .358 3.5 1" />
-        <path d="M8 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2" />
-        <path d="M12 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2" />
-        <path d="M3 10h14v5a6 6 0 0 1 -6 6h-2a6 6 0 0 1 -6 -6v-5z" />
-        <path d="M16.746 16.726a3 3 0 1 0 .252 -5.555" />/
+            <path d="M3 10h14v5a6 6 0 0 1 -6 6h-2a6 6 0 0 1 -6 -6v-5z" />
+            <path d="M3 14c.83 .642 2.077 1.017 3.5 1c1.423 .017 2.67 -.358 3.5 -1c.83 -.642 2.077 -1.017 3.5 -1c1.423 -.017 2.67 .358 3.5 1" />
+            <path d="M8 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2" />
+            <path d="M12 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2" />
+            <path d="M16.746 16.726a3 3 0 1 0 .252 -5.555" />
     </svg>
     <span>Java</span>
 </div>
 
 <style>
-    .java-icon:hover {
+    .java-icon {
         filter: drop-shadow(0 0 5px #ff4f70); 
         transition: color 0.3s;
+    }
+
+    .java-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .java-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#ff4f70];
+    }
+
+    .java-icon:hover > svg > path:first-child {
+        @apply fill-[#ff4f70];
     }
 </style>

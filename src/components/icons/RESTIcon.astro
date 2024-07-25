@@ -10,8 +10,26 @@
 </div>
 
 <style>
-    .rest-icon:hover {
-        filter: drop-shadow(0 0 5px #d33030);
+    .rest-icon {
+        filter: drop-shadow(0 0 5px #0073ff);
         transition: color 0.3s;
+    }
+
+    .rest-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .rest-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-blue-500;
     }
 </style>

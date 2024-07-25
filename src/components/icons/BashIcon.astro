@@ -1,16 +1,37 @@
 <div class="flex flex-col justify-center items-center bash-icon">
     <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
         <path d="M8 9l3 3l-3 3" />
         <path d="M13 15l3 0" />
-        <path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
     </svg>
     <span>Bash</span>
 </div>
 
 <style>
-    .bash-icon:hover {
+    .bash-icon {
         filter: drop-shadow(0 0 5px #00f130); 
         transition: color 0.3s;
+    }
+
+    .bash-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .bash-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#00f130];
+    }
+
+    .bash-icon:hover > svg > path:first-child {
+        @apply fill-black stroke-black;
     }
 </style>

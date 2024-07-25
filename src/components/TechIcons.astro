@@ -15,7 +15,7 @@ import LinuxIcon from '../components/icons/LinuxIcon.astro'
 import SalesforceIcon from '../components/icons/SalesforceIcon.astro'
 ---
 
-<div class="text-white grid grid-flow-row grid-cols-3 content-center gap-5 sm:grid-cols-4 md:grid-cols-5 xl:flex xl:flex-row xl:items-center xl:justify-center mt-5">
+<div class="text-white flex gap-5 flex-wrap flex-row items-center justify-center mt-5">
     <ReactIcon />
     <TailwindIcon />
     <GitIcon />
@@ -28,7 +28,5 @@ import SalesforceIcon from '../components/icons/SalesforceIcon.astro'
     <DockerIcon />
     <SQLIcon />
     <LinuxIcon />
-    <div class="max-sm:col-span-3 max-md:col-span-4">
-        <SalesforceIcon />
-    </div>
+    <SalesforceIcon />
 </div>

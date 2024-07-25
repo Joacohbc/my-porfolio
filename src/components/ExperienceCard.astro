@@ -4,39 +4,40 @@ interface Props {
     from: string;
     name: string;
     side: keyof { left: string; right: string };
+    important?: boolean;
 }
 
-const { month, from, name, side } = Astro.props;
+const { month, from, name, side, important } = Astro.props;
 ---
 
 <div class="flex flex-row max-sm:border-l-2 max-sm:pl-3">
     <div class="flex flex-row flex-1">
-        <div class={`${side == "right" ? "hidden sm:block" : ''} w-full sm:w-1/2 sm:border-r-2 sm:min-h-max`}>
+        <div class={`${side == "right" ? "hidden sm:block" : ''} ${ important && 'important-card' } w-full sm:w-1/2 sm:border-r-2 sm:min-h-max`}>
             {side === "left" &&
             <article class="sm:mr-7 flex flex-col items-start sm:items-center lg:items-start justify-start sm:justify-center lg:justify-start text-white text-left sm:text-center lg:text-left mb-10">
                 <div class="font-bold text-lg text-center lg:text-left"><span class="text-lg">{month}</span> - <span class="text-xs">{from}</span></div>
                 <div class="colors">
-                    <div class="flex flex-col mb-2 lg:flex-row lg:gap-2 justify-start items-start sm:items-center sm:justify-center lg:justify-start">
+                    <div class="flex mb-2 flex-row gap-2 justify-start items-center sm:items-center sm:justify-center lg:justify-start">
                         <h2 class="text-lg lg:text-2xl">
                             {name}
                         </h2>
-                        <div class="hidden lg:block"><slot name="icon"/></div>
+                        <slot name="icon"/>
                     </div>
                     <slot name="description"/>
                 </div>
             </article>}
         </div>
 
-        <div class={`${side == "left" ? "hidden sm:block" : ''} w-full sm:w-1/2 sm:border-l-2 sm:min-h-max`}>
+        <div class={`${side == "left" ? "hidden sm:block" : ''} ${ important && 'important-card' } w-full sm:w-1/2 sm:border-l-2 sm:min-h-max`}>
             {side === "right" &&
             <article class="sm:ml-7 flex flex-col items-start sm:items-center lg:items-end justify-start sm:justify-center lg:justify-end text-white text-left sm:text-center lg:text-right mb-10">
                 <div class="font-bold text-lg text-center lg:text-right"><span class="text-lg">{month}</span> - <span class="text-xs">{from}</span></div>
                 <div class="colors">
-                    <div class="flex flex-col mb-2 lg:flex-row lg:gap-2 justify-start items-start sm:items-center sm:justify-center lg:justify-end">
+                    <div class="flex mb-2 flex-row gap-2 justify-start items-center sm:items-center sm:justify-center lg:justify-end">
                         <h2 class="text-lg lg:text-2xl">
                             {name}
                         </h2>
-                        <div class="hidden lg:block"><slot name="icon"/></div>
+                        <slot name="icon"/>
                     </div>
                     <slot name="description"/>
                 </div>
@@ -49,5 +50,9 @@ const { month, from, name, side } = Astro.props;
     .colors:hover {
         filter: drop-shadow(0 0 5px #ffff02); 
         transition: color 0.3s;
+    }
+
+    .important-card {
+        filter: drop-shadow(0 0 5px #ff0000);
     }
 </style>

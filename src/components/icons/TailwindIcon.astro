@@ -7,8 +7,26 @@
 </div>
 
 <style>
-    .tailwind-icon:hover {
-        filter: drop-shadow(0 0 5px #00bcf8); 
+    .tailwind-icon {
+        filter: drop-shadow(0 0 5px #5FD4F4); 
         transition: color 0.3s;
+    }
+
+    .tailwind-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .tailwind-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#38BDF8] fill-[#38BDF8];
     }
 </style>

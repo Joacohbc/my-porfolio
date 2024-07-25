@@ -1,6 +1,5 @@
-<div class="flex flex-col justify-center items-center astro-icon">
+<div class="flex flex-col justify-center items-center redis-icon">
     <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" />
         <path d="M4 6v6c0 1.657 3.582 3 8 3c.856 0 1.68 -.05 2.454 -.144m5.546 -2.856v-6" />
         <path d="M4 12v6c0 1.657 3.582 3 8 3c.171 0 .341 -.002 .51 -.006" />
@@ -11,8 +10,26 @@
 </div>
 
 <style>
-    .astro-icon:hover {
+    .redis-icon {
         filter: drop-shadow(0 0 5px #ef0025); 
         transition: color 0.3s;
+    }
+
+    .redis-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .redis-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#E54D37] fill-[#E54D37];
     }
 </style>

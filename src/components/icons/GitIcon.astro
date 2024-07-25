@@ -1,20 +1,42 @@
 <div class="flex flex-col justify-center items-center git-icon">
-    <svg class="w-12 md:w-10"  viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13.446 2.6l7.955 7.954a2.045 2.045 0 0 1 0 2.892l-7.955 7.955a2.045 2.045 0 0 1 -2.892 0l-7.955 -7.955a2.045 2.045 0 0 1 0 -2.892l7.955 -7.955a2.045 2.045 0 0 1 2.892 0z" />
         <path d="M16 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
         <path d="M12 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
         <path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
         <path d="M12 15v-6" />
         <path d="M15 11l-2 -2" />
         <path d="M11 7l-1.9 -1.9" />
-        <path d="M13.446 2.6l7.955 7.954a2.045 2.045 0 0 1 0 2.892l-7.955 7.955a2.045 2.045 0 0 1 -2.892 0l-7.955 -7.955a2.045 2.045 0 0 1 0 -2.892l7.955 -7.955a2.045 2.045 0 0 1 2.892 0z" />
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
     </svg>
     <span>Git</span>
 </div>
 
 <style>
-    .git-icon:hover {
-        filter: drop-shadow(0 0 5px #ff1d34); 
+    .git-icon {
+        filter: drop-shadow(0 0 5px #F54D27); 
         transition: color 0.3s;
+    }
+
+    .git-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .git-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#EFDBD0];
+    }
+
+    .git-icon:hover > svg > path:first-child { 
+        @apply stroke-[#EFDBD0] fill-[#F54D27];
     }
 </style>

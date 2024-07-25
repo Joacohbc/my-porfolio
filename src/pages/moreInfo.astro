@@ -1,0 +1,265 @@
+---
+import Certification from "../components/Certification.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro"
+import navItems from "../jsons/moreInfo_sections.json"
+import certifications from "../jsons/certis.json";
+
+// Extract the certifications from the JSON and group them by group
+// generate the HTML for the certifications (with the grid)
+const certificationsByType = certifications.reduce((acc, cert) => {
+    if(!acc[cert.group]) acc[cert.group] = [];
+    acc[cert.group].push(cert);
+    return acc;
+}, {});
+
+// Make this for TailwindCSS dynamic classes
+const gridClasses = {
+    1: "grid-cols-1",
+    2: "grid-cols-2",
+    3: "grid-cols-3",
+    4: "grid-cols-4",
+    5: "grid-cols-5",
+    6: "grid-cols-6",
+    7: "grid-cols-7",
+    8: "grid-cols-8",
+    9: "grid-cols-9",
+    10: "grid-cols-10",
+    11: "grid-cols-11",
+    12: "grid-cols-12",
+}
+---
+
+<Layout title="Porfolio de Joaquin G." navItems={navItems} indexed header>
+    
+    <!-- TODO: Optimizar todas las imagenes y que sean mas chicas -->
+    <!-- TODO: El Carousel deberia ser componetizado y las imagenes cargadas de un JSON con la informacion necesaria -->
+    <div id="certification-modal" 
+        tabindex="-1" 
+        aria-hidden="true" 
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm">
+        
+        <div id='modal-content' class="flex justify-center items-center rounded-lg shadow-lg p-4 w-full h-full">
+            
+        </div>
+    </div>
+
+    <section id="certifications" data-section="certifications" class="scroll-m-20 font-serif">
+        <!-- BIG SCREENs -->
+        <div class="flex flex-row gap-2 justify-center items-center text-3xl font-bold text-center mb-4 text-white">
+            <h1 class="text-4xl font-bold text-center">Certificaciones</h1>
+            <svg class="w-12" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19.496 13.983l1.966 3.406a1.001 1.001 0 0 1 -.705 1.488l-.113 .011l-.112 -.001l-2.933 -.19l-1.303 2.636a1.001 1.001 0 0 1 -1.608 .26l-.082 -.094l-.072 -.11l-1.968 -3.407a8.994 8.994 0 0 0 6.93 -3.999z" stroke-width="0" fill="currentColor" />
+                <path d="M11.43 17.982l-1.966 3.408a1.001 1.001 0 0 1 -1.622 .157l-.076 -.1l-.064 -.114l-1.304 -2.635l-2.931 .19a1.001 1.001 0 0 1 -1.022 -1.29l.04 -.107l.05 -.1l1.968 -3.409a8.994 8.994 0 0 0 6.927 4.001z" stroke-width="0" fill="currentColor" />
+                <path d="M12 2l.24 .004a7 7 0 0 1 6.76 6.996l-.003 .193l-.007 .192l-.018 .245l-.026 .242l-.024 .178a6.985 6.985 0 0 1 -.317 1.268l-.116 .308l-.153 .348a7.001 7.001 0 0 1 -12.688 -.028l-.13 -.297l-.052 -.133l-.08 -.217l-.095 -.294a6.96 6.96 0 0 1 -.093 -.344l-.06 -.271l-.049 -.271l-.02 -.139l-.039 -.323l-.024 -.365l-.006 -.292a7 7 0 0 1 6.76 -6.996l.24 -.004z" stroke-width="0" fill="currentColor" />
+            </svg>
+        </div>
+
+        <p class="text-white text-xl text-center text-pretty my-4"> 
+            Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
+            Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
+            La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
+            mas adelante con mas experiencia obtuve la certificación de 
+            <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
+        </p>
+
+        <div class="max-lg:hidden flex flex-col items-center justify-center mb-10 gap-2">
+            <div class="max-lg:hidden">
+                { Object.keys(certificationsByType).map((group) => {
+                    const certs = certificationsByType[group];
+                    return (
+                        <div class={`grid ${gridClasses[certs.length]}`}>
+                            { certs.map((cert) => <Certification title={cert.title} skills={cert.skills} imageUrl={cert.imageUrl} />) }
+                        </div>
+                    );
+                }) }
+            </div>
+        </div>
+
+        <!-- SMALL SCREENs -->
+        <div class="lg:hidden">
+            <div class="flex flex-col justify-center items-center gap-2 mt-2">
+                <div class="flex flex-row justify-center items-center mb-2">
+                    <button class="carousel-prev">
+                        <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 6l-6 6l6 6" />
+                        </svg>
+                    </button>
+                    <span class="carousel-counter text-white text-center">1 / {certifications.length}</span>
+                    <button class="carousel-next">
+                        <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="carousel">
+                    { certifications.map ((cert, index) => (
+                        <div class={`${index != 0 && 'hidden'} carousel-item flex flex-col justify-center items-center`}>
+                            <span class="text-white mb-1 text-lg font-bold text-center">{cert.title}</span>
+                            <span class="text-white text-xs mb-1 md:text-md text-center pointer-events-none">{cert.skills.join(', ')}</span>
+                            <img src={cert.imageUrl} alt={cert.title} class={`rounded-lg`} />
+                        </div>
+                    ))}
+                </div>
+                <div class="flex flex-row justify-center items-center mt-2">
+                    <button class="carousel-prev">
+                        <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M15 6l-6 6l6 6" />
+                        </svg>
+                    </button>
+                    <span class="carousel-counter text-white text-center">1 / {certifications.length}</span>
+                    <button class="carousel-next">
+                        <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <Footer />
+</Layout>
+
+<script>
+
+    // Open the image in a modal
+    const openImage = (modal, url) => {
+        if(!modal) return;
+
+        const imgItem = document.createElement("img");
+        imgItem.src = url;
+        imgItem.alt = "Certificación";
+        imgItem.classList.add("max-w-[95%]", "max-h-[95%]", "rounded-lg");
+
+        const modalContent = modal.querySelector("#modal-content");
+        if(!modalContent) return;
+        modalContent.innerHTML = "";
+        modalContent.appendChild(imgItem);
+
+        modal.classList.remove("hidden");
+    } 
+
+    document.addEventListener('astro:page-load', () => {
+        const modal = document.querySelector("#certification-modal");
+
+        // Add event listener to the modal
+        document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
+        
+        // Add event listener to all certification images
+        document.querySelectorAll(".image-cert").forEach((imgElement) => {
+            imgElement.addEventListener("click", () => openImage(modal, imgElement.getAttribute("data-src")));
+        });
+
+        // 
+        // Carousel for Small Screens
+        //        
+        const carousel = document.querySelector(".carousel");
+        const carouselItems = document.querySelectorAll(".carousel-item") as NodeListOf<HTMLImageElement>;
+        const counters = document.querySelectorAll(".carousel-counter");
+        let carouselCounter = 0;
+        
+        // Add event listener to all certification images
+        carouselItems.forEach((img) => {
+            img.querySelector("img").addEventListener("click", (img) => openImage(modal, (img.target as HTMLImageElement).src));
+        });
+
+        // Show the first image
+        carouselItems[0].classList.remove("hidden");
+        
+        // Update the counter
+        const updateCounter = () => counters.forEach((counter) => counter.innerHTML = `${carouselCounter + 1} / ${carouselItems.length}`);
+        
+        const nextImageCarousel = () => {
+            carouselItems[carouselCounter].classList.add("hidden");
+            carouselCounter = (carouselCounter + 1) % carouselItems.length;
+            carouselItems[carouselCounter].classList.remove("hidden");
+            updateCounter();
+        }
+
+        const prevImageCarousel = () => {
+            carouselItems[carouselCounter].classList.add("hidden");
+            carouselCounter = (carouselCounter - 1 + carouselItems.length) % carouselItems.length;
+            carouselItems[carouselCounter].classList.remove("hidden");
+            updateCounter();
+        }
+
+        // Detect Swipe with Touch and Mouse
+        let xDown = null;
+        let yDown = null;
+
+        // Swipe Functions
+        const handleTouchStart = (evt) => {
+            if(!evt.touches) return;
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+        };
+
+        const handleTouchMove = (evt) => {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            const xUp = evt.touches[0].clientX;
+            const yUp = evt.touches[0].clientY;
+
+            const xDiff = xDown - xUp;
+            const yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0) {
+                    nextImageCarousel();
+                } else {
+                    prevImageCarousel();
+                }
+            }
+
+            xDown = null;
+            yDown = null;
+        };
+
+        // Add event listeners
+        carousel.addEventListener("touchstart", handleTouchStart, false);
+        carousel.addEventListener("touchmove", handleTouchMove, false);
+
+
+        // Add event listeners to the buttons
+        document.querySelectorAll(".carousel-next").forEach(e => e.addEventListener("click", nextImageCarousel));
+        document.querySelectorAll(".carousel-prev").forEach(e => e.addEventListener("click", prevImageCarousel));
+    });
+
+</script>
+
+<style>
+    .certification-img {
+        @apply rounded-md;
+        padding: 3px;
+    }
+
+    .certification-img:hover {
+        filter: drop-shadow(0 0 5px #3ca2eb); 
+        transition: all 0.3s;
+        scale: 1.03;
+    }
+    .carousel {
+        @apply flex flex-row gap-2 justify-center items-center rounded-md;
+    }
+
+    .carousel-item {
+        @apply animate-fade animate-duration-700;
+    }
+
+    /* .shadow-border {
+        filter: drop-shadow(0 0 5px rgb(60, 162, 235)); 
+        transition: color 0.3s;
+    }
+
+    .shadow-border:hover {
+        filter: drop-shadow(0 0 5px rgb(235, 139, 60)); 
+        transition: color 0.3s;
+    } */
+</style>

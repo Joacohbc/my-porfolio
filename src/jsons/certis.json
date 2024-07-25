@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Plataform Developer I",
+        "imageUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png",
+        "skills": ["Apex & Triggers", "Lightning Web Component", "Flows & Declarative Tools"],
+        "group": "Salesforce"
+    },
+    {
+        "title": "JavaScript Developer I",
+        "imageUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png",
+        "skills": ["Objects & Arrays", "DOM & Events", "Node.js"],
+        "group": "Salesforce"
+    },
+    {
+        "title": "Introduction to Kubernetes",
+        "imageUrl": "/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png",
+        "skills": ["Kubernetes Architecture", "Container Orchestration", "Deploying Applications"],
+        "group": "Devops"
+    },
+    {
+        "title": "Introduction to Jenkins",
+        "imageUrl": "/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png",
+        "skills": ["Continuous Integration", "Continuous Deployment", "Build Automation"],
+        "group": "Devops"
+    },
+    {
+        "title": "Python for Data Science",
+        "imageUrl": "/images/certis/Certificado IBM PY0101EN _ edX-1.png",
+        "skills": ["Python", "Data Analysis", "Machine Learning"],
+        "group": "Data Science"
+    },
+    {
+        "title": "Data Science Fundamentals",
+        "imageUrl": "/images/certis/Certificado IBM DS0105EN _ edX-1.png",
+        "skills": ["Python", "Data Analysis", "Machine Learning"],
+        "group": "Data Science"
+    },
+    {
+        "title": "Deep Learning Fundamentals",
+        "imageUrl": "/images/certis/Certificado IBM DL0101EN _ edX-1.png",
+        "skills": ["Neural Networks", "TensorFlow", "Keras"],
+        "group": "Data Science"
+    }
+]

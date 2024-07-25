@@ -19,8 +19,26 @@
 </div>
 
 <style>
-    .react-icon:hover {
-        filter: drop-shadow(0 0 5px #3ca2eb); 
+    .react-icon {
+        filter: drop-shadow(0 0 5px #5FD4F4); 
         transition: color 0.3s;
+    }
+
+    .react-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#23272F]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .react-icon:hover > svg { 
+        @apply animate-spin animate-once animate-ease-linear stroke-[#5FD4F4];
     }
 </style>

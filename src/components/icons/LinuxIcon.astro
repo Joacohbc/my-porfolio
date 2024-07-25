@@ -15,8 +15,26 @@
 </div>
 
 <style>
-    .linux-icon:hover {
-        filter: drop-shadow(0 0 5px #00f130); 
+    .linux-icon {
+        filter: drop-shadow(0 0 5px #F86C01); 
         transition: color 0.3s;
+    }
+
+    .linux-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#030608]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .linux-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear fill-[#030608];
     }
 </style>

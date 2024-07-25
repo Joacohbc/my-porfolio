@@ -1,17 +1,21 @@
 ---
 import Header from "../components/Header.astro";
 import SpeadInsights from "@vercel/speed-insights/astro";
+import HeaderNav from "../components/HeaderNav.astro";
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
-	title?: string;
-	header?: boolean;
-	index?: boolean;
+	title: string;
+	header: boolean;
+	indexed: boolean;
+	navItems: NavItem[];
 }
 
 const {
-	title = "Porfolio de Joaquin G.",
-	header = true,
-	index = true,
+	title,
+	header,
+	indexed,
+	navItems
 } = Astro.props;
 ---
 
@@ -30,7 +34,7 @@ const {
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
-		{index && <meta name="robots" content="index, follow" />}
+		{indexed && <meta name="robots" content="index, follow" />}
 
 		<link rel="canonical" href="https://joaquingenova.dev" />
 		<link rel="alternate" href="https://joaquingenova.dev" hreflang="es" />
@@ -60,9 +64,12 @@ const {
 		<!-- <meta name="twitter:image" content=""> -->
 
 		<meta name="generator" content={Astro.generator} />
+
+		<ViewTransitions/>
 	</head>
 	<body class="">
-		{header && <Header />}
+		{header && <Header/>}
+		{ navItems.length > 0 && <HeaderNav navItems={navItems} /> } 
 		<div class="w-full p-10 md:w-11/12 lg:w-10/12 xl:w-8/12 mx-auto">
 			<slot />
 		</div>
