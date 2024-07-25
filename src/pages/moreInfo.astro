@@ -1,5 +1,9 @@
 ---
+import Certification from "../components/Certification.astro";
 import Footer from "../components/Footer.astro";
+import JavascriptIcon from "../components/icons/JavascriptIcon.astro";
+import RESTIcon from "../components/icons/RESTIcon.astro";
+import SalesforceIcon from "../components/icons/SalesforceIcon.astro";
 import Layout from "../layouts/Layout.astro"
 import certifications from "./moreInfo_sections.json"
 ---
@@ -42,23 +46,48 @@ import certifications from "./moreInfo_sections.json"
         <div class="max-lg:hidden flex flex-col items-center justify-center mb-10 gap-2">
             <div class="max-lg:hidden">
                 <div class="grid grid-cols-2">
-                    <img class="certification-img aspect-video" src="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
-                    <img class="certification-img aspect-video" src="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png">
-                </div>
-                <div class="grid grid-cols-3">
-                    <img class="certification-img aspect-auto" src="/images/certis/Certificado IBM PY0101EN _ edX-1.png">
-                    <img class="certification-img aspect-auto" src="/images/certis/Certificado IBM DS0105EN _ edX-1.png">
-                    <img class="certification-img aspect-auto" src="/images/certis/Certificado IBM DL0101EN _ edX-1.png">
+                    <Certification 
+                        imageUrl="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png" 
+                        title="Plataform Developer I"
+                        skills={[ 'Apex & Triggers', 'Lightning Web Component', 'Flows & Declarative Tools']}/>
+
+                    <Certification 
+                        imageUrl="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png" 
+                        title="JavaScript Developer I"
+                        skills={[ 'Objects & Arrays', 'DOM & Events', 'Node.js' ]}>
+                        <div slot="skills" class="flex gap-2 flex-col flex-wrap justify-center items-center"/>
                 </div>
                 <div class="grid grid-cols-2">
-                    <img class="certification-img aspect-auto" src="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
-                    <img class="certification-img aspect-auto" src="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
+                    <Certification 
+                        imageUrl="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png" 
+                        title="Introduction to Kubernetes"
+                        skills={[
+                            "Kubernetes Architecture",
+                            "Container Orchestration",
+                            "Deploying Applications",
+                        ]}/>
+                    <Certification
+                        imageUrl="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png" 
+                        title="Introduction to Jenkins"
+                        skills={[
+                            "Continuous Integration",
+                            "Continuous Deployment",
+                            "Build Automation",
+                        ]}/>
                 </div>
-                <div class="grid grid-cols-4">
-                    <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (1)-1.png">
-                    <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate (3)-1.png">
-                    <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate-1.png">
-                    <img class="certification-img aspect-auto" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (2)-1.png">
+                <div class="grid grid-cols-3">
+                    <Certification 
+                        imageUrl="/images/certis/Certificado IBM PY0101EN _ edX-1.png" 
+                        title="Python for Data Science"
+                        skills={[ 'Python', 'Data Analysis', 'Machine Learning' ]}/>
+                    <Certification 
+                        imageUrl="/images/certis/Certificado IBM DS0105EN _ edX-1.png" 
+                        title="Data Science Fundamentals"
+                        skills={[ 'Python', 'Data Analysis', 'Machine Learning' ]}/>
+                    <Certification 
+                        imageUrl="/images/certis/Certificado IBM DL0101EN _ edX-1.png" 
+                        title="Deep Learning Fundamentals"
+                        skills={[ 'Neural Networks', 'TensorFlow', 'Keras' ]}/>
                 </div>
             </div>
         </div>
@@ -84,15 +113,11 @@ import certifications from "./moreInfo_sections.json"
                 <div class="carousel">
                     <img class="carousel-item hidden" src="/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png">
                     <img class="carousel-item hidden" src="/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
+                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
                     <img class="carousel-item hidden" src="/images/certis/Certificado IBM PY0101EN _ edX-1.png">
                     <img class="carousel-item hidden" src="/images/certis/Certificado IBM DS0105EN _ edX-1.png">
                     <img class="carousel-item hidden" src="/images/certis/Certificado IBM DL0101EN _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (1)-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate (3)-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-Cisco-NetAc-certificate-1.png">
-                    <img class="carousel-item hidden" src="/images/certis/JOAQUINGENOVA GUERENDIA-UTEC-CISCO-NETAC-certificate (2)-1.png">
                 </div>
                 <div class="flex flex-row justify-center items-center mt-2">
                     <button class="carousel-prev">
@@ -118,11 +143,11 @@ import certifications from "./moreInfo_sections.json"
 <script>
 
     // Open the image in a modal
-    const openImage = (modal, img) => {
+    const openImage = (modal, url) => {
         if(!modal) return;
 
         const imgItem = document.createElement("img");
-        imgItem.src = img.target.src;
+        imgItem.src = url;
         imgItem.alt = "Certificación";
         imgItem.classList.add("max-w-[95%]", "max-h-[95%]", "rounded-lg");
 
@@ -141,8 +166,9 @@ import certifications from "./moreInfo_sections.json"
         document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
         
         // Add event listener to all certification images
-        document.querySelectorAll(".certification-img").forEach((img) => img.addEventListener("click", (img) => openImage(modal, img)));
-
+        document.querySelectorAll(".image-cert").forEach((imgElement) => {
+            imgElement.addEventListener("click", () => openImage(modal, imgElement.getAttribute("data-src")));
+        });
 
         // 
         // Carousel for Small Screens
@@ -153,7 +179,7 @@ import certifications from "./moreInfo_sections.json"
         let carouselCounter = 0;
         
         // Add event listener to all certification images
-        carouselItems.forEach((img) => img.addEventListener("click", (img) => openImage(modal, img)));
+        carouselItems.forEach((img) => img.addEventListener("click", (img) => openImage(modal, img.target.src)));
 
         // Show the first image
         carouselItems[0].classList.remove("hidden");
