@@ -57,11 +57,9 @@ const gridClasses = {
         </div>
 
         <p class="text-white text-xl text-center text-pretty my-4"> 
-            Estas son las certificaciones que he obtenido a lo largo de mi carrera profesional.
-            Empiezo con las certificaciones de Salesforce, ya que son las más recientes y las que más me han costado obtener. 
-            La primera que obtuve fue la de <span class="font-bold underline shadow-border">Plataform Developer I</span> y 
-            mas adelante con mas experiencia obtuve la certificación de 
-            <span class="font-bold underline shadow-border">JavaScripts Developer I</span>.
+            Explora mi recorrido de aprendizaje continuo en diversas áreas tecnológicas. Estas son algunas de las certificaciones más relevantes que he obtenido, 
+            las cuales reflejan mi interés por desarrollar habilidades en áreas clave como <span class="keywords">Salesforce, DevOps y Ciencia de Datos</span>, entre otras. 
+            Para ver más detalles, puedes visitar mi <a href="https://www.linkedin.com/in/joaqu%C3%ADn-g%C3%A9nova-a4011022a/" title="Mi Linkedin" target="_blank" class="keywords">Linkedin</a>.
         </p>
 
         <div class="max-lg:hidden flex flex-col items-center justify-center mb-10 gap-2">
@@ -253,13 +251,26 @@ const gridClasses = {
         @apply animate-fade animate-duration-700;
     }
 
-    /* .shadow-border {
-        filter: drop-shadow(0 0 5px rgb(60, 162, 235)); 
-        transition: color 0.3s;
+    .keywords {
+        @apply 
+        drop-shadow-[0_0_5px_rgba(60,162,235,1)]
+        inline-block
+        underline
+        font-bold;
     }
 
-    .shadow-border:hover {
-        filter: drop-shadow(0 0 5px rgb(235, 139, 60)); 
-        transition: color 0.3s;
-    } */
+    .keywords:hover {
+        @apply
+        underline
+        drop-shadow-[0_0_5px_rgba(235,139,60,1)]
+        after:rounded-lg
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-3
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
 </style>
