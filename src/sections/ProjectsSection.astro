@@ -19,6 +19,9 @@ import KotlinIcon from '../components/icons/KotlinIcon.astro'
 import RESTIcon from '../components/icons/RESTIcon.astro'
 import JSONIcon from '../components/icons/JSONIcon.astro'
 import ProjectsCard from '../components/ProjectsCard.astro'
+import MongoIcon from '../components/icons/MongoIcon.astro'
+import JWTIcon from '../components/icons/JWTIcon.astro'
+import MicroserviceIcon from '../components/icons/MicroserviceIcon.astro'
 ---
 <div class="font-serif">
     <div class="flex flex-row gap-4 justify-center items-center mb-10">
@@ -91,7 +94,6 @@ import ProjectsCard from '../components/ProjectsCard.astro'
                 <KotlinIcon />
                 <RESTIcon />
                 <SQLIcon />
-                <GitIcon />
             </div>
         </ProjectsCard>
 
@@ -129,13 +131,16 @@ import ProjectsCard from '../components/ProjectsCard.astro'
             </a>
         </article>
 
-        <ProjectsCard title='Alkemy challenge-java' link='https://github.com/Joacohbc/challenge-java'>
-            <p slot="description" class="text-white text-left">Proyecto para el Challenge de Alkemy de Pre-Aceleracion Agosto 2022. Es una API REST desarollada con Java en 
-                Spring Boot que permite navegar por personajes y películas de Disney.</p>
+        <ProjectsCard title='E-Commerce con Microservicios' link='https://github.com/Joacohbc/ecommerce-microservices'>
+            <p slot="description" class="text-white text-left">Proyecto E-commerce es un sistema con el objetivo de ser escalable y flexible para poder manejar un gran tráfico 
+                y transacciones. La arquitectura de microservicios permitirá dividir el sistema como gestión de productos, pedidos, usuarios y pago, etc. 
+                Actualmente está en desarrollo.</p>
             <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
                 <JavaIcon />
                 <SpringIcon />
-                <RESTIcon />
+                <MongoIcon />
+                <SQLIcon />
+                <JWTIcon />
             </div>
         </ProjectsCard>
 
