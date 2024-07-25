@@ -13,31 +13,31 @@
     },
     {
         "title": "Introduction to Kubernetes",
-        "imageUrl": "/images/certis/Certificado LinuxFoundationX LFS158x _ edX-1.png",
+        "imageUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.png",
         "skills": ["Kubernetes Architecture", "Container Orchestration", "Deploying Applications"],
         "group": "Devops"
     },
     {
         "title": "Introduction to Jenkins",
-        "imageUrl": "/images/certis/Certificado LinuxFoundationX LFS167x _ edX-1.png",
+        "imageUrl": "/images/certis/LFS167x_Introduction_to_Jenkins.png",
         "skills": ["Continuous Integration", "Continuous Deployment", "Build Automation"],
         "group": "Devops"
     },
     {
         "title": "Python for Data Science",
-        "imageUrl": "/images/certis/Certificado IBM PY0101EN _ edX-1.png",
+        "imageUrl": "/images/certis/DS0105EN_Data_Science_Tools.png",
         "skills": ["Python", "Data Analysis", "Machine Learning"],
         "group": "Data Science"
     },
     {
         "title": "Data Science Fundamentals",
-        "imageUrl": "/images/certis/Certificado IBM DS0105EN _ edX-1.png",
+        "imageUrl": "/images/certis/DS0105EN_Data_Science_Tools.png",
         "skills": ["Python", "Data Analysis", "Machine Learning"],
         "group": "Data Science"
     },
     {
         "title": "Deep Learning Fundamentals",
-        "imageUrl": "/images/certis/Certificado IBM DL0101EN _ edX-1.png",
+        "imageUrl": "/images/certis/DL0101EN_Deep_Learning_Fundamentals_with_Keras.png",
         "skills": ["Neural Networks", "TensorFlow", "Keras"],
         "group": "Data Science"
     }
