@@ -1,5 +1,5 @@
 ---
-import ProjectCard from "../components/ExperienceCard.astro";
+import ExperienceCard from "../components/ExperienceCard.astro";
 import StudyIcon from "../components/icons/StudyIcon.astro";
 import WorkIcon from "../components/icons/WorkIcon.astro";
 ---
@@ -30,14 +30,14 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
             </div>
             <div class="text-white sm:text-white text-2xl font-bold">2019</div>
         </div>
-        <ProjectCard month="Enero" name="Bachillerato Tecnológico" from="UTU" side="left" important>
+        <ExperienceCard month="Enero" name="Bachillerato Tecnológico" from="UTU" side="left" important>
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Inicio de estudios en el Bachillerato Tecnológico de la
                 UTU. Donde aprendí las bases de la programación, bases
                 de datos, redes, sistemas operativos y hardware.
             </p>
-        </ProjectCard>
+        </ExperienceCard>
 
         <div class="flex flex-row justify-self-start items-center sm:justify-center gap-1 ml-1 my-1">
             <div>
@@ -50,20 +50,20 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
             </div>
             <div class="text-white sm:text-white text-2xl font-bold">2021</div>
         </div>
-        <ProjectCard month="Diciembre" name="Bachillerato Tecnológico" from="UTU" side="right">
+        <ExperienceCard month="Diciembre" name="Bachillerato Tecnológico" from="UTU" side="right">
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Fin de estudios en el Bachillerato Tecnológico de la
                 UTU. Con la defensa de un proyecto multidisciplinario a
                 lo largo de todo el año.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Diciembre" name="Preliminary English Test - B1" from="Cambridge" side="right" important>
+        </ExperienceCard>
+        <ExperienceCard month="Diciembre" name="Preliminary English Test - B1" from="Cambridge" side="right" important>
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Aprobación del examen de inglés Preliminary English Test - B1 de Cambridge.
             </p>
-        </ProjectCard>
+        </ExperienceCard>
 
         <div class="flex flex-row justify-self-start items-center sm:justify-center gap-1 ml-1 my-1">
             <div>
@@ -76,7 +76,7 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
             </div>
             <div class="text-white sm:text-white text-2xl font-bold">2022</div>
         </div>
-        <ProjectCard month="Marzo" name="Licenciatura en TI" from="UTEC" side="left" important>
+        <ExperienceCard month="Marzo" name="Licenciatura en TI" from="UTEC" side="left" important>
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Inicio de estudios en la Licenciatura en Tecnologías de
@@ -85,8 +85,8 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
                 operativos, hardware, bases de datos, seguridad
                 informática, testing y desarrollo de web.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Julio" name="Caso de Estudio" from="UTEC" side="left">
+        </ExperienceCard>
+        <ExperienceCard month="Julio" name="Caso de Estudio" from="UTEC" side="left">
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Proyecto que consistió en el análisis, diseño e
@@ -94,31 +94,31 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
                 empresa real (Casos de Uso, Req. Funcionales y No
                 Funcionales, Suite de Pruebas).
             </p>
-        </ProjectCard>
-        <ProjectCard month="Agosto" name="Pre-acleracion de Java" from="Alkemy" side="left">
+        </ExperienceCard>
+        <ExperienceCard month="Agosto" name="Pre-acleracion de Java" from="Alkemy" side="left">
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Pre-aceleración de Java Backend en Alkemy. Un proyecto individual donde
                 aprendí sobre sobre Spring Boot, Hibernate, JPA, Maven, JWT, etc implementando una FULL API REST
                 sobre peliculas y personajes de Disney.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Diciembre" name="Proy. de Desarrollo y Testing" from="UTEC" side="left">
+        </ExperienceCard>
+        <ExperienceCard month="Diciembre" name="Proy. de Desarrollo y Testing" from="UTEC" side="left">
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Proyecto que consistió en la implementación del sistema
                 de información, en una aplicación cliente-servidor (MVC) para
                 Escritorio, diseñado en el Caso de Estudio.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Diciembre" name="IT Trainee" from="TCS" side="left" important>
+        </ExperienceCard>
+        <ExperienceCard month="Diciembre" name="IT Trainee" from="TCS" side="left" important>
             <WorkIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Inicio de pasantía en Tata Consultancy Services, donde
                 aprendí sobre el desarrollo en la plataforma de
                 Salesforce.
             </p>
-        </ProjectCard>
+        </ExperienceCard>
 
         <div class="flex flex-row justify-self-start items-center sm:justify-center gap-1 ml-1 my-1">
             <div>
@@ -131,14 +131,14 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
             </div>
             <div class="text-white sm:text-white text-2xl font-bold">2023</div>
         </div>
-        <ProjectCard month="Abril" name="Platform Developer I" from="TCS" side="right" important>
+        <ExperienceCard month="Abril" name="Platform Developer I" from="TCS" side="right" important>
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Preparación y aprobación de la Plataform Developer I de
                 Salesforce.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Julio" name="Proy. de Infraestructura" from="UTEC" side="right">
+        </ExperienceCard>
+        <ExperienceCard month="Julio" name="Proy. de Infraestructura" from="UTEC" side="right">
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Proyecto que consistió en el diseño de una
@@ -148,14 +148,14 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
                 servidor desarrollado en el Proyecto de Desarrollo y
                 Testing.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Agosto" name="Salesforce Developer" from="TCS" side="right" important>
+        </ExperienceCard>
+        <ExperienceCard month="Agosto" name="Salesforce Developer" from="TCS" side="right" important>
             <WorkIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Ingreso al proyecto en la plataforma de Salesforce
             </p>
-        </ProjectCard>
-        <ProjectCard month="Diciembre" name="Proy. Final de Tecnicatura" from="UTEC" side="right">
+        </ExperienceCard>
+        <ExperienceCard month="Diciembre" name="Proy. Final de Tecnicatura" from="UTEC" side="right">
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Proyecto que fue la continuación del Proyecto de
@@ -163,14 +163,14 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
                 aplicativo Mobile con Kotlin (que consumia REST), implementación virtual de
                 servidores DNS, DHCP, AD y Firewall en GNS3.
             </p>
-        </ProjectCard>
-        <ProjectCard month="Diciembre" name="JavaScript Certification" from="TCS" side="right" important>
+        </ExperienceCard>
+        <ExperienceCard month="Diciembre" name="JavaScript Certification" from="TCS" side="right" important>
             <StudyIcon slot="icon" />
             <p slot="description" class="text-md md:text-lg">
                 Preparación y aprobación de la JavaScript Developer I de
                 Salesforce.
             </p>
-        </ProjectCard>
+        </ExperienceCard>
 
         <div class="flex flex-row justify-self-start items-center sm:justify-center gap-1 ml-1 my-1">
             <div>
@@ -183,13 +183,13 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
             </div>
             <div class="text-white sm:text-white text-2xl font-bold">2024</div>
         </div>
-        <ProjectCard month="Mayo" name="Titulación de Tecnicatura" from="UTEC" side="left" important>
+        <ExperienceCard month="Mayo" name="Titulación de Tecnicatura" from="UTEC" side="left" important>
             <StudyIcon slot="icon" />
             <p slot="description" class="text-lg lg:text-xl">
                 Evento de entrega de título de Tecnicatura en
                 Tecnologías de la Información.
             </p>
-        </ProjectCard>
+        </ExperienceCard>
     </div>
 </div>
 

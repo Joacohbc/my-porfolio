@@ -12,9 +12,9 @@ const { month, from, name, side, important } = Astro.props;
 
 <div class="flex flex-row max-sm:border-l-2 max-sm:pl-3">
     <div class="flex flex-row flex-1">
-        <div class={`${side == "right" ? "hidden sm:block" : ''} ${ important && 'important-card' } w-full sm:w-1/2 sm:border-r-2 sm:min-h-max`}>
+        <div class={`${side == "right" ? "hidden sm:block" : ''} w-full sm:w-1/2 sm:border-r-2 sm:min-h-max`}>
             {side === "left" &&
-            <article class="sm:mr-7 flex flex-col items-start sm:items-center lg:items-start justify-start sm:justify-center lg:justify-start text-white text-left sm:text-center lg:text-left mb-10">
+            <article class={`sm:mr-7 flex flex-col items-start sm:items-center lg:items-start justify-start sm:justify-center lg:justify-start text-white text-left sm:text-center lg:text-left mb-10 ${ important && 'important-card' }`}>
                 <div class="font-bold text-lg text-center lg:text-left"><span class="text-lg">{month}</span> - <span class="text-xs">{from}</span></div>
                 <div class="colors">
                     <div class="flex mb-2 flex-row gap-2 justify-start items-center sm:items-center sm:justify-center lg:justify-start">
@@ -28,9 +28,9 @@ const { month, from, name, side, important } = Astro.props;
             </article>}
         </div>
 
-        <div class={`${side == "left" ? "hidden sm:block" : ''} ${ important && 'important-card' } w-full sm:w-1/2 sm:border-l-2 sm:min-h-max`}>
+        <div class={`${side == "left" ? "hidden sm:block" : ''} w-full sm:w-1/2 sm:border-l-2 sm:min-h-max`}>
             {side === "right" &&
-            <article class="sm:ml-7 flex flex-col items-start sm:items-center lg:items-end justify-start sm:justify-center lg:justify-end text-white text-left sm:text-center lg:text-right mb-10">
+            <article class={`sm:ml-7 flex flex-col items-start sm:items-center lg:items-end justify-start sm:justify-center lg:justify-end text-white text-left sm:text-center lg:text-right mb-10 ${ important && 'important-card' }`}>
                 <div class="font-bold text-lg text-center lg:text-right"><span class="text-lg">{month}</span> - <span class="text-xs">{from}</span></div>
                 <div class="colors">
                     <div class="flex mb-2 flex-row gap-2 justify-start items-center sm:items-center sm:justify-center lg:justify-end">
@@ -48,11 +48,10 @@ const { month, from, name, side, important } = Astro.props;
 
 <style>
     .colors:hover {
-        filter: drop-shadow(0 0 5px #ffff02); 
-        transition: color 0.3s;
+        @apply drop-shadow-[0_0_5px_rgba(235,139,60,1)] font-bold transition-all duration-300;
     }
 
     .important-card {
-        filter: drop-shadow(0 0 5px #ff0000);
+        @apply drop-shadow-[0_0_5px_rgba(60,139,235,1)] font-bold transition-all duration-300;
     }
 </style>
