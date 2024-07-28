@@ -4,14 +4,21 @@
         "imageUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png",
         "smallUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.webp",
         "skills": ["Apex & Triggers", "Lightning Web Component", "Flows & Declarative Tools"],
-        "group": "Salesforce"
+        "group": "Programming"
     },
     {
         "title": "JavaScript Developer I",
         "imageUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png",
         "smallUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.webp",
         "skills": ["Objects & Arrays", "DOM & Events", "Node.js"],
-        "group": "Salesforce"
+        "group": "Programming"
+    },
+    {
+        "title": "Microservicios con Spring Boot y Spring Cloud Netflix Eureka",
+        "imageUrl": "/images/certis/Microservicios_Spring_Boot_Spring_Cloud.jpg",
+        "smallUrl": "/images/certis/Microservicios_Spring_Boot_Spring_Cloud.webp",
+        "skills": ["Spring Boot", "Spring Cloud", "Microservices"],
+        "group": "Programming"
     },
     {
         "title": "Introduction to Kubernetes",
