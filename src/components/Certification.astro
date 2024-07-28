@@ -10,7 +10,7 @@ const { imageUrl, title, skills } = Astro.props;
 ---
 <div class="image-cert relative cursor-pointer" data-src={imageUrl}>
     <div class="absolute top-0 left-0 w-[100%] h-[100%] flex flex-col justify-center items-center bg-black opacity-0 hover:opacity-100 bg-opacity-75 text-white transition-all duration-300">
-        <h3 class="text-md xl:text-xl text-center font-bold">{title}</h3>
+        <h3 class="text-md xl:text-xl text-center font-bold mx-4 mt-1">{title}</h3>
         <div slot="skills" class="flex gap-1 flex-col flex-wrap justify-center items-center">
             { skills.map((skill) => (
                 <span class="text-white text-sm xl:text-lg">{skill}</span>

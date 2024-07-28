@@ -14,7 +14,7 @@
         "group": "Programming"
     },
     {
-        "title": "Microservicios con Spring Boot y Spring Cloud Netflix Eureka",
+        "title": "Microservicios con Spring Boot y Spring Cloud",
         "imageUrl": "/images/certis/Microservicios_Spring_Boot_Spring_Cloud.jpg",
         "smallUrl": "/images/certis/Microservicios_Spring_Boot_Spring_Cloud.webp",
         "skills": ["Spring Boot", "Spring Cloud", "Microservices"],
