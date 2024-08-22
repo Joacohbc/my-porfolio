@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /images/*.webp
+Disallow: /images/*.png
+Disallow: /images/*.pdf
+
+# robots.txt file of https://joaquingenova.dev/sitemap.xml
+sitemap: https://joaquingenova.dev/sitemap.xml
