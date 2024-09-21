@@ -1,0 +1,106 @@
+---
+import Footer from "../components/Footer.astro";
+import AstroIcon from "../components/icons/AstroIcon.astro";
+import BashIcon from "../components/icons/BashIcon.astro";
+import CSharpIcon from "../components/icons/CSharpIcon.astro";
+import CSSIcon from "../components/icons/CSSIcon.astro";
+import DockerIcon from "../components/icons/DockerIcon.astro";
+import GitIcon from "../components/icons/GitIcon.astro";
+import GolangIcon from "../components/icons/GolangIcon.astro";
+import HTMLIcon from "../components/icons/HTMLIcon.astro";
+import JavaIcon from "../components/icons/JavaIcon.astro";
+import JavascriptIcon from "../components/icons/JavascriptIcon.astro";
+import JSONIcon from "../components/icons/JSONIcon.astro";
+import JWTIcon from "../components/icons/JWTIcon.astro";
+import LinuxIcon from "../components/icons/LinuxIcon.astro";
+import MicroserviceIcon from "../components/icons/MicroserviceIcon.astro";
+import MongoIcon from "../components/icons/MongoIcon.astro";
+import NodeJsIcon from "../components/icons/NodeJsIcon.astro";
+import ReactIcon from "../components/icons/ReactIcon.astro";
+import RedisIcon from "../components/icons/RedisIcon.astro";
+import RESTIcon from "../components/icons/RESTIcon.astro";
+import SalesforceIcon from "../components/icons/SalesforceIcon.astro";
+import SpringIcon from "../components/icons/SpringIcon.astro";
+import SQLIcon from "../components/icons/SQLIcon.astro";
+import TailwindIcon from "../components/icons/TailwindIcon.astro";
+import TypescriptIcon from "../components/icons/TypescriptIcon.astro";
+import Layout from "../layouts/Layout.astro";
+
+const navItems = [{
+    "title": "Volver",
+    "url": "/",
+    "label": "return",
+    "svg": "<svg class=\"w-5\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"#ffffff\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>\n  <path d=\"M9 14l-4 -4l4 -4\" />\n  <path d=\"M5 10h11a4 4 0 1 1 0 8h-1\" />\n</svg>",
+    "last": true,
+    "first": false
+}]
+---
+
+<Layout title="Porfolio de Joaquin G." navItems={navItems} indexed={false} header={false}>
+
+    <section class="font-serif text-white">
+        <div >
+            <h1 class="text-4xl font-bold text-center mb-2">Global</h1>
+            <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
+                <GitIcon />
+                <JSONIcon />
+                <MicroserviceIcon />
+                <RESTIcon />
+                <JWTIcon />
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-5 mt-5">
+            <div class="flex flex-col gap-5 justify-center items-center border-l-2 h-full border-white">
+                <h1 class="text-4xl font-bold text-center my-2">Desarrollo Web</h1>
+                <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
+                    <ReactIcon />
+                    <JavascriptIcon />
+                    <TypescriptIcon />
+                    <HTMLIcon />
+                    <CSSIcon />
+                    <TailwindIcon/>
+                    <AstroIcon />
+                    
+                    <JavaIcon />
+                    <SpringIcon />
+                    <GolangIcon/>
+                    <NodeJsIcon />
+                    
+                    <MongoIcon/>
+                    <RedisIcon />
+                    <SQLIcon />
+
+                    <SalesforceIcon/>
+                </div>
+    
+            </div>
+            
+            <div class="flex flex-col gap-5 justify-start items-center border-l-2 border-r-2 h-full border-white">
+                <h1 class="text-4xl font-bold text-center my-2">DevOps</h1>
+                <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
+                    <BashIcon />
+                    <LinuxIcon />
+                    <DockerIcon />
+                    <!-- TODO: Agregar los siguientes iconos
+                    <AWSIcon />
+                    <GCPIcon />
+                    <AzureIcon />
+                    -->
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-5 justify-start items-center border-r-2 h-full border-white">
+                <h1 class="text-4xl font-bold text-center my-2">Ciencia de Datos</h1>
+                <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
+                    <!-- TODO: Agregar los siguientes iconos
+                    <PythonIcon />
+                    <MachineLearningIcon />
+                    <DataScienceIcon /> 
+                    -->
+                    <MongoIcon/>
+                    <SQLIcon />
+                </div> 
+            </div>
+        </div>
+    </section>
+</Layout>
