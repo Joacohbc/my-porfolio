@@ -118,7 +118,7 @@ const navItems = []
 </Layout>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
         const disableIcons = document.querySelectorAll('.disabled-icon');
         disableIcons.forEach(icon => {
             let id;
