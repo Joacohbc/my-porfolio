@@ -108,5 +108,28 @@ const navItems = []
                 <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
             </svg>
         </a>
+
+        <div id="in-progress-toast" class="ring-1 rounded-xl bg-lightblack/90 shadow-lg fixed bottom-5 z-50 mx-5 transition-all hidden">
+            <p class="text-sm p-4 text-white text-center">
+                🚧🧑‍💻 Esta habilidad todavía la estoy practicando 🧑‍💻🚧
+            </p>
+        </div>
     </section>
 </Layout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const disableIcons = document.querySelectorAll('.disabled-icon');
+        disableIcons.forEach(icon => {
+            let id;
+            icon.addEventListener('click', () => {
+                clearTimeout(id);
+                const toast = document.querySelector('#in-progress-toast');
+                toast.classList.remove('hidden');
+                id = setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            })
+        })
+    })
+</script>
