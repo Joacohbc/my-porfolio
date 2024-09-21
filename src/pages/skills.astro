@@ -1,10 +1,15 @@
 ---
 import Footer from "../components/Footer.astro";
 import AstroIcon from "../components/icons/AstroIcon.astro";
+import AWSIcon from "../components/icons/AWSIcon.astro";
+import AzureIcon from "../components/icons/AzureIcon.astro";
 import BashIcon from "../components/icons/BashIcon.astro";
+import CloudflareIcon from "../components/icons/CloudflareIcon.astro";
 import CSharpIcon from "../components/icons/CSharpIcon.astro";
 import CSSIcon from "../components/icons/CSSIcon.astro";
 import DockerIcon from "../components/icons/DockerIcon.astro";
+import DSIcon from "../components/icons/DSIcon.astro";
+import GCPIcon from "../components/icons/GCPIcon.astro";
 import GitIcon from "../components/icons/GitIcon.astro";
 import GolangIcon from "../components/icons/GolangIcon.astro";
 import HTMLIcon from "../components/icons/HTMLIcon.astro";
@@ -12,10 +17,13 @@ import JavaIcon from "../components/icons/JavaIcon.astro";
 import JavascriptIcon from "../components/icons/JavascriptIcon.astro";
 import JSONIcon from "../components/icons/JSONIcon.astro";
 import JWTIcon from "../components/icons/JWTIcon.astro";
+import KotlinIcon from "../components/icons/KotlinIcon.astro";
 import LinuxIcon from "../components/icons/LinuxIcon.astro";
 import MicroserviceIcon from "../components/icons/MicroserviceIcon.astro";
+import MLIcon from "../components/icons/MLIcon.astro";
 import MongoIcon from "../components/icons/MongoIcon.astro";
 import NodeJsIcon from "../components/icons/NodeJsIcon.astro";
+import PythonIcon from "../components/icons/PythonIcon.astro";
 import ReactIcon from "../components/icons/ReactIcon.astro";
 import RedisIcon from "../components/icons/RedisIcon.astro";
 import RESTIcon from "../components/icons/RESTIcon.astro";
@@ -26,20 +34,12 @@ import TailwindIcon from "../components/icons/TailwindIcon.astro";
 import TypescriptIcon from "../components/icons/TypescriptIcon.astro";
 import Layout from "../layouts/Layout.astro";
 
-const navItems = [{
-    "title": "Volver",
-    "url": "/",
-    "label": "return",
-    "svg": "<svg class=\"w-5\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"#ffffff\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\"/>\n  <path d=\"M9 14l-4 -4l4 -4\" />\n  <path d=\"M5 10h11a4 4 0 1 1 0 8h-1\" />\n</svg>",
-    "last": true,
-    "first": false
-}]
+const navItems = []
 ---
 
 <Layout title="Porfolio de Joaquin G." navItems={navItems} indexed={false} header={false}>
-
-    <section class="font-serif text-white">
-        <div >
+    <section class="font-serif text-white flex flex-col items-center justify-center">
+        <div>
             <h1 class="text-4xl font-bold text-center mb-2">Global</h1>
             <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
                 <GitIcon />
@@ -49,8 +49,8 @@ const navItems = [{
                 <JWTIcon />
             </div>
         </div>
-        <div class="grid grid-cols-3 gap-5 mt-5">
-            <div class="flex flex-col gap-5 justify-center items-center border-l-2 h-full border-white">
+        <div class="lg:grid lg:grid-cols-3 flex flex-col gap-5 mt-5 lg:mt-7">
+            <div class="flex flex-col gap-5 justify-center items-center border-white">
                 <h1 class="text-4xl font-bold text-center my-2">Desarrollo Web</h1>
                 <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
                     <ReactIcon />
@@ -65,6 +65,7 @@ const navItems = [{
                     <SpringIcon />
                     <GolangIcon/>
                     <NodeJsIcon />
+                    <KotlinIcon />
                     
                     <MongoIcon/>
                     <RedisIcon />
@@ -75,32 +76,37 @@ const navItems = [{
     
             </div>
             
-            <div class="flex flex-col gap-5 justify-start items-center border-l-2 border-r-2 h-full border-white">
+            <div class="flex flex-col gap-5 justify-start items-center h-full border-white">
                 <h1 class="text-4xl font-bold text-center my-2">DevOps</h1>
                 <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
                     <BashIcon />
                     <LinuxIcon />
                     <DockerIcon />
-                    <!-- TODO: Agregar los siguientes iconos
                     <AWSIcon />
                     <GCPIcon />
                     <AzureIcon />
-                    -->
+                    <CloudflareIcon />
                 </div>
             </div>
 
-            <div class="flex flex-col gap-5 justify-start items-center border-r-2 h-full border-white">
+            <div class="flex flex-col gap-5 justify-start items-center border-white">
                 <h1 class="text-4xl font-bold text-center my-2">Ciencia de Datos</h1>
                 <div class="flex gap-5 flex-wrap flex-row items-center justify-center">
-                    <!-- TODO: Agregar los siguientes iconos
                     <PythonIcon />
-                    <MachineLearningIcon />
-                    <DataScienceIcon /> 
-                    -->
+                    <MLIcon />
+                    <DSIcon />
                     <MongoIcon/>
                     <SQLIcon />
                 </div> 
             </div>
         </div>
+        
+        <a href="/#about-me" class="flex flex-row justify-center items-center mt-10 hover:drop-shadow-[0_0_5px_rgba(235,139,60,1)] transition-all duration-300">
+            <p class="text-white text-lg font-serif text-center">Volver</p>
+            <svg class="w-5" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+            </svg>
+        </a>
     </section>
 </Layout>

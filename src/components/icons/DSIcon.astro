@@ -1,0 +1,37 @@
+<div class="flex flex-col justify-center items-center ml-icon">
+    <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M12 3l9.5 7l-3.5 11h-12l-3.5 -11z" />
+        <path d="M12 7.5l5.5 4l-2.5 5.5h-6.5l-2 -5.5z" />
+        <path d="M2.5 10l9.5 3l9.5 -3" />
+        <path d="M12 3v10l6 8" />
+        <path d="M6 21l6 -8" />
+    </svg>
+    <span class="text-xs">Data</span>
+    <span class="text-xs">Science</span>
+</div>
+
+<style>
+    .ml-icon {
+        filter: drop-shadow(0 0 5px #0051ff); 
+        transition: color 0.3s;
+    }
+
+    .ml-icon:hover {
+        @apply
+        after:rounded-md
+        after:transition-transform
+        after:animate-fade
+        after:animate-duration-500
+        after:absolute
+        after:-inset-0
+        after:p-4
+        after:bg-[#11192C]
+        after:blur-md
+        after:-z-50;
+    }
+
+    .ml-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#0036ac];
+    }
+</style>

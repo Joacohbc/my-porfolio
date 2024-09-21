@@ -15,7 +15,7 @@ import LinuxIcon from '../components/icons/LinuxIcon.astro'
 import SalesforceIcon from '../components/icons/SalesforceIcon.astro'
 ---
 
-<div class="font-serif flex flex-col justify-center items-center">
+<div class="font-serif flex flex-col justify-center items-center gap-3">
     <div class="text-white flex gap-5 flex-wrap flex-row items-center justify-center mt-5">
         <ReactIcon />
         <TailwindIcon />
@@ -31,5 +31,10 @@ import SalesforceIcon from '../components/icons/SalesforceIcon.astro'
         <LinuxIcon />
         <SalesforceIcon />
     </div>
-    <a href="/skills" class="text-center text-white font-bold text-lg mx-auto mt-3 hover:underline">Ver más</a>
+    <a href="/skills"  class="hover:drop-shadow-[0_0_5px_rgba(60,162,235,1)]">
+        <svg class="w-10 stroke-white" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 11l8 3l8 -3" />
+        </svg>
+    </a>
 </div>
