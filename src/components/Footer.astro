@@ -10,7 +10,7 @@
 </footer>
 
 <script>
-    if (location.hostname === 'test.joaquingenova.dev' || location.hostname === 'localhost') {
+    if (location.hostname !== 'joaquingenova.dev') { 
         const a = document.querySelector('footer a') as HTMLAnchorElement;
         a.href = 'https://joaquingenova.dev';
         a.textContent = '¿Quieres ver la versión final? (Production Enviroment)';
