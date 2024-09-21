@@ -97,6 +97,32 @@ import MicroserviceIcon from '../components/icons/MicroserviceIcon.astro'
             </div>
         </ProjectsCard>
 
+        <article class="flex flex-col gap-3 items-center san-valetin-page">
+            <a href="https://joacohbc.github.io/yxj-valentines-day/" target="_blank">
+                <div class="flex flex-col gap-2 justify-center items-start mb-5">
+                    <h2 class="text-2xl font-bold text-white">San Valetin Page</h2>
+                    <p class="text-white mb-3 text-left">Un pequeño minijuego para descongelar el frío corazón de mi Crush. Tengo 8 Vidas, 8 NO's y un único SÍ, pero mucho
+                        mucho rosa, gatitos y corazones.</p>
+                </div>
+                <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
+                    <ReactIcon />
+                    <TailwindIcon/>
+                </div>
+            </a>
+        </article>
+
+        <ProjectsCard title='E-Commerce con Microservicios' link='https://github.com/Joacohbc/ecommerce-microservices'>
+            <p slot="description" class="text-white text-left">Proyecto E-commerce es un sistema con el objetivo de ser escalable y flexible para poder manejar un gran tráfico 
+                y transacciones. Actualmente está en desarrollo.</p>
+            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
+                <JavaIcon />
+                <SpringIcon />
+                <MongoIcon />
+                <SQLIcon />
+                <JWTIcon />
+            </div>
+        </ProjectsCard>
+
         <ProjectsCard title='Goto' link='https://github.com/Joacohbc/goto'>
             <p slot="description" class="text-white text-left">Goto es un "Gestor de rutas" para CLI que permite gestionar rutas con identificadores (abreviatura o índice). 
                 Usando en conjunto con comando <span class="italic font-mono">cd</span> amplia mucho las capacidad para moverse entre directorios vía CLI.</p>
@@ -117,34 +143,7 @@ import MicroserviceIcon from '../components/icons/MicroserviceIcon.astro'
             </div>
         </ProjectsCard>
 
-        <article class="flex flex-col gap-3 items-center san-valetin-page">
-            <a href="https://joacohbc.github.io/yxj-valentines-day/" target="_blank">
-                <div class="flex flex-col gap-2 justify-center items-start mb-5">
-                    <h2 class="text-2xl font-bold text-white">San Valetin Page</h2>
-                    <p class="text-white mb-3 text-left">Un pequeño minijuego para descongelar el frío corazón de mi Crush. Tengo 8 Vidas, 8 NO's y un único SÍ, pero mucho
-                        mucho rosa, gatitos y corazones.</p>
-                </div>
-                <div class="flex flex-wrap flex-row text-white gap-3 justify-center">
-                    <ReactIcon />
-                    <TailwindIcon/>
-                </div>
-            </a>
-        </article>
-
-        <ProjectsCard title='E-Commerce con Microservicios' link='https://github.com/Joacohbc/ecommerce-microservices'>
-            <p slot="description" class="text-white text-left">Proyecto E-commerce es un sistema con el objetivo de ser escalable y flexible para poder manejar un gran tráfico 
-                y transacciones. La arquitectura de microservicios permitirá dividir el sistema como gestión de productos, pedidos, usuarios y pago, etc. 
-                Actualmente está en desarrollo.</p>
-            <div slot="icons" class="flex flex-wrap flex-row text-white gap-3 justify-center">
-                <JavaIcon />
-                <SpringIcon />
-                <MongoIcon />
-                <SQLIcon />
-                <JWTIcon />
-            </div>
-        </ProjectsCard>
-
-        <div class="w-full  col-span-1 lg:col-span-2">
+        <div class="w-full col-span-1 lg:col-span-2">
             <ProjectsCard title='Mis Investigaciones' link='https://drive.google.com/drive/folders/1OVfK1MvDmOj1bDdDm904ZwSkeglmxhTd?usp=sharing'>
                 <p slot="description" class="text-white text-left">
                     En este link encontrarás mis propias investigaciones, cheatsheets y resúmenes que he creado para mi propio aprendizaje y para el que los neceiste. 
