@@ -1,23 +1,19 @@
-<div class="flex flex-col justify-center items-center ml-icon">
+<div class="flex flex-col justify-center items-center ds-icon">
     <svg class="w-12 md:w-10" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M12 3l9.5 7l-3.5 11h-12l-3.5 -11z" />
-        <path d="M12 7.5l5.5 4l-2.5 5.5h-6.5l-2 -5.5z" />
-        <path d="M2.5 10l9.5 3l9.5 -3" />
-        <path d="M12 3v10l6 8" />
-        <path d="M6 21l6 -8" />
-    </svg>
+        <path d="M10 3.2a9 9 0 1 0 10.8 10.8a1 1 0 0 0 -1 -1h-6.8a2 2 0 0 1 -2 -2v-7a.9 .9 0 0 0 -1 -.8" />
+        <path d="M15 3.5a9 9 0 0 1 5.5 5.5h-4.5a1 1 0 0 1 -1 -1v-4.5" />
+    </svg> 
     <span class="text-xs">Data</span>
     <span class="text-xs">Science</span>
 </div>
 
 <style>
-    .ml-icon {
+    .ds-icon {
         filter: drop-shadow(0 0 5px #0051ff); 
         transition: color 0.3s;
     }
 
-    .ml-icon:hover {
+    .ds-icon:hover {
         @apply
         after:rounded-md
         after:transition-transform
@@ -31,7 +27,15 @@
         after:-z-50;
     }
 
-    .ml-icon:hover > svg { 
-        @apply animate-wiggle-more animate-once animate-ease-linear stroke-[#0036ac];
+    .ds-icon:hover > svg { 
+        @apply animate-wiggle-more animate-once animate-ease-linear;
+    }
+
+    .ds-icon:hover > svg > path:first-child {
+        @apply stroke-[#0051ff] fill-[#0051ff];
+    }
+
+    .ds-icon:hover > svg > path:last-child {
+        @apply stroke-[#0051ff] fill-[#0051ff];
     }
 </style>
