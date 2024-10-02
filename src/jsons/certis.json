@@ -35,6 +35,13 @@
         "group": "Devops"
     },
     {
+        "title": "Google Cloud Computing Foundations",
+        "imageUrl": "/images/certis/google-cloud-computing-foundations-certificate-me.png",
+        "smallUrl": "/images/certis/google-cloud-computing-foundations-certificate-me.webp",
+        "skills": ["Cloud Computing", "Google Cloud Platform (GCP)", "Deployments"],
+        "group": "Devops"
+    },
+    {
         "title": "Python for Data Science",
         "imageUrl": "/images/certis/PY0101EN_Python_Basics_for_Data_Sciences.png",
         "smallUrl": "/images/certis/PY0101EN_Python_Basics_for_Data_Science.webp",
