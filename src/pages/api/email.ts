@@ -5,15 +5,11 @@ import type { APIContext } from "astro";
 
 const turnstileURL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-export const POST: APIRoute = async ({ request }: APIContext) => {
-    const body = await request.json()
-    const token = body.token;
-    const ip = request.headers.get('CF-Connecting-IP');
-
+const turnstileRequest = async (secret: string, token: string, ip: string) => {
     const id = crypto.randomUUID();
-    const firstResult = await fetch(turnstileURL, {
+    return await fetch(turnstileURL, {
         body: JSON.stringify({
-            secret: import.meta.env.TURNSTILE_SECRET_TOKEN,
+            secret: secret,
             response: token,
             remoteip: ip,
             idempotency_key: id
@@ -23,25 +19,35 @@ export const POST: APIRoute = async ({ request }: APIContext) => {
             'Content-Type': 'application/json'
         }
     });
+};
+
+export const POST: APIRoute = async ({ request }: APIContext) => {
+    const body = await request.json()
+    const token = body.token;
+    const ip = request.headers.get('CF-Connecting-IP');
+    const validResponse = new Response(JSON.stringify({
+        message: "Error",
+        response: {
+            message: "Error verifying you are human, please try again"
+        }
+    }));
 
     try {
-        const firstOutcome = await firstResult.json();
-        return new Response(
-            JSON.stringify({
-                message: "Success",
-                response: {
-                    email: import.meta.env.EMAIL
-                }
-            })
-        )
+        const firstResult = await turnstileRequest(import.meta.env.TURNSTILE_SECRET_TOKEN, token, ip);
+        await firstResult.json();
+        return validResponse;
     } catch(e) {
-        return new Response(
-            JSON.stringify({
+        try {
+            const secondResult = await turnstileRequest(import.meta.env.TURNSTILE_VISIBLE_SECRET_TOKEN, token, ip);
+            await secondResult.json()
+            return validResponse;
+        } catch (e) {
+            return new Response(JSON.stringify({
                 message: "Error",
                 response: {
                     message: "Error verifying you are human, please try again"
                 }
-            })
-        )
+            }));
+        }
     }
 };

@@ -7,7 +7,7 @@
             <path d="M2 12l5 5m5 -5l5 -5" />
         </svg>
     </div>
-    <div id="copy-my-email"/>
+    <div id="cf-turnstile-for-copy-email"/>
 </div>
 
 <div class="flex flex-row gap-2 mb-5">
@@ -35,6 +35,7 @@
 </div>
 
 <div class="hidden" id="cf-site-key" data-cf-site-id={import.meta.env.TURNSTILE_SITE_KEY}/>
+<div class="hidden" id="cf-site-key-visible" data-cf-site-id={import.meta.env.TURNSTILE_VISIBLE_SITE_KEY}/>
 
 <script>
     const container = document.querySelector('.email-info-container');
@@ -78,16 +79,45 @@
                 
                 emailIcon.addEventListener('click', copyEmail);
             } catch (error) {
-                emailText.innerHTML = 'Error al validar su identidad...';
+                emailText.innerHTML = 'Error al obtener el correo electrónico...';
                 emailText.classList.add('italic');
                 emailText.classList.remove('animate-pulse', 'animate-infinite');
             }
+
+            // Remove the cloudflare turnstile element
+            document.getElementById('cf-turnstile-for-copy-email').remove();
         };
 
         turnstile.ready(function () {
-            turnstile.render("#copy-my-email", {
+            const defaultCallbacks = {
+                "unsupported-callback": () => {
+                    emailText.innerHTML = 'Su navegador no es compatible con este servicio...';
+                    emailText.classList.add('italic');
+                    emailText.classList.remove('animate-pulse', 'animate-infinite');
+                },
+                "expired-callback": () => {
+                    emailText.innerHTML = 'El token de seguridad ha expirado...';
+                    emailText.classList.add('italic');
+                    emailText.classList.remove('animate-pulse', 'animate-infinite');
+                }
+            }
+
+            turnstile.render("#cf-turnstile-for-copy-email", {
                 sitekey: (document.querySelector('#cf-site-key') as HTMLElement).dataset.cfSiteId,
                 callback: loadEmail,
+                "error-callback": () => {
+                    turnstile.render("#cf-turnstile-for-copy-email", {
+                        sitekey: (document.querySelector('#cf-site-key-visible') as HTMLElement).dataset.cfSiteId,
+                        callback: loadEmail,
+                        "error-callback": () => {
+                            emailText.innerHTML = 'Error al validar su identidad...';
+                            emailText.classList.add('italic');
+                            emailText.classList.remove('animate-pulse', 'animate-infinite');  
+                        },
+                        ...defaultCallbacks
+                    });
+                },
+                ...defaultCallbacks
             });
         });
     })
