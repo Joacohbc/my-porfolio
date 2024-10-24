@@ -1,6 +1,5 @@
 ---
 import Header from "../components/Header.astro";
-import SpeadInsights from "@vercel/speed-insights/astro";
 import HeaderNav from "../components/HeaderNav.astro";
 import { ViewTransitions } from 'astro:transitions';
 
@@ -9,13 +8,15 @@ interface Props {
 	header: boolean;
 	indexed: boolean;
 	navItems: NavItem[];
+	cfCaptcha?: boolean;
 }
 
 const {
 	title,
 	header,
 	indexed,
-	navItems
+	navItems,
+	cfCaptcha
 } = Astro.props;
 ---
 
@@ -64,7 +65,7 @@ const {
 		<!-- <meta name="twitter:image" content=""> -->
 
 		<meta name="generator" content={Astro.generator} />
-
+		{ cfCaptcha && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script> }
 		<ViewTransitions/>
 	</head>
 	<body class="">
@@ -74,7 +75,6 @@ const {
 			<slot />
 		</div>
 		<div class="noisy"></div>
-		<SpeadInsights />
 	</body>
 </html>
 

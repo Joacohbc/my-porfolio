@@ -1,13 +1,15 @@
 <div class="mb-3 mt-1">
-    <div class="flex flex-row items-center gap-1 email-text">
-        <span class="text-white">joaquingenovag8@gmail.com</span>
+    <div class="flex flex-row items-center justify-center gap-1 email-info-container">
+        <span class="text-white email-text animate-pulse animate-infinite">Validando...</span>
         <svg class="w-5 hidden" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round" id="copy-icon">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M7 12l5 5l10 -10" />
             <path d="M2 12l5 5m5 -5l5 -5" />
         </svg>
     </div>
+    <div id="copy-my-email"/>
 </div>
+
 <div class="flex flex-row gap-2 mb-5">
     <a href="https://www.linkedin.com/in/joaqu%C3%ADn-g%C3%A9nova-a4011022a/" title="Mi Linkedin" target="_blank">
         <svg class="w-10 linkedin-icon" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -32,25 +34,63 @@
     </svg>
 </div>
 
+<div class="hidden" id="cf-site-key" data-cf-site-id={import.meta.env.TURNSTILE_SITE_KEY}/>
+
 <script>
-    const ele = document.querySelector('.email-text');
-    const copyicon = document.getElementById('copy-icon');
+    const container = document.querySelector('.email-info-container');
+    const emailText = document.querySelector(".email-text");
+    const emailIcon = document.querySelector('.email-icon');
+    const copyIcon = document.getElementById('copy-icon');
 
-    const copyEmail = () => {
-        navigator.clipboard.writeText('joaquingenovag8@gmail.com')
-        .then(() => {
-            ele?.classList.remove('email-text');
-            copyicon?.classList.remove('hidden');
+    const copyEmail = async (token) => {
+        try {
+            await navigator.clipboard.writeText(document.querySelector(".email-text").innerHTML);
+            copyIcon?.classList.remove('hidden');
             setTimeout(() => {
-                copyicon?.classList.add('hidden');
-                ele?.classList.add('email-icon');
+                copyIcon?.classList.add('hidden');
             }, 1500);
-        })
-        .catch(() => alert('Error copying email to clipboard: joaquingenovag8@gmail.com'));
-    };
 
-    ele?.addEventListener('click', copyEmail);
-    document.querySelector('.email-icon')?.addEventListener('click', copyEmail);
+        } catch (error) {
+            alert('Error al copiar el correo electrónico a su portapapeles, intente copiarlo manualmente')
+            console.log(error);
+        }
+    }
+
+    document.addEventListener('astro:page-load', () => {
+        const loadEmail = async (token) => {
+            const getEmail = await fetch('/api/email', {
+                body: JSON.stringify({
+                    token: token
+                }),
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            try {
+                const resp = await getEmail.json();
+                emailText.innerHTML = resp.response.email;
+                emailText.classList.remove('animate-pulse', 'animate-infinite');
+                
+                container.addEventListener('click', copyEmail);
+                container.classList.add('email-copy-text');
+                
+                emailIcon.addEventListener('click', copyEmail);
+            } catch (error) {
+                emailText.innerHTML = 'Error al validar su identidad...';
+                emailText.classList.add('italic');
+                emailText.classList.remove('animate-pulse', 'animate-infinite');
+            }
+        };
+
+        turnstile.ready(function () {
+            turnstile.render("#copy-my-email", {
+                sitekey: (document.querySelector('#cf-site-key') as HTMLElement).dataset.cfSiteId,
+                callback: loadEmail,
+            });
+        });
+    })
 </script>
 
 <style>
@@ -72,16 +112,18 @@
         transition: color 0.3s;
     }
 
-    .email-text {
+    .email-copy-text {
         cursor: pointer;
         transition: all 0.3s;
     }
 
-    .email-text:hover::after {
+    .email-copy-text:hover::after {
         cursor: pointer;
         display: inline;
         content: '(Copy)';
         font-size: small;
         color: white;
+        pointer-events: none;
     }
+
 </style>
