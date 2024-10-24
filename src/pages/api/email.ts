@@ -28,7 +28,7 @@ export const POST: APIRoute = async ({ request }: APIContext) => {
     const validResponse = new Response(JSON.stringify({
         message: "Error",
         response: {
-            message: "Error verifying you are human, please try again"
+            email: import.meta.env.EMAIL
         }
     }));
 
