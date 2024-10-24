@@ -38,26 +38,27 @@
 <div class="hidden" id="cf-site-key-visible" data-cf-site-id={import.meta.env.TURNSTILE_VISIBLE_SITE_KEY}/>
 
 <script>
-    const container = document.querySelector('.email-info-container');
-    const emailText = document.querySelector(".email-text");
-    const emailIcon = document.querySelector('.email-icon');
-    const copyIcon = document.getElementById('copy-icon');
-
-    const copyEmail = async (token) => {
-        try {
-            await navigator.clipboard.writeText(document.querySelector(".email-text").innerHTML);
-            copyIcon?.classList.remove('hidden');
-            setTimeout(() => {
-                copyIcon?.classList.add('hidden');
-            }, 1500);
-
-        } catch (error) {
-            alert('Error al copiar el correo electrónico a su portapapeles, intente copiarlo manualmente')
-            console.log(error);
-        }
-    }
 
     document.addEventListener('astro:page-load', () => {
+        const container = document.querySelector('.email-info-container');
+        const emailText = document.querySelector(".email-text");
+        const emailIcon = document.querySelector('.email-icon');
+        const copyIcon = document.getElementById('copy-icon');
+
+        const copyEmail = async (token) => {
+            try {
+                await navigator.clipboard.writeText(document.querySelector(".email-text").innerHTML);
+                copyIcon?.classList.remove('hidden');
+                setTimeout(() => {
+                    copyIcon?.classList.add('hidden');
+                }, 1500);
+
+            } catch (error) {
+                alert('Error al copiar el correo electrónico a su portapapeles, intente copiarlo manualmente')
+                console.log(error);
+            }
+        }
+
         const loadEmail = async (token) => {
             const getEmail = await fetch('/api/email', {
                 body: JSON.stringify({
@@ -71,6 +72,7 @@
 
             try {
                 const resp = await getEmail.json();
+                
                 emailText.innerHTML = resp.response.email;
                 emailText.classList.remove('animate-pulse', 'animate-infinite');
                 
