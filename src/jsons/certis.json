@@ -38,7 +38,14 @@
         "title": "Google Cloud Computing Foundations",
         "imageUrl": "/images/certis/google-cloud-computing-foundations-certificate-me.png",
         "smallUrl": "/images/certis/google-cloud-computing-foundations-certificate-me.webp",
-        "skills": ["Cloud Computing", "Google Cloud Platform (GCP)", "Deployments"],
+        "skills": ["Cloud Computing", "Google Cloud Platform (GCP)", "Functions, Compute Engine, Storage"],
+        "group": "Devops"
+    },
+    {
+        "title": "AWS Academy Cloud Foundations",
+        "imageUrl": "/images/certis/aws-academy-cloud-foundations-certificate-me.png",
+        "smallUrl": "/images/certis/aws-academy-cloud-foundations-certificate-me.webp",
+        "skills": ["Cloud Computing", "Amazon Web Services (AWS)", "EC2, S3, RDS, ECS, EKS, Lambda"],
         "group": "Devops"
     },
     {
