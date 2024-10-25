@@ -10,9 +10,10 @@
 </footer>
 
 <script>
-    if (location.hostname !== 'joaquingenova.dev') { 
+    document.addEventListener('astro:page-load', (e) => {
+        if (location.hostname === 'joaquingenova.dev') return;
         const a = document.querySelector('footer a') as HTMLAnchorElement;
         a.href = 'https://joaquingenova.dev';
         a.textContent = '¿Quieres ver la versión final? (Production Enviroment)';
-    }
+    });
 </script>
