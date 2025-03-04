@@ -4,14 +4,21 @@
         "imageUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png",
         "smallUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.webp",
         "skills": ["Apex & Triggers", "Lightning Web Component", "Flows & Declarative Tools"],
-        "group": "Programming"
+        "group": "Salesforce"
     },
     {
         "title": "JavaScript Developer I",
         "imageUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png",
         "smallUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.webp",
         "skills": ["Objects & Arrays", "DOM & Events", "Node.js"],
-        "group": "Programming"
+        "group": "Salesforce"
+    },
+    {
+        "title": "Sharing and Visibility Architect",
+        "imageUrl": "/images/certis/Cert5819580_SharingandVisibilityArchitect_20250226-1.png",
+        "smallUrl": "/images/certis/Cert5819580_SharingandVisibilityArchitect_20250226-1.webp",
+        "skills": ["Internal & Community Sharing", "Visibility Optimization", "Large Data Management"],
+        "group": "Salesforce"
     },
     {
         "title": "Microservicios con Spring Boot y Spring Cloud",
@@ -25,14 +32,14 @@
         "imageUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.png",
         "smallUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.webp",
         "skills": ["Kubernetes Architecture", "Container Orchestration", "Deploying Applications"],
-        "group": "Devops"
+        "group": "Programming"
     },
     {
         "title": "Introduction to Jenkins",
         "imageUrl": "/images/certis/LFS167x_Introduction_to_Jenkins.png",
         "smallUrl": "/images/certis/LFS167x_Introduction_to_Jenkins.webp",
         "skills": ["Continuous Integration", "Continuous Deployment", "Build Automation"],
-        "group": "Devops"
+        "group": "Programming"
     },
     {
         "title": "Google Cloud Computing Foundations",
