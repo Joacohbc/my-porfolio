@@ -105,11 +105,11 @@
             }
 
             turnstile.render("#cf-turnstile-for-copy-email", {
-                sitekey: (document.querySelector('#cf-site-key') as HTMLElement).dataset.cfSiteId,
+                sitekey: (document.querySelector('#cf-site-key') as HTMLElement)?.dataset?.cfSiteId,
                 callback: loadEmail,
                 "error-callback": () => {
                     turnstile.render("#cf-turnstile-for-copy-email", {
-                        sitekey: (document.querySelector('#cf-site-key-visible') as HTMLElement).dataset.cfSiteId,
+                        sitekey: (document.querySelector('#cf-site-key-visible') as HTMLElement)?.dataset?.cfSiteId,
                         callback: loadEmail,
                         "error-callback": () => {
                             emailText.innerHTML = 'Error al validar su identidad...';
