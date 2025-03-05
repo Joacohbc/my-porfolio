@@ -32,7 +32,7 @@ const gridClasses = {
 
     <!-- TODO: Optimizar todas las imagenes y que sean mas chicas -->
     <!-- TODO: El Carousel deberia ser componetizado y las imagenes cargadas de un JSON con la informacion necesaria -->
-    <div id="certification-modal" 
+    <div id="certification-modal" role="dialog" aria-label="Certification Modal" 
         tabindex="-1" 
         aria-hidden="true" 
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm">
@@ -47,7 +47,7 @@ const gridClasses = {
  <!-- BIG SCREENs -->
  <div class="flex flex-row gap-2 justify-center items-center text-3xl font-bold text-center mb-4 text-white">
     <h1 class="text-4xl font-bold text-center">Certificaciones</h1>
-    <svg class="w-12" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg aria-hidden="true" class="w-12" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M19.496 13.983l1.966 3.406a1.001 1.001 0 0 1 -.705 1.488l-.113 .011l-.112 -.001l-2.933 -.19l-1.303 2.636a1.001 1.001 0 0 1 -1.608 .26l-.082 -.094l-.072 -.11l-1.968 -3.407a8.994 8.994 0 0 0 6.93 -3.999z" stroke-width="0" fill="currentColor" />
         <path d="M11.43 17.982l-1.966 3.408a1.001 1.001 0 0 1 -1.622 .157l-.076 -.1l-.064 -.114l-1.304 -2.635l-2.931 .19a1.001 1.001 0 0 1 -1.022 -1.29l.04 -.107l.05 -.1l1.968 -3.409a8.994 8.994 0 0 0 6.927 4.001z" stroke-width="0" fill="currentColor" />
@@ -78,15 +78,15 @@ const gridClasses = {
 <div class="lg:hidden">
     <div class="flex flex-col justify-center items-center gap-2 mt-2">
         <div class="flex flex-row justify-center items-center mb-2">
-            <button class="carousel-prev">
-                <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <button aria-label="Previous certification" class="carousel-prev">
+                <svg aria-hidden="true" class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M15 6l-6 6l6 6" />
                 </svg>
             </button>
             <span class="carousel-counter text-white text-center">1 / {certifications.length}</span>
-            <button class="carousel-next">
-                <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <button aria-label="Next certification" class="carousel-next">
+                <svg aria-hidden="true" class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M9 6l6 6l-6 6" />
                 </svg>
@@ -102,15 +102,15 @@ const gridClasses = {
             ))}
         </div>
         <div class="flex flex-row justify-center items-center mt-2">
-            <button class="carousel-prev">
-                <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <button aria-label="Previous certification" class="carousel-prev">
+                <svg aria-hidden="true" class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M15 6l-6 6l6 6" />
                 </svg>
             </button>
             <span class="carousel-counter text-white text-center">1 / {certifications.length}</span>
-            <button class="carousel-next">
-                <svg class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <button aria-label="Next certification" class="carousel-next">
+                <svg aria-hidden="true" class="w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M9 6l6 6l-6 6" />
                 </svg>
