@@ -8,18 +8,14 @@ Soy **Desarrollador de Software**, orientado principalmente a las Full-Stack par
 
 **Mis áreas de interés incluyen:**
 
-* Desarrollo Front-End (JavaScript, React, Tailwind, Astro)
-* Desarrollo Back-End (Java EE, Spring Boot, Go/Golang)
-* Bases de Datos (SQL, NoSQL)
-* Ciencia de Datos / Data Science (Python, ML)
-* DevOps (Docker, Linux, Bash, AWS, GCP)
-* Salesforce (Apex, LWC, Standard Tools)
+* **Desarrollo Front-End** (JavaScript, React, Tailwind, Astro)
+* **Desarrollo Back-End** (Java EE, Spring Boot, Go/Golang)
+* **Bases de Datos** (SQL, NoSQL)
+* **Ciencia de Datos / Data Science** (Python, ML)
+* **DevOps** (Docker, Linux, Bash, AWS, GCP)
+* **Salesforce** (Apex, LWC, Standard Tools)
 
-**¡Conectemos!** ➡️ [LinkedIn](https://www.linkedin.com/in/joaqu%C3%ADn-g%C3%A9nova-a4011022a/)
-
-**¡Visita mi portfolio!** ➡️ [https://joaquingenova.dev](https://joaquingenova.dev)
-
-## TechSkill 🛠️
+## TechSkills 🛠️
 
 Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis proyectos.
 <div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
@@ -57,14 +53,21 @@ Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis p
     <img src="./readme-images/redis.svg" alt="Redis" width="50" height="50" />
 </div>
 
-**Estas son algunas de las tecnologías que domino:**
+## Cursos & Certificaciones 📜
 
-* **Lenguajes:** JavaScript, TypeScript, Java, Python, Apex
-* **Frameworks:** React, Astro, Spring Boot, Node.js
-* **Bases de datos:** MongoDB, MySQL, Salesforce
-* **Herramientas:** Git, Docker, Linux, Bash
-* **Cloud:** AWS, Google Cloud, Salesforce, Vercel, Cloudflare
+**Certificaciones y cursos que he completado:**
+
+* Salesforce Platform Developer I
+* Salesforce JavaScript Developer I
+* Salesforce Sharing and Visibility Architect
+* AWS Academy Cloud Foundations
+* Google Cloud Computing Foundations
+* Microservicios con Spring Boot y Spring Cloud
 
 ## ¡Gracias por visitar mi Portfolio! 🙏
 
 **Espero que te haya gustado.** 😊
+
+**¡Conectemos!** ➡️ [Mi LinkedIn](https://www.linkedin.com/in/joaqu%C3%ADn-g%C3%A9nova-a4011022a/)
+
+**¡Visita mi portfolio!** ➡️ [https://joaquingenova.dev](https://joaquingenova.dev)
