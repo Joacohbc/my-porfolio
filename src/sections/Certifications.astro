@@ -142,7 +142,6 @@ const gridClasses = {
     
     // Add event listener to all certification images
     document.querySelectorAll(".image-cert").forEach((imgElement) => {
-        console.log(imgElement);
         imgElement.addEventListener("click", () => openImage(modal, imgElement.getAttribute("data-src")));
     });
 
