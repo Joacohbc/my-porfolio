@@ -1,7 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import HeaderNav from "../components/HeaderNav.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -65,7 +65,7 @@ const {
 		<!-- <meta name="twitter:image" content=""> -->
 
 		<meta name="generator" content={Astro.generator} />
-		<ViewTransitions/>
+		<ClientRouter/>
 	</head>
 	<body class="">
 		{header && <Header/>}
