@@ -25,6 +25,7 @@ Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis p
     <img src="./readme-images/html5.svg" alt="HTML5" width="50" height="50" />
     <img src="./readme-images/typescript.svg" alt="TypeScript" width="50" height="50" />
     <img src="./readme-images/java.svg" alt="Java" width="50" height="50" />
+    <img src="./readme-images/golang.svg" alt="Golang" width="50" height="50" />
     <img src="./readme-images/python.svg" alt="Python" width="50" height="50" />
     <img src="./readme-images/bash_dark.svg" alt="Bash" width="50" height="50" />
 </div>
