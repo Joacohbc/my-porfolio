@@ -30,22 +30,18 @@ const gridClasses = {
 }
 ---
 
-    <!-- TODO: Optimizar todas las imagenes y que sean mas chicas -->
-    <!-- TODO: El Carousel deberia ser componetizado y las imagenes cargadas de un JSON con la informacion necesaria -->
-    <div id="certification-modal" role="dialog" aria-label="Certification Modal" 
-        tabindex="-1" 
-        aria-hidden="true" 
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm">
+<!-- Image Modal -->
+<div id="certification-modal" role="dialog" aria-label="Certification Modal" 
+    tabindex="-1" 
+    aria-hidden="true" 
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm">
+    
+    <div id='modal-content' class="flex justify-center items-center rounded-lg shadow-lg p-4 w-full h-full">
         
-        <div id='modal-content' class="flex justify-center items-center rounded-lg shadow-lg p-4 w-full h-full">
-            
-        </div>
     </div>
+</div>
 
-
-
- <!-- BIG SCREENs -->
- <div class="flex flex-row gap-2 justify-center items-center text-3xl font-bold text-center mb-4 text-white">
+<div class="flex flex-row gap-2 justify-center items-center text-3xl font-bold text-center mb-4 text-white">
     <h1 class="text-4xl font-bold text-center">Certificaciones</h1>
     <svg aria-hidden="true" class="w-12" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -61,6 +57,7 @@ const gridClasses = {
     Para ver más detalles, puedes visitar mi <a href="https://www.linkedin.com/in/joaqu%C3%ADn-g%C3%A9nova-a4011022a/details/certifications/" title="Mi LinkedIn" target="_blank" class="keywords">LinkedIn</a>.
 </p>
 
+<!-- BIG SCREENs -->
 <div class="max-lg:hidden flex flex-col items-center justify-center mb-10 gap-2">
     <div class="max-lg:hidden">
         { Object.keys(certificationsByType).map((group) => {
@@ -140,12 +137,14 @@ const gridClasses = {
 
     document.addEventListener('astro:page-load', () => {
         const modal = document.querySelector("#certification-modal");
-
+        console.log('Certifications Page Loaded');
+        
         // Add event listener to the modal
         document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
         
         // Add event listener to all certification images
         document.querySelectorAll(".image-cert").forEach((imgElement) => {
+            console.log(imgElement);
             imgElement.addEventListener("click", () => openImage(modal, imgElement.getAttribute("data-src")));
         });
 
