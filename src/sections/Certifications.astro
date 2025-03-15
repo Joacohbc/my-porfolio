@@ -138,8 +138,10 @@ const gridClasses = {
     } 
 
     document.addEventListener('astro:page-load', () => {
-        const modal = document.querySelector("#certification-modal");
         console.log('Certifications Page Loaded - astro:page-load');
+    });
+
+    const modal = document.querySelector("#certification-modal");
         
         // Add event listener to the modal
         document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
@@ -225,8 +227,6 @@ const gridClasses = {
         // Add event listeners to the buttons
         document.querySelectorAll(".carousel-next").forEach(e => e.addEventListener("click", nextImageCarousel));
         document.querySelectorAll(".carousel-prev").forEach(e => e.addEventListener("click", prevImageCarousel));
-    });
-
 </script>
 
 <style>
