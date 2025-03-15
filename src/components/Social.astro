@@ -46,8 +46,6 @@
 <script>
 
     document.addEventListener('astro:page-load', () => {
-        if(window.location.pathname !== '/') return;
-        
         const container = document.querySelector('.email-info-container');
         const emailText = document.querySelector(".email-text");
         const emailIcon = document.querySelector('.email-icon');
@@ -99,6 +97,8 @@
         };
 
         turnstile.ready(function () {
+            if (!document.querySelector("#cf-turnstile-for-copy-email")) return;
+
             const defaultCallbacks = {
                 "unsupported-callback": () => {
                     emailText.innerHTML = 'Su navegador no es compatible con este servicio...';
