@@ -37,6 +37,8 @@ const { navItems } = Astro.props;
 
 <script>
     document.addEventListener("astro:page-load", () => {
+        console.log("Astro page loaded - HeaderNav");
+    
         const sections = document.querySelectorAll("section");
         const navItems = document.querySelectorAll("div nav a");
 

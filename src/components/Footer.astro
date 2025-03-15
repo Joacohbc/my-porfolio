@@ -11,6 +11,7 @@
 
 <script>
     document.addEventListener('astro:page-load', (e) => {
+        console.log('Astro page loaded - Footer');
         if (location.hostname === 'joaquingenova.dev') return;
         const a = document.querySelector('footer a') as HTMLAnchorElement;
         a.href = 'https://joaquingenova.dev';

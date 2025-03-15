@@ -138,95 +138,95 @@ const gridClasses = {
     } 
 
     document.addEventListener('astro:page-load', () => {
-        console.log('Certifications Page Loaded - astro:page-load');
+        console.log('Astro page loaded - Certifications');
     });
 
     const modal = document.querySelector("#certification-modal");
         
-        // Add event listener to the modal
-        document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
-        
-        // Add event listener to all certification images
-        document.querySelectorAll(".image-cert").forEach((imgElement) => {
-            console.log(imgElement);
-            imgElement.addEventListener("click", () => openImage(modal, imgElement.getAttribute("data-src")));
-        });
+    // Add event listener to the modal
+    document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
+    
+    // Add event listener to all certification images
+    document.querySelectorAll(".image-cert").forEach((imgElement) => {
+        console.log(imgElement);
+        imgElement.addEventListener("click", () => openImage(modal, imgElement.getAttribute("data-src")));
+    });
 
-        // 
-        // Carousel for Small Screens
-        //        
-        const carousel = document.querySelector(".carousel");
-        const carouselItems = document.querySelectorAll(".carousel-item") as NodeListOf<HTMLImageElement>;
-        const counters = document.querySelectorAll(".carousel-counter");
-        let carouselCounter = 0;
-        
-        // Add event listener to all certification images
-        carouselItems.forEach((img) => {
-            img.querySelector("img").addEventListener("click", (img) => openImage(modal, (img.target as HTMLImageElement).src));
-        });
+    // 
+    // Carousel for Small Screens
+    //        
+    const carousel = document.querySelector(".carousel");
+    const carouselItems = document.querySelectorAll(".carousel-item") as NodeListOf<HTMLImageElement>;
+    const counters = document.querySelectorAll(".carousel-counter");
+    let carouselCounter = 0;
+    
+    // Add event listener to all certification images
+    carouselItems.forEach((img) => {
+        img.querySelector("img").addEventListener("click", (img) => openImage(modal, (img.target as HTMLImageElement).src));
+    });
 
-        // Show the first image
-        carouselItems[0].classList.remove("hidden");
-        
-        // Update the counter
-        const updateCounter = () => counters.forEach((counter) => counter.innerHTML = `${carouselCounter + 1} / ${carouselItems.length}`);
-        
-        const nextImageCarousel = () => {
-            carouselItems[carouselCounter].classList.add("hidden");
-            carouselCounter = (carouselCounter + 1) % carouselItems.length;
-            carouselItems[carouselCounter].classList.remove("hidden");
-            updateCounter();
+    // Show the first image
+    carouselItems[0].classList.remove("hidden");
+    
+    // Update the counter
+    const updateCounter = () => counters.forEach((counter) => counter.innerHTML = `${carouselCounter + 1} / ${carouselItems.length}`);
+    
+    const nextImageCarousel = () => {
+        carouselItems[carouselCounter].classList.add("hidden");
+        carouselCounter = (carouselCounter + 1) % carouselItems.length;
+        carouselItems[carouselCounter].classList.remove("hidden");
+        updateCounter();
+    }
+
+    const prevImageCarousel = () => {
+        carouselItems[carouselCounter].classList.add("hidden");
+        carouselCounter = (carouselCounter - 1 + carouselItems.length) % carouselItems.length;
+        carouselItems[carouselCounter].classList.remove("hidden");
+        updateCounter();
+    }
+
+    // Detect Swipe with Touch and Mouse
+    let xDown = null;
+    let yDown = null;
+
+    // Swipe Functions
+    const handleTouchStart = (evt) => {
+        if(!evt.touches) return;
+        xDown = evt.touches[0].clientX;
+        yDown = evt.touches[0].clientY;
+    };
+
+    const handleTouchMove = (evt) => {
+        if (!xDown || !yDown) {
+            return;
         }
 
-        const prevImageCarousel = () => {
-            carouselItems[carouselCounter].classList.add("hidden");
-            carouselCounter = (carouselCounter - 1 + carouselItems.length) % carouselItems.length;
-            carouselItems[carouselCounter].classList.remove("hidden");
-            updateCounter();
+        const xUp = evt.touches[0].clientX;
+        const yUp = evt.touches[0].clientY;
+
+        const xDiff = xDown - xUp;
+        const yDiff = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) {
+                nextImageCarousel();
+            } else {
+                prevImageCarousel();
+            }
         }
 
-        // Detect Swipe with Touch and Mouse
-        let xDown = null;
-        let yDown = null;
+        xDown = null;
+        yDown = null;
+    };
 
-        // Swipe Functions
-        const handleTouchStart = (evt) => {
-            if(!evt.touches) return;
-            xDown = evt.touches[0].clientX;
-            yDown = evt.touches[0].clientY;
-        };
-
-        const handleTouchMove = (evt) => {
-            if (!xDown || !yDown) {
-                return;
-            }
-
-            const xUp = evt.touches[0].clientX;
-            const yUp = evt.touches[0].clientY;
-
-            const xDiff = xDown - xUp;
-            const yDiff = yDown - yUp;
-
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                if (xDiff > 0) {
-                    nextImageCarousel();
-                } else {
-                    prevImageCarousel();
-                }
-            }
-
-            xDown = null;
-            yDown = null;
-        };
-
-        // Add event listeners
-        carousel.addEventListener("touchstart", handleTouchStart, false);
-        carousel.addEventListener("touchmove", handleTouchMove, false);
+    // Add event listeners
+    carousel.addEventListener("touchstart", handleTouchStart, false);
+    carousel.addEventListener("touchmove", handleTouchMove, false);
 
 
-        // Add event listeners to the buttons
-        document.querySelectorAll(".carousel-next").forEach(e => e.addEventListener("click", nextImageCarousel));
-        document.querySelectorAll(".carousel-prev").forEach(e => e.addEventListener("click", prevImageCarousel));
+    // Add event listeners to the buttons
+    document.querySelectorAll(".carousel-next").forEach(e => e.addEventListener("click", nextImageCarousel));
+    document.querySelectorAll(".carousel-prev").forEach(e => e.addEventListener("click", prevImageCarousel));
 </script>
 
 <style>
