@@ -118,6 +118,8 @@ const gridClasses = {
 
 
 <script>
+    console.log('Certifications Page Loaded - <script>');
+    
     // Open the image in a modal
     const openImage = (modal, url) => {
         if(!modal) return;
@@ -137,7 +139,7 @@ const gridClasses = {
 
     document.addEventListener('astro:page-load', () => {
         const modal = document.querySelector("#certification-modal");
-        console.log('Certifications Page Loaded');
+        console.log('Certifications Page Loaded - astro:page-load');
         
         // Add event listener to the modal
         document.querySelector("#certification-modal").addEventListener("click", () => modal.classList.add("hidden"));
