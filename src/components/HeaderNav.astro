@@ -68,7 +68,6 @@ const { navItems } = Astro.props;
 
                     // Get SVG Node and change color
                     (item.childNodes[3] as Element).setAttribute("stroke", "#eb8b3c");
-                    window.location.href = `#${maxVisibleSection.target.id}`;
                 } else {
                     item.classList.remove("current-section");
                     
