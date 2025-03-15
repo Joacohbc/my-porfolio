@@ -1,0 +1,158 @@
+---
+// Astro component frontmatter (empty in this case)
+---
+
+<!-- Container for the Three.js canvas, taking up the entire viewport -->
+<div class="flex flex-auto" id="container"/>
+
+<script>
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
+// Main Three.js sketch class that handles rendering and animation
+export default class Sketch {
+    /**
+     * Initialize the Three.js environment
+     * @param {Object} options - Configuration options
+     * @param {HTMLElement} options.domElement - DOM element to attach the canvas to
+     */
+    constructor(options){ 
+        // Store reference to container and get its dimensions
+        this.container = options.domElement
+        this.width = this.container.offsetWidth
+        this.height = this.container.offsetHeight
+
+        // Set up camera with perspective projection
+        this.camera = new THREE.PerspectiveCamera( 70, this.width / this.height, 0.01, 10 );
+        this.camera.position.z = 2; // Position camera away from origin
+
+        // Create a new scene to hold our 3D objects
+        this.scene = new THREE.Scene();
+
+        // Initialize WebGL renderer with antialiasing
+        this.renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+        this.renderer.setPixelRatio(2) // Force 2x pixel ratio for better quality
+
+        // Add the renderer's canvas to our container
+        this.container.appendChild(this.renderer.domElement)
+        
+        // Add orbit controls to allow camera rotation with mouse
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement )
+
+        // Initialize animation timer
+        this.time = 0
+        
+        // Set up the scene
+        this.resize() // Set initial dimensions
+        this.addObjects() // Add 3D objects
+        this.render() // Start render loop
+
+        // Set up event listeners
+        this.setupResize()
+    }
+
+    /**
+     * Handle resizing of the canvas when window size changes
+     */
+    resize(){
+        this.width = this.container.offsetWidth
+        this.height = this.container.offsetHeight
+        this.renderer.setSize( this.width, this.height )
+        this.camera.aspect = this.width/this.height
+        this.camera.updateProjectionMatrix() // Must be called after changing aspect
+    }
+
+    /**
+     * Set up window resize event listener
+     */
+    setupResize(){
+        window.addEventListener('resize', this.resize.bind(this))
+    }
+
+    /**
+     * Create and add 3D objects to the scene
+     */
+    addObjects(){
+        const heartShape = new THREE.Shape();
+        const scale = 0.1; // Factor de escala para controlar el tamaño
+        
+        function heartPoint(t) {
+            const tScaled = 2 * Math.PI * t; // Escala t para un ciclo completo (0 a 2π)
+            const tx = 16 * Math.pow(Math.sin(tScaled), 3);
+            const ty = 13 * Math.cos(tScaled) - 5 * Math.cos(2 * tScaled) - 2 * Math.cos(3 * tScaled) - Math.cos(4 * tScaled);
+            return { x: scale * tx, y: scale * ty }; // Aplica la escala
+        }
+
+        const steps = 100; // Número de segmentos para la curva (mayor = más suave)
+        const firstPoint = heartPoint(0);
+        heartShape.moveTo(firstPoint.x, firstPoint.y);
+
+        for (let i = 1; i <= steps; i++) {
+            const point = heartPoint(i / steps);
+            heartShape.lineTo(point.x, point.y);
+        }
+
+        // Extrude settings for 3D effect
+        const extrudeSettings = {
+            depth: 0.15,
+            bevelEnabled: true,
+            bevelThickness: 0.02,
+            bevelSize: 0.02,
+            bevelSegments: 3
+        };
+
+        // Create extruded geometry from the heart shape
+        this.geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+
+        // Create a material - using a red PhongMaterial for a shiny appearance
+        this.material = new THREE.MeshPhongMaterial({ 
+            color: 0xff0055,  // Red/pink heart color
+            shininess: 100,
+            flatShading: false 
+        });
+
+        // Create a mesh from the geometry and material
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        
+        // Scale and position the heart
+        this.mesh.scale.set(0.5, 0.5, 0.5);
+        this.mesh.rotation.x = -Math.PI / 2; // Rotate to face forward
+        
+        // Add to scene
+        this.scene.add(this.mesh);
+
+        // Add lighting to see the PhongMaterial properly
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(1, 1, 1);
+        this.scene.add(light);
+
+        // Add ambient light for better visibility
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        this.scene.add(ambientLight);
+    }
+
+// ...existing code...
+
+    /**
+     * Animation loop - updates object positions and renders each frame
+     */
+    render(){
+        this.time += 0.05 // Increment time counter
+        
+        // Rotate the mesh based on time
+        this.mesh.rotation.x = this.time / 2000;
+        this.mesh.rotation.y = this.time / 1000;
+
+        // Render the scene from the camera's perspective
+        this.renderer.render( this.scene, this.camera );
+        
+        // Request the next animation frame (creates a loop)
+        requestAnimationFrame(this.render.bind(this))
+    }
+}
+
+// Initialize the sketch with our container element
+new Sketch({
+    domElement: document.getElementById('container')
+})
+</script>
