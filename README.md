@@ -19,39 +19,39 @@ Soy **Desarrollador de Software**, orientado principalmente a las Full-Stack par
 
 Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis proyectos.
 <div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
-    <img src="./readme-images/javascript.svg" alt="JavaScript" width="50" height="50" />
-    <img src="./readme-images/nodejs.svg" alt="JavaScript" width="50" height="50" />
-    <img src="./readme-images/css_old.svg" alt="CSS3" width="50" height="50" />
-    <img src="./readme-images/html5.svg" alt="HTML5" width="50" height="50" />
-    <img src="./readme-images/typescript.svg" alt="TypeScript" width="50" height="50" />
-    <img src="./readme-images/java.svg" alt="Java" width="50" height="50" />
-    <img src="./readme-images/golang.svg" alt="Golang" width="50" height="50" />
-    <img src="./readme-images/python.svg" alt="Python" width="50" height="50" />
-    <img src="./readme-images/bash_dark.svg" alt="Bash" width="50" height="50" />
+    <img src="./public/svgs/javascript.svg" alt="JavaScript" width="50" height="50" />
+    <img src="./public/svgs/nodejs.svg" alt="JavaScript" width="50" height="50" />
+    <img src="./public/svgs/css_old.svg" alt="CSS3" width="50" height="50" />
+    <img src="./public/svgs/html5.svg" alt="HTML5" width="50" height="50" />
+    <img src="./public/svgs/typescript.svg" alt="TypeScript" width="50" height="50" />
+    <img src="./public/svgs/java.svg" alt="Java" width="50" height="50" />
+    <img src="./public/svgs/golang.svg" alt="Golang" width="50" height="50" />
+    <img src="./public/svgs/python.svg" alt="Python" width="50" height="50" />
+    <img src="./public/svgs/bash_dark.svg" alt="Bash" width="50" height="50" />
 </div>
 
 <div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
-    <img src="./readme-images/react_dark.svg" alt="React" width="50" height="50" />
-    <img src="./readme-images/tailwindcss.svg" alt="Node.js" width="50" height="50" />
-    <img src="./readme-images/astro_dark.svg" alt="Astro" width="50" height="50" />
-    <img src="./readme-images/spring.svg" alt="Spring Boot" width="50" height="50" />
+    <img src="./public/svgs/react_dark.svg" alt="React" width="50" height="50" />
+    <img src="./public/svgs/tailwindcss.svg" alt="Node.js" width="50" height="50" />
+    <img src="./public/svgs/astro_dark.svg" alt="Astro" width="50" height="50" />
+    <img src="./public/svgs/spring.svg" alt="Spring Boot" width="50" height="50" />
 </div>
 
 <div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
-    <img src="./readme-images/git.svg" alt="Git" width="50" height="50" />
-    <img src="./readme-images/linux.svg" alt="Linux" width="50" height="50" />
-    <img src="./readme-images/docker.svg" alt="Docker" width="50" height="50" />
-    <img src="./readme-images/aws_dark.svg" alt="AWS" width="50" height="50" />
-    <img src="./readme-images/google.svg" alt="Google Cloud" width="50" height="50" />
-    <img src="./readme-images/salesforce.svg" alt="Salesforce" width="50" height="50" />
-    <img src="./readme-images/cloudflare.svg" alt="Cloudflare" width="50" height="50" />
-    <img src="./readme-images/vercel_dark.svg" alt="Vercel" width="50" height="50" />
+    <img src="./public/svgs/git.svg" alt="Git" width="50" height="50" />
+    <img src="./public/svgs/linux.svg" alt="Linux" width="50" height="50" />
+    <img src="./public/svgs/docker.svg" alt="Docker" width="50" height="50" />
+    <img src="./public/svgs/aws_dark.svg" alt="AWS" width="50" height="50" />
+    <img src="./public/svgs/google.svg" alt="Google Cloud" width="50" height="50" />
+    <img src="./public/svgs/salesforce.svg" alt="Salesforce" width="50" height="50" />
+    <img src="./public/svgs/cloudflare.svg" alt="Cloudflare" width="50" height="50" />
+    <img src="./public/svgs/vercel_dark.svg" alt="Vercel" width="50" height="50" />
 </div>
 
 <div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
-    <img src="./readme-images/mongodb.svg" alt="MongoDB" width="50" height="50" />
-    <img src="./readme-images/mysql.svg" alt="MySQL" width="50" height="50" />
-    <img src="./readme-images/redis.svg" alt="Redis" width="50" height="50" />
+    <img src="./public/svgs/mongodb.svg" alt="MongoDB" width="50" height="50" />
+    <img src="./public/svgs/mysql.svg" alt="MySQL" width="50" height="50" />
+    <img src="./public/svgs/redis.svg" alt="Redis" width="50" height="50" />
 </div>
 
 ## Cursos & Certificaciones 📜
