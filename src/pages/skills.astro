@@ -122,20 +122,16 @@ const navItems = []
 </Layout>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
-        console.log('Astro page loaded - Skills');
-        
-        const disableIcons = document.querySelectorAll('.disabled-icon');
-        disableIcons.forEach(icon => {
-            let id;
-            icon.addEventListener('click', () => {
-                clearTimeout(id);
-                const toast = document.querySelector('#in-progress-toast');
-                toast.classList.remove('hidden');
-                id = setTimeout(() => {
-                    toast.classList.add('hidden');
-                }, 3000);
-            })
+    const disableIcons = document.querySelectorAll('.disabled-icon');
+    disableIcons?.forEach(icon => {
+        let id;
+        icon.addEventListener('click', () => {
+            clearTimeout(id);
+            const toast = document.querySelector('#in-progress-toast');
+            toast.classList.remove('hidden');
+            id = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
         })
     })
 </script>

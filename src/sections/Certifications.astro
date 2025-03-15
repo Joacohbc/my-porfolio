@@ -118,8 +118,6 @@ const gridClasses = {
 
 
 <script>
-    console.log('Certifications Page Loaded - <script>');
-    
     // Open the image in a modal
     const openImage = (modal, url) => {
         if(!modal) return;
@@ -135,11 +133,7 @@ const gridClasses = {
         modalContent.appendChild(imgItem);
 
         modal.classList.remove("hidden");
-    } 
-
-    document.addEventListener('astro:page-load', () => {
-        console.log('Astro page loaded - Certifications');
-    });
+    }
 
     const modal = document.querySelector("#certification-modal");
         
