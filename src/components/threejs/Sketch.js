@@ -49,9 +49,9 @@ export default class Sketch {
         this.maxSize = options.maxSize || 1;
         
         // Set options from provided options or use defaults
-        this.draggingEnabled = options.draggingEnabled !== undefined ? options.draggingEnabled : true;
-        this.collisionsEnabled = options.collisionsEnabled !== undefined ? options.collisionsEnabled : true;
-        this.autoMovementEnabled = options.autoMovementEnabled !== undefined ? options.autoMovementEnabled : true;
+        this.draggingEnabled = options.draggingEnabled ?? true;
+        this.collisionsEnabled = options.collisionsEnabled ?? true;
+        this.autoMovementEnabled = options.autoMovementEnabled ?? true;
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
