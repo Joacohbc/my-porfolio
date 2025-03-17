@@ -17,6 +17,7 @@ export default class Sketch {
     animatingSVGs = []; // Track which SVGs are currently being animated
     
     maxSize;
+    maxVelocity; // Maximum velocity limit for SVGs
     draggingEnabled;
     collisionsEnabled;
     autoMovementEnabled; // New property to control auto movement
@@ -52,6 +53,7 @@ export default class Sketch {
         this.draggingEnabled = options.draggingEnabled ?? true;
         this.collisionsEnabled = options.collisionsEnabled ?? true;
         this.autoMovementEnabled = options.autoMovementEnabled ?? true;
+        this.maxVelocity = options.maxVelocity ?? 0.1; // Default max velocity
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
@@ -245,6 +247,23 @@ export default class Sketch {
         this.scene.add(ambientLight);
     }
 
+    // Helper method to limit velocity to maximum allowed
+    limitVelocity(velocity) {
+        if (!velocity) return velocity;
+        
+        // Calculate current speed (magnitude of velocity vector)
+        const speed = Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
+        
+        // If speed exceeds maximum, scale it down
+        if (speed > this.maxVelocity && speed > 0) {
+            const scaleFactor = this.maxVelocity / speed;
+            velocity.x *= scaleFactor;
+            velocity.y *= scaleFactor;
+        }
+        
+        return velocity;
+    }
+
     render() {
         this.time += 0.01;
         
@@ -259,6 +278,9 @@ export default class Sketch {
 
             const velocity = group.userData.velocity;
             if (!velocity) return;
+
+            // Limit velocity to maximum before applying movement
+            this.limitVelocity(velocity);
 
             // If this object is in slowing down mode and auto movement is disabled
             if (group.userData.slowingDown && !this.autoMovementEnabled) {
@@ -276,34 +298,66 @@ export default class Sketch {
                     return;
                 }
             }
-
-            // Calculate new position with direct movement
-            let newX = group.position.x + velocity.x;
-            let newY = group.position.y + velocity.y;
-
-            let hitEdge = false;
-            // Check for boundary collisions and bounce using calculated bounds
-            if (newX <= bounds.minX || newX >= bounds.maxX) {
-                // Reverse x direction
-                velocity.x = -velocity.x;
-                hitEdge = true;
-
-                // Make sure we stay within bounds
-                newX = newX <= bounds.minX ? bounds.minX : bounds.maxX;
-            }
-
-            if (newY <= bounds.minY || newY >= bounds.maxY) {
-                // Reverse y direction
-                velocity.y = -velocity.y;
-                hitEdge = true;
-
-                // Make sure we stay within bounds
-                newY = newY <= bounds.minY ? bounds.minY : bounds.maxY;
+            
+            // Store current position before moving
+            const currentPosition = group.position.clone();
+            
+            // Apply velocity to get potential new position
+            let newPosition = currentPosition.clone().add(new THREE.Vector3(velocity.x, velocity.y, 0));
+            
+            // Get precise bounding box at potential new position
+            // First temporarily move object to new position without rendering
+            const originalPosition = group.position.clone();
+            group.position.copy(newPosition);
+            
+            // Calculate precise bounding box at new position
+            const box = new THREE.Box3().setFromObject(group);
+            
+            // Move back to original position
+            group.position.copy(originalPosition);
+            
+            // Get precise dimensions
+            const size = box.getSize(new THREE.Vector3());
+            const min = box.min;
+            const max = box.max;
+            
+            // Check for exact pixel collision with each boundary
+            let collision = false;
+            
+            // Left boundary collision
+            if (min.x < bounds.minX) {
+                // Calculate exact position to place at boundary
+                newPosition.x += (bounds.minX - min.x);
+                velocity.x = Math.abs(velocity.x); // Bounce right
+                collision = true;
             }
             
-            // Update position
-            group.position.x = newX;
-            group.position.y = newY;
+            // Right boundary collision
+            if (max.x > bounds.maxX) {
+                // Calculate exact position to place at boundary
+                newPosition.x -= (max.x - bounds.maxX);
+                velocity.x = -Math.abs(velocity.x); // Bounce left
+                collision = true;
+            }
+            
+            // Top boundary collision
+            if (min.y < bounds.minY) {
+                // Calculate exact position to place at boundary
+                newPosition.y += (bounds.minY - min.y);
+                velocity.y = Math.abs(velocity.y); // Bounce down
+                collision = true;
+            }
+            
+            // Bottom boundary collision
+            if (max.y > bounds.maxY) {
+                // Calculate exact position to place at boundary
+                newPosition.y -= (max.y - bounds.maxY);
+                velocity.y = -Math.abs(velocity.y); // Bounce up
+                collision = true;
+            }
+            
+            // Apply final position
+            group.position.copy(newPosition);
             
             // DVD logo doesn't rotate, keeping it flat
             group.rotation.z = 0;
@@ -383,6 +437,10 @@ export default class Sketch {
         v1.y += normal.y * v1nDiff;
         v2.x += normal.x * v2nDiff;
         v2.y += normal.y * v2nDiff;
+        
+        // Limit velocities after collision
+        this.limitVelocity(v1);
+        this.limitVelocity(v2);
         
         // Slightly separate objects to prevent sticking
         group1.position.x -= normal.x * 0.05;
@@ -547,10 +605,13 @@ export default class Sketch {
         // Scale the velocity for better visual behavior
         const scale = 0.03;
         
-        return {
+        const velocity = {
             x: velX * scale,
             y: -velY * scale  // Invert Y axis because screen coordinates are opposite to scene
         };
+        
+        // Apply velocity limit
+        return this.limitVelocity(velocity);
     }
 
     onMouseUp(event) {
@@ -606,6 +667,24 @@ export default class Sketch {
                     };
                 }
             });
+        }
+    }
+
+    // Method to set maximum velocity
+    setMaxVelocity(value) {
+        if (typeof value === 'number' && value > 0) {
+            this.maxVelocity = value;
+            
+            // Apply new limit to all existing velocities
+            this.svgGroups.forEach(group => {
+                if (group.userData.velocity) {
+                    this.limitVelocity(group.userData.velocity);
+                }
+            });
+            
+            console.log(`Max velocity set to: ${value}`);
+        } else {
+            console.warn('Invalid maximum velocity value');
         }
     }
 }
