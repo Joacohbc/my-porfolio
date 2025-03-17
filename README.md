@@ -18,7 +18,7 @@ Soy **Desarrollador de Software**, orientado principalmente a las Full-Stack par
 ## TechSkills 🛠️
 
 Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis proyectos.
-<div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
+<div style="display: flex; flex-direction: row; padding: 15px; gap: 10px">
     <img src="./public/svgs/javascript.svg" alt="JavaScript" width="50" height="50" />
     <img src="./public/svgs/nodejs.svg" alt="JavaScript" width="50" height="50" />
     <img src="./public/svgs/css_old.svg" alt="CSS3" width="50" height="50" />
@@ -30,14 +30,14 @@ Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis p
     <img src="./public/svgs/bash_dark.svg" alt="Bash" width="50" height="50" />
 </div>
 
-<div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
+<div style="display: flex; flex-direction: row; padding: 15px; gap: 10px">
     <img src="./public/svgs/react_dark.svg" alt="React" width="50" height="50" />
     <img src="./public/svgs/tailwindcss.svg" alt="Node.js" width="50" height="50" />
     <img src="./public/svgs/astro_dark.svg" alt="Astro" width="50" height="50" />
     <img src="./public/svgs/spring.svg" alt="Spring Boot" width="50" height="50" />
 </div>
 
-<div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
+<div style="display: flex; flex-direction: row; padding: 15px; gap: 10px">
     <img src="./public/svgs/git.svg" alt="Git" width="50" height="50" />
     <img src="./public/svgs/linux.svg" alt="Linux" width="50" height="50" />
     <img src="./public/svgs/docker.svg" alt="Docker" width="50" height="50" />
@@ -48,7 +48,7 @@ Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis p
     <img src="./public/svgs/vercel_dark.svg" alt="Vercel" width="50" height="50" />
 </div>
 
-<div style="display: flex; flex-direction: row; padding: 10px; gap: 10px;">
+<div style="display: flex; flex-direction: row; padding: 15px; gap: 10px">
     <img src="./public/svgs/mongodb.svg" alt="MongoDB" width="50" height="50" />
     <img src="./public/svgs/mysql.svg" alt="MySQL" width="50" height="50" />
     <img src="./public/svgs/redis.svg" alt="Redis" width="50" height="50" />
