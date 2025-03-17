@@ -12,7 +12,7 @@ export default class Sketch {
     controls;
     time;
     meshes;
-    maxSize = 1.5; // Max size for SVGs
+    maxSize = 1; // Max size for SVGs
     svgGroups = [];
 
     sceneBounds = {
@@ -45,8 +45,15 @@ export default class Sketch {
             alpha: true,
         });
 
+        // Set renderer to 100% of container size
         this.renderer.setSize(this.width, this.height);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setPixelRatio(window.devicePixelRatio)
+        
+        // Make the canvas style take full size of container
+        this.renderer.domElement.style.width = '100%';
+        this.renderer.domElement.style.height = '100%';
+        this.renderer.domElement.style.display = 'block';
+        
         this.container.appendChild(this.renderer.domElement);
 
         this.controls = new OrbitControls(
@@ -79,13 +86,30 @@ export default class Sketch {
     }
 
     setupResize() {
-        window.addEventListener("resize", () => {
-            this.width = this.container.offsetWidth;
-            this.height = this.container.offsetHeight;
-            this.renderer.setSize(this.width, this.height);
-            this.camera.aspect = this.width / this.height;
-            this.camera.updateProjectionMatrix();
-        });
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+    }
+
+    resize() {
+        // Get the current dimensions of the container
+        const newWidth = this.container.offsetWidth;
+        const newHeight = this.container.offsetHeight;
+        console.log(this.container);
+        
+        
+        // Update class properties
+        this.width = newWidth;
+        this.height = newHeight;
+        
+        // Update renderer size
+        this.renderer.setSize(newWidth, newHeight);
+        
+        // Update camera aspect ratio and projection matrix
+        this.camera.aspect = newWidth / newHeight;
+        this.camera.updateProjectionMatrix();
+        
+        // Log resizing for debugging
+        console.log(`Canvas resized to: ${newWidth}x${newHeight}`);
     }
 
     async loadSVGs(svgPaths) {
@@ -142,11 +166,7 @@ export default class Sketch {
                 // Centra el grupo *después* de escalarlo
                 group.position.sub(center.multiplyScalar(scale));
 
-                // Store reference to the SVG group
-                this.svgGroups.push(group);
-                this.scene.add(group);
-
-                // After adding the group, initialize velocity properties
+                // Store reference to the SVG group and initialize velocity properties
                 group.userData = { 
                     path: svgPath,
                     velocity: {
@@ -157,6 +177,11 @@ export default class Sketch {
                 
                 this.svgGroups.push(group);
                 this.scene.add(group);
+                
+                // Position the SVGs at random locations within bounds
+                group.position.x = Math.random() * (this.sceneBounds.maxX - this.sceneBounds.minX - 1) + this.sceneBounds.minX + 0.5;
+                group.position.y = Math.random() * (this.sceneBounds.maxY - this.sceneBounds.minY - 1) + this.sceneBounds.minY + 0.5;
+                
             } catch (error) {
                 console.error(`Error loading SVG from ${svgPath}:`, error);
             }
@@ -231,14 +256,91 @@ export default class Sketch {
             group.rotation.z = 0;
         });
 
+        // Check for collisions between SVGs
+        for (let i = 0; i < this.animatingSVGs.length; i++) {
+            for (let j = i + 1; j < this.animatingSVGs.length; j++) {
+                const group1 = this.animatingSVGs[i];
+                const group2 = this.animatingSVGs[j];
+                
+                if (this.checkCollision(group1, group2)) {
+                    this.handleCollision(group1, group2);
+                }
+            }
+        }
+
         this.renderer.render(this.scene, this.camera);
         requestAnimationFrame(this.render.bind(this));
+    }
+
+    // Check collision between two SVG groups
+    checkCollision(group1, group2) {
+        // Calculate bounding boxes
+        const box1 = new THREE.Box3().setFromObject(group1);
+        const box2 = new THREE.Box3().setFromObject(group2);
+        
+        // Use bounding spheres for simpler collision detection
+        const center1 = box1.getCenter(new THREE.Vector3());
+        const center2 = box2.getCenter(new THREE.Vector3());
+        
+        // Get approximate size
+        const size1 = box1.getSize(new THREE.Vector3());
+        const size2 = box2.getSize(new THREE.Vector3());
+        
+        // Calculate average radius for each SVG
+        const radius1 = Math.max(size1.x, size1.y) / 2;
+        const radius2 = Math.max(size2.x, size2.y) / 2;
+        
+        // Check distance against sum of radii
+        const distance = center1.distanceTo(center2);
+        return distance < (radius1 + radius2);
+    }
+
+    // Handle collision between two SVGs
+    handleCollision(group1, group2) {
+        // Get velocities
+        const v1 = group1.userData.velocity;
+        const v2 = group2.userData.velocity;
+        
+        // Calculate centers
+        const box1 = new THREE.Box3().setFromObject(group1);
+        const box2 = new THREE.Box3().setFromObject(group2);
+        const center1 = box1.getCenter(new THREE.Vector3());
+        const center2 = box2.getCenter(new THREE.Vector3());
+        
+        // Calculate collision normal
+        const normal = new THREE.Vector3().subVectors(center2, center1).normalize();
+        
+        // Simple velocity exchange along the collision normal
+        // Project velocities onto the normal
+        const v1n = normal.dot(new THREE.Vector3(v1.x, v1.y, 0));
+        const v2n = normal.dot(new THREE.Vector3(v2.x, v2.y, 0));
+        
+        // Exchange these velocity components (elastic collision)
+        const v1nAfter = v2n;
+        const v2nAfter = v1n;
+        
+        // Calculate velocity changes
+        const v1nDiff = v1nAfter - v1n;
+        const v2nDiff = v2nAfter - v2n;
+        
+        // Apply velocity changes along normal direction
+        v1.x += normal.x * v1nDiff;
+        v1.y += normal.y * v1nDiff;
+        v2.x += normal.x * v2nDiff;
+        v2.y += normal.y * v2nDiff;
+        
+        // Slightly separate objects to prevent sticking
+        group1.position.x -= normal.x * 0.05;
+        group1.position.y -= normal.y * 0.05;
+        group2.position.x += normal.x * 0.05;
+        group2.position.y += normal.y * 0.05;
     }
 
     setupInteraction() {
         // Setup raycasting for mouse interaction
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
+        this.lastMousePosition = null;
         this.selectedObject = null;
         this.dragOffset = new THREE.Vector3();
         this.isDragging = false;
@@ -256,7 +358,11 @@ export default class Sketch {
         );
         this.renderer.domElement.addEventListener(
             "mousemove",
-            this.onMouseMove.bind(this),
+            (event) => {
+                // Track mouse position for velocity calculation
+                this.lastMousePosition = this.mouse.clone();
+                this.onMouseMove(event);
+            }
         );
         this.renderer.domElement.addEventListener(
             "mouseup",
@@ -307,13 +413,14 @@ export default class Sketch {
 
                 // Calculate offset for smooth dragging
                 const intersectionPoint = new THREE.Vector3();
-                this.raycaster.ray.intersectPlane(
-                    this.plane,
-                    intersectionPoint,
-                );
-                this.dragOffset
-                    .copy(this.selectedObject.position)
-                    .sub(intersectionPoint);
+                if (this.raycaster.ray.intersectPlane(this.plane, intersectionPoint)) {
+                    this.dragOffset
+                        .copy(this.selectedObject.position)
+                        .sub(intersectionPoint);
+                } else {
+                    console.warn("Failed to intersect with plane");
+                    this.dragOffset.set(0, 0, 0);
+                }
             }
         }
     }
@@ -331,34 +438,48 @@ export default class Sketch {
 
         // Calculate the point where the ray intersects the plane
         const intersectionPoint = new THREE.Vector3();
-        this.raycaster.ray.intersectPlane(this.plane, intersectionPoint);
+        if (this.raycaster.ray.intersectPlane(this.plane, intersectionPoint)) {
+            // Add drag offset to get potential new position
+            const newPosition = intersectionPoint.clone().add(this.dragOffset);
 
-        // Add drag offset to get potential new position
-        const newPosition = intersectionPoint.clone().add(this.dragOffset);
+            // Clamp position to stay within scene boundaries
+            newPosition.x = Math.max(
+                this.sceneBounds.minX,
+                Math.min(this.sceneBounds.maxX, newPosition.x),
+            );
+            newPosition.y = Math.max(
+                this.sceneBounds.minY,
+                Math.min(this.sceneBounds.maxY, newPosition.y),
+            );
+            newPosition.z = Math.max(
+                this.sceneBounds.minZ,
+                Math.min(this.sceneBounds.maxZ, newPosition.z),
+            );
 
-        // Clamp position to stay within scene boundaries
-        newPosition.x = Math.max(
-            this.sceneBounds.minX,
-            Math.min(this.sceneBounds.maxX, newPosition.x),
-        );
-        newPosition.y = Math.max(
-            this.sceneBounds.minY,
-            Math.min(this.sceneBounds.maxY, newPosition.y),
-        );
-        newPosition.z = Math.max(
-            this.sceneBounds.minZ,
-            Math.min(this.sceneBounds.maxZ, newPosition.z),
-        );
-
-        // Update the position of the selected object
-        this.selectedObject.position.copy(newPosition);
+            // Update the position of the selected object
+            this.selectedObject.position.copy(newPosition);
+        }
     }
 
-    // When dragging ends, maintain the current velocity rather than resetting it
-    onMouseUp() {
+    onMouseUp(event) {
         if (this.selectedObject) {
+            // Give the object a slight velocity based on mouse movement
+            if (this.lastMousePosition) {
+                const currentMousePosition = new THREE.Vector2(this.mouse.x, this.mouse.y);
+                const velocity = currentMousePosition.clone().sub(this.lastMousePosition);
+                
+                // Scale velocity to make movement more natural
+                velocity.multiplyScalar(0.05);
+                
+                this.selectedObject.userData.velocity = {
+                    x: velocity.x,
+                    y: -velocity.y // Invert Y because screen coordinates are opposite to scene coordinates
+                };
+            }
+            
             // Add back to animating SVGs when dragging ends
             this.animatingSVGs.push(this.selectedObject);
+            console.log("Released SVG:", this.selectedObject.userData.path);
         }
 
         this.isDragging = false;
