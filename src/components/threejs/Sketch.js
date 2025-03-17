@@ -15,14 +15,25 @@ export default class Sketch {
     maxSize = 1; // Max size for SVGs
     svgGroups = [];
 
-    sceneBounds = {
-        minX: -3,
-        maxX: 3,
-        minY: -3,
-        maxY: 3,
-        minZ: -3,
-        maxZ: 3,
-    };
+    // Eliminar los límites fijos y reemplazarlos con una función
+    getSceneBounds() {
+        // Calcular límites basados en la posición de la cámara y el FOV
+        const fov = this.camera.fov * Math.PI / 180;
+        const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
+        const width = height * this.camera.aspect;
+        
+        const halfWidth = width / 2;
+        const halfHeight = height / 2;
+        
+        return {
+            minX: -halfWidth,
+            maxX: halfWidth,
+            minY: -halfHeight,
+            maxY: halfHeight,
+            minZ: -5,
+            maxZ: 5
+        };
+    }
 
     animatingSVGs = []; // Track which SVGs are currently being animated
 
@@ -49,10 +60,18 @@ export default class Sketch {
         this.renderer.setSize(this.width, this.height);
         this.renderer.setPixelRatio(window.devicePixelRatio)
         
-        // Make the canvas style take full size of container
+        // Make the canvas style take full size of container with absolute positioning
         this.renderer.domElement.style.width = '100%';
         this.renderer.domElement.style.height = '100%';
         this.renderer.domElement.style.display = 'block';
+        this.renderer.domElement.style.position = 'absolute';
+        this.renderer.domElement.style.top = '0';
+        this.renderer.domElement.style.left = '0';
+        
+        // Make sure the container has positioning context
+        if (getComputedStyle(this.container).position === 'static') {
+            this.container.style.position = 'relative';
+        }
         
         this.container.appendChild(this.renderer.domElement);
 
@@ -178,9 +197,10 @@ export default class Sketch {
                 this.svgGroups.push(group);
                 this.scene.add(group);
                 
-                // Position the SVGs at random locations within bounds
-                group.position.x = Math.random() * (this.sceneBounds.maxX - this.sceneBounds.minX - 1) + this.sceneBounds.minX + 0.5;
-                group.position.y = Math.random() * (this.sceneBounds.maxY - this.sceneBounds.minY - 1) + this.sceneBounds.minY + 0.5;
+                // Posicionamos los SVGs en ubicaciones aleatorias dentro de los límites calculados
+                const bounds = this.getSceneBounds();
+                group.position.x = Math.random() * (bounds.maxX - bounds.minX - 1) + bounds.minX + 0.5;
+                group.position.y = Math.random() * (bounds.maxY - bounds.minY - 1) + bounds.minY + 0.5;
                 
             } catch (error) {
                 console.error(`Error loading SVG from ${svgPath}:`, error);
@@ -216,6 +236,9 @@ export default class Sketch {
 
     render() {
         this.time += 0.01;
+        
+        // Calcular límites actualizados en cada frame
+        const bounds = this.getSceneBounds();
 
         // DVD-style bouncing animation
         this.svgGroups.forEach((group, index) => {
@@ -229,26 +252,26 @@ export default class Sketch {
             let newY = group.position.y + velocity.y;
 
             let hitEdge = false;
-            // Check for boundary collisions and bounce
-            if (newX <= this.sceneBounds.minX || newX >= this.sceneBounds.maxX) {
+            // Check for boundary collisions and bounce using calculated bounds
+            if (newX <= bounds.minX || newX >= bounds.maxX) {
                 // Reverse x direction
                 velocity.x = -velocity.x;
                 hitEdge = true;
 
                 // Make sure we stay within bounds
-                newX = newX <= this.sceneBounds.minX ? this.sceneBounds.minX : this.sceneBounds.maxX;
+                newX = newX <= bounds.minX ? bounds.minX : bounds.maxX;
             }
 
-            if (newY <= this.sceneBounds.minY || newY >= this.sceneBounds.maxY) {
+            if (newY <= bounds.minY || newY >= bounds.maxY) {
                 // Reverse y direction
                 velocity.y = -velocity.y;
                 hitEdge = true;
 
                 // Make sure we stay within bounds
-                newY = newY <= this.sceneBounds.minY ? this.sceneBounds.minY : this.sceneBounds.maxY;
+                newY = newY <= bounds.minY ? bounds.minY : bounds.maxY;
             }
             
-            // Update position - DVD logo always moves at constant speed
+            // Update position
             group.position.x = newX;
             group.position.y = newY;
             
@@ -442,18 +465,19 @@ export default class Sketch {
             // Add drag offset to get potential new position
             const newPosition = intersectionPoint.clone().add(this.dragOffset);
 
-            // Clamp position to stay within scene boundaries
+            // Clamp position using calculated bounds
+            const bounds = this.getSceneBounds();
             newPosition.x = Math.max(
-                this.sceneBounds.minX,
-                Math.min(this.sceneBounds.maxX, newPosition.x),
+                bounds.minX,
+                Math.min(bounds.maxX, newPosition.x),
             );
             newPosition.y = Math.max(
-                this.sceneBounds.minY,
-                Math.min(this.sceneBounds.maxY, newPosition.y),
+                bounds.minY,
+                Math.min(bounds.maxY, newPosition.y),
             );
             newPosition.z = Math.max(
-                this.sceneBounds.minZ,
-                Math.min(this.sceneBounds.maxZ, newPosition.z),
+                bounds.minZ,
+                Math.min(bounds.maxZ, newPosition.z),
             );
 
             // Update the position of the selected object
