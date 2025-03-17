@@ -12,9 +12,15 @@ export default class Sketch {
     controls;
     time;
     meshes;
-    maxSize = 1; // Max size for SVGs
-    svgGroups = [];
-
+    
+    svgGroups = []; // Store references to loaded SVG groups
+    animatingSVGs = []; // Track which SVGs are currently being animated
+    
+    maxSize;
+    draggingEnabled;
+    collisionsEnabled;
+    autoMovementEnabled; // New property to control auto movement
+    
     // Eliminar los límites fijos y reemplazarlos con una función
     getSceneBounds() {
         // Calcular límites basados en la posición de la cámara y el FOV
@@ -35,12 +41,17 @@ export default class Sketch {
         };
     }
 
-    animatingSVGs = []; // Track which SVGs are currently being animated
 
     constructor(options, svgPaths) {
         this.container = options.domElement;
         this.width = this.container.offsetWidth;
         this.height = this.container.offsetHeight;
+        this.maxSize = options.maxSize || 1;
+        
+        // Set options from provided options or use defaults
+        this.draggingEnabled = options.draggingEnabled !== undefined ? options.draggingEnabled : true;
+        this.collisionsEnabled = options.collisionsEnabled !== undefined ? options.collisionsEnabled : true;
+        this.autoMovementEnabled = options.autoMovementEnabled !== undefined ? options.autoMovementEnabled : true;
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(
@@ -240,53 +251,59 @@ export default class Sketch {
         // Calcular límites actualizados en cada frame
         const bounds = this.getSceneBounds();
 
-        // DVD-style bouncing animation
-        this.svgGroups.forEach((group, index) => {
-            // Skip animation for SVGs that aren't being animated
-            if (!this.animatingSVGs.includes(group)) return;
+        // Only apply auto movement if enabled
+        if (this.autoMovementEnabled) {
+            // DVD-style bouncing animation
+            this.svgGroups.forEach((group, index) => {
+                // Skip animation for SVGs that aren't being animated
+                if (!this.animatingSVGs.includes(group)) return;
 
-            const velocity = group.userData.velocity;
+                const velocity = group.userData.velocity;
 
-            // Calculate new position with direct movement (no wobble)
-            let newX = group.position.x + velocity.x;
-            let newY = group.position.y + velocity.y;
+                // Calculate new position with direct movement (no wobble)
+                let newX = group.position.x + velocity.x;
+                let newY = group.position.y + velocity.y;
 
-            let hitEdge = false;
-            // Check for boundary collisions and bounce using calculated bounds
-            if (newX <= bounds.minX || newX >= bounds.maxX) {
-                // Reverse x direction
-                velocity.x = -velocity.x;
-                hitEdge = true;
+                let hitEdge = false;
+                // Check for boundary collisions and bounce using calculated bounds
+                if (newX <= bounds.minX || newX >= bounds.maxX) {
+                    // Reverse x direction
+                    velocity.x = -velocity.x;
+                    hitEdge = true;
 
-                // Make sure we stay within bounds
-                newX = newX <= bounds.minX ? bounds.minX : bounds.maxX;
-            }
+                    // Make sure we stay within bounds
+                    newX = newX <= bounds.minX ? bounds.minX : bounds.maxX;
+                }
 
-            if (newY <= bounds.minY || newY >= bounds.maxY) {
-                // Reverse y direction
-                velocity.y = -velocity.y;
-                hitEdge = true;
+                if (newY <= bounds.minY || newY >= bounds.maxY) {
+                    // Reverse y direction
+                    velocity.y = -velocity.y;
+                    hitEdge = true;
 
-                // Make sure we stay within bounds
-                newY = newY <= bounds.minY ? bounds.minY : bounds.maxY;
-            }
-            
-            // Update position
-            group.position.x = newX;
-            group.position.y = newY;
-            
-            // DVD logo doesn't rotate, keeping it flat
-            group.rotation.z = 0;
-        });
-
-        // Check for collisions between SVGs
-        for (let i = 0; i < this.animatingSVGs.length; i++) {
-            for (let j = i + 1; j < this.animatingSVGs.length; j++) {
-                const group1 = this.animatingSVGs[i];
-                const group2 = this.animatingSVGs[j];
+                    // Make sure we stay within bounds
+                    newY = newY <= bounds.minY ? bounds.minY : bounds.maxY;
+                }
                 
-                if (this.checkCollision(group1, group2)) {
-                    this.handleCollision(group1, group2);
+                // Update position
+                group.position.x = newX;
+                group.position.y = newY;
+                
+                // DVD logo doesn't rotate, keeping it flat
+                group.rotation.z = 0;
+            });
+        }
+
+        // Check for collisions between SVGs only if collisions are enabled
+        // Note: collisions can happen even when auto movement is disabled (e.g. during drag)
+        if (this.collisionsEnabled) {
+            for (let i = 0; i < this.animatingSVGs.length; i++) {
+                for (let j = i + 1; j < this.animatingSVGs.length; j++) {
+                    const group1 = this.animatingSVGs[i];
+                    const group2 = this.animatingSVGs[j];
+                    
+                    if (this.checkCollision(group1, group2)) {
+                        this.handleCollision(group1, group2);
+                    }
                 }
             }
         }
@@ -394,6 +411,9 @@ export default class Sketch {
     }
 
     onMouseDown(event) {
+        // Skip if dragging is disabled
+        if (!this.draggingEnabled) return;
+        
         // Calculate mouse position in normalized device coordinates
         const rect = this.renderer.domElement.getBoundingClientRect();
         this.mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
@@ -488,7 +508,8 @@ export default class Sketch {
     onMouseUp(event) {
         if (this.selectedObject) {
             // Give the object a slight velocity based on mouse movement
-            if (this.lastMousePosition) {
+            // But only if auto movement is enabled
+            if (this.lastMousePosition && this.autoMovementEnabled) {
                 const currentMousePosition = new THREE.Vector2(this.mouse.x, this.mouse.y);
                 const velocity = currentMousePosition.clone().sub(this.lastMousePosition);
                 
@@ -508,5 +529,31 @@ export default class Sketch {
 
         this.isDragging = false;
         this.selectedObject = null;
+    }
+
+    // Add methods to enable/disable dragging and collisions
+    setDraggingEnabled(enabled) {
+        this.draggingEnabled = enabled;
+    }
+
+    setCollisionsEnabled(enabled) {
+        this.collisionsEnabled = enabled;
+    }
+
+    // Method to enable/disable auto movement
+    setAutoMovementEnabled(enabled) {
+        this.autoMovementEnabled = enabled;
+        
+        // If enabling auto movement, make sure all SVGs have velocity properties
+        if (enabled) {
+            this.svgGroups.forEach(group => {
+                if (!group.userData.velocity) {
+                    group.userData.velocity = {
+                        x: (Math.random() > 0.5 ? 0.015 : -0.015) + (Math.random() * 0.01),
+                        y: (Math.random() > 0.5 ? 0.015 : -0.015) + (Math.random() * 0.01)
+                    };
+                }
+            });
+        }
     }
 }

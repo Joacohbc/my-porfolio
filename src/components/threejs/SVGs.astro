@@ -1,5 +1,5 @@
 <!-- Container for the Three.js canvas, taking up the entire viewport -->
-<div id="container" class="w-full h-full m-0 p-0 overflow-hidden">
+<div id="container" class="w-full h-full m-0 p-0">
 </div>
 
 <script>
@@ -8,6 +8,9 @@
     document.addEventListener("astro:page-load", () => {
         new Sketch({ 
             domElement: document.getElementById("container"),
+            draggingEnabled: true,
+            collisionsEnabled: true,
+            autoMovementEnabled: true,
         }, [
             "/svgs/spring.svg",
             "/svgs/astro_dark.svg",
