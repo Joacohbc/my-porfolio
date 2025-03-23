@@ -1,11 +1,37 @@
 ---
-import TechIconsSVGs from "../components/threejs/TechIconsSVGs.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Icons DVD" header={false} indexed={false} navItems={[]}>
-    <section class="h-[80dvh] w-[80dvw] min-w-64 min-h-64 flex justify-center items-center">
-        <TechIconsSVGs />
-    </section>
+    <div id="container" class="w-full h-full m-0 p-0 z-10 fixed top-0 left-0">
+    </div>
 </Layout>
+
+<script>
+    import Sketch from "../components/threejs/Sketch";
+
+    document.addEventListener("astro:page-load", () => {
+        const sketch = new Sketch({ 
+            domElement: document.getElementById("container"),
+            draggingEnabled: true,
+            collisionsEnabled: true,
+            autoMovementEnabled: true,
+            maxSize: Sketch.calculateMaxSize(),
+        }, [
+            "/svgs/spring.svg",
+            "/svgs/astro_dark.svg",
+            "/svgs/react_dark.svg",
+            "/svgs/golang.svg",
+            "/svgs/javascript.svg",
+            "/svgs/typescript.svg",
+            "/svgs/java.svg",
+            "/svgs/html5.svg",
+            "/svgs/mongodb.svg",
+            "/svgs/salesforce.svg",
+            "/svgs/tailwindcss.svg",
+        ]);
+
+        sketch.resume();
+    });
+</script>
 

@@ -1,8 +1,9 @@
 ---
 import Footer from "../components/Footer.astro";
-import Layout from "../layouts/Layout.astro"
-import navItems from "../jsons/moreInfo_sections.json"
+import Layout from "../layouts/Layout.astro";
+import navItems from "../jsons/moreInfo_sections.json";
 import Certifications from "../sections/Certifications.astro";
+import TechIconsSVGs from "../components/threejs/TechIconsSVGs.astro";
 ---
 
 <Layout title="Porfolio de Joaquin G." navItems={navItems} indexed header>
@@ -10,4 +11,5 @@ import Certifications from "../sections/Certifications.astro";
         <Certifications/>
     </section>
     <Footer />
+    <TechIconsSVGs />
 </Layout>

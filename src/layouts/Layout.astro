@@ -1,7 +1,6 @@
 ---
 import Header from "../components/Header.astro";
 import HeaderNav from "../components/HeaderNav.astro";
-import TechIconsSVGs from "../components/threejs/TechIconsSVGs.astro";
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -76,7 +75,6 @@ const {
 		</div>
 		<div class="noisy"></div>
 		{ cfCaptcha && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script> }
-        <TechIconsSVGs />
 	</body>
 </html>
 
