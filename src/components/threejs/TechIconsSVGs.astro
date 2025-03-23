@@ -92,9 +92,6 @@
             "/svgs/salesforce.svg",
             "/svgs/tailwindcss.svg",
         ]);
-
-        // When the mouse don't move for 5 seconds, the icons will start to move
-        let timeout;
         
         // Add CSS transitions to elements
         const container = document.querySelector("#container") as HTMLElement;
@@ -108,9 +105,23 @@
         tvScanlines.style.transition = "opacity 0.8s ease-in-out";
         tvFrame.style.transition = "opacity 0.8s ease-in-out";
         
-        document.addEventListener("mousemove", () => {
-            clearTimeout(timeout);
-            
+        
+        // When the mouse don't move for 5 seconds, the icons will start to move
+        let timeout;
+        const timeoutDelay = 8000;
+
+        const startShowIcons = () => {
+            // Show the icons with animation
+            container.style.opacity = "1";
+            container.style.pointerEvents = "all";
+            waitingAction.style.opacity = "1";
+            waitingAction.style.pointerEvents = "all";
+            tvScanlines.style.opacity = "1";
+            tvFrame.style.opacity = "1";
+        };
+
+        const hideIcons = () => {
+            clearTimeout(timeout);  
             // Hide the icons with animation
             container.style.opacity = "0";
             container.style.pointerEvents = "none";
@@ -118,16 +129,25 @@
             waitingAction.style.pointerEvents = "none";
             tvScanlines.style.opacity = "0";
             tvFrame.style.opacity = "0";
-            
-            timeout = setTimeout(() => {
-                // Show the icons with animation
-                container.style.opacity = "1";
-                container.style.pointerEvents = "all";
-                waitingAction.style.opacity = "1";
-                waitingAction.style.pointerEvents = "all";
-                tvScanlines.style.opacity = "1";
-                tvFrame.style.opacity = "1";
-            }, 8000);
+        };
+
+        const animationWithDelay = (delay) => {
+            hideIcons();
+            setTimeout(() => {
+                startShowIcons();
+            }, delay);
+        };
+
+        document.addEventListener("mousemove", () => { animationWithDelay(timeoutDelay); });
+        document.addEventListener("touchstart", () => { animationWithDelay(timeoutDelay); });
+        
+        // When page gain focus, the icons will start to move
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") {
+                animationWithDelay(timeoutDelay);
+            } else {
+                hideIcons();
+            }
         });
     });
 </script>
