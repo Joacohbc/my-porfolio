@@ -21,10 +21,12 @@ export default class Sketch {
     draggingEnabled;
     collisionsEnabled;
     autoMovementEnabled; // New property to control auto movement
+    isPaused = false; // New property to track paused state
+    animationFrameId = null; // Track the animation frame request
     
-    // Eliminar los límites fijos y reemplazarlos con una función
+    // Remove fixed limits and replace them with a function
     getSceneBounds() {
-        // Calcular límites basados en la posición de la cámara y el FOV
+        // Calculate limits based on the camera position and FOV
         const fov = this.camera.fov * Math.PI / 180;
         const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
         const width = height * this.camera.aspect;
@@ -41,7 +43,6 @@ export default class Sketch {
             maxZ: 5
         };
     }
-
 
     constructor(options, svgPaths) {
         this.container = options.domElement;
@@ -62,7 +63,7 @@ export default class Sketch {
             0.1,
             1000,
         );
-        this.camera.position.z = 5; // Ajustar según sea necesario.
+        this.camera.position.z = 5; // Adjust as needed
 
         this.renderer = new THREE.WebGLRenderer({
             antialias: true,
@@ -148,10 +149,10 @@ export default class Sketch {
         const loader = new SVGLoader();
 
         const extrudeSettings = {
-            depth: 0.15,
+            depth: .15,
             bevelEnabled: true,
-            bevelThickness: 0.02,
-            bevelSize: 0.02,
+            bevelThickness: .02,
+            bevelSize: .02,
             bevelSegments: 3,
         };
         
@@ -178,16 +179,16 @@ export default class Sketch {
                         );
                         const mesh = new THREE.Mesh(geometry, material);
                         group.add(mesh);
-                        group.rotation.x = Math.PI; // Gira el SVG para que se vea correctamente
+                        group.rotation.x = Math.PI; // Rotate the SVG so it appears correctly
                     }
                 }
 
-                // --- Ajuste de tamaño y centrado ---
+                // --- Size adjustment and centering ---
                 const box = new THREE.Box3().setFromObject(group);
                 const size = box.getSize(new THREE.Vector3());
                 const center = box.getCenter(new THREE.Vector3());
 
-                // Calcula la escala para que quepa en el tamaño máximo
+                // Calculate the scale to fit within the maximum size
                 const scale = Math.min(
                     this.maxSize / size.x,
                     this.maxSize / size.y,
@@ -195,7 +196,7 @@ export default class Sketch {
                 );
                 group.scale.set(scale, scale, scale);
 
-                // Centra el grupo *después* de escalarlo
+                // Center the group *after* scaling it
                 group.position.sub(center.multiplyScalar(scale));
 
                 // Store reference to the SVG group and initialize velocity properties
@@ -210,7 +211,7 @@ export default class Sketch {
                 this.svgGroups.push(group);
                 this.scene.add(group);
                 
-                // Posicionamos los SVGs en ubicaciones aleatorias dentro de los límites calculados
+                // Position the SVGs in random locations within the calculated bounds
                 const bounds = this.getSceneBounds();
                 group.position.x = Math.random() * (bounds.maxX - bounds.minX - 1) + bounds.minX + 0.5;
                 group.position.y = Math.random() * (bounds.maxY - bounds.minY - 1) + bounds.minY + 0.5;
@@ -265,9 +266,11 @@ export default class Sketch {
     }
 
     render() {
+        if (this.isPaused) return; // Skip rendering if paused
+        
         this.time += 0.01;
         
-        // Calcular límites actualizados en cada frame
+        // Calculate updated bounds in each frame
         const bounds = this.getSceneBounds();
 
         // DVD-style bouncing animation for auto-moving objects
@@ -378,7 +381,7 @@ export default class Sketch {
         }
 
         this.renderer.render(this.scene, this.camera);
-        requestAnimationFrame(this.render.bind(this));
+        this.animationFrameId = requestAnimationFrame(this.render.bind(this));
     }
 
     // Check collision between two SVG groups
@@ -685,6 +688,34 @@ export default class Sketch {
             console.log(`Max velocity set to: ${value}`);
         } else {
             console.warn('Invalid maximum velocity value');
+        }
+    }
+    
+    // New method to pause animation and save resources
+    pause() {
+        if (this.isPaused) return; // Already paused
+        
+        this.isPaused = true;
+        
+        // Cancel the animation frame if one is pending
+        if (this.animationFrameId !== null) {
+            cancelAnimationFrame(this.animationFrameId);
+            this.animationFrameId = null;
+        }
+        
+        console.log('Animation paused to save resources');
+    }
+    
+    // New method to resume animation
+    resume() {
+        if (!this.isPaused) return; // Already running
+        
+        this.isPaused = false;
+        
+        // Restart the rendering loop
+        if (this.animationFrameId === null) {
+            console.log('Animation resumed');
+            this.render();
         }
     }
 }
