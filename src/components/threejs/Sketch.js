@@ -24,6 +24,16 @@ export default class Sketch {
     isPaused = false; // New property to track paused state
     animationFrameId = null; // Track the animation frame request
     
+    static calculateMaxSize() {
+        const width = window.innerWidth;
+        // Scale from 0.4 to 1 based on screen width
+        if (width < 640) return 0.6; // Small mobile
+        if (width < 768) return 0.7; // Mobile
+        if (width < 1024) return 0.8; // Tablet
+        if (width < 1280) return 0.9; // Desktop
+        return 1; // Large desktop
+    };
+
     // Remove fixed limits and replace them with a function
     getSceneBounds() {
         // Calculate limits based on the camera position and FOV
