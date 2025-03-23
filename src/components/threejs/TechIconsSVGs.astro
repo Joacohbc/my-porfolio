@@ -1,0 +1,76 @@
+<!-- Container for the Three.js canvas, taking up the entire viewport -->
+
+<div id="waiting-action" class="w-full h-full m-0 p-0 fixed top-0 left-0 pointer-events-none opacity-0 z-20">
+    <div class="w-full h-full flex flex-col justify-center items-center">
+        <p class="text-white text-center mt-5 font-serif px-2 text-6xl md:text-7xl lg:text-9xl">¿Estás ahí querido usuario?</p>
+    </div>
+</div>
+
+<div id="container" class="w-full h-full m-0 p-0 z-10 fixed top-0 left-0 pointer-events-none opacity-0 bg-lightblack/80">
+</div>
+
+<script>
+    import Sketch from "./Sketch";
+
+    document.addEventListener("astro:page-load", () => {
+        // Calculate maxSize based on screen width
+        const calculateMaxSize = () => {
+            const width = window.innerWidth;
+            // Scale from 0.4 to 1 based on screen width
+            if (width < 640) return 0.6; // Small mobile
+            if (width < 768) return 0.7; // Mobile
+            if (width < 1024) return 0.8; // Tablet
+            if (width < 1280) return 0.9; // Desktop
+            return 1; // Large desktop
+        };
+
+        new Sketch({ 
+            domElement: document.getElementById("container"),
+            draggingEnabled: true,
+            collisionsEnabled: true,
+            autoMovementEnabled: true,
+            maxSize: calculateMaxSize(),
+        }, [
+            "/svgs/spring.svg",
+            "/svgs/astro_dark.svg",
+            "/svgs/react_dark.svg",
+            "/svgs/golang.svg",
+            "/svgs/javascript.svg",
+            "/svgs/typescript.svg",
+            "/svgs/java.svg",
+            "/svgs/html5.svg",
+            "/svgs/mongodb.svg",
+            "/svgs/salesforce.svg",
+            "/svgs/tailwindcss.svg",
+        ]);
+
+        // When the mouse don't move for 5 seconds, the icons will start to move
+        let timeout;
+        
+        // Add CSS transitions to elements
+        const container = document.querySelector("#container") as HTMLElement;
+        const waitingAction = document.querySelector("#waiting-action") as HTMLElement;
+        
+        // Apply transition styles
+        container.style.transition = "opacity 0.8s ease-in-out";
+        waitingAction.style.transition = "opacity 0.8s ease-in-out";
+        
+        document.addEventListener("mousemove", () => {
+            clearTimeout(timeout);
+            
+            // Hide the icons with animation
+            container.style.opacity = "0";
+            container.style.pointerEvents = "none";
+            waitingAction.style.opacity = "0";
+            waitingAction.style.pointerEvents = "none";
+            
+            timeout = setTimeout(() => {
+                // Show the icons with animation
+                container.style.opacity = "1";
+                container.style.pointerEvents = "all";
+                waitingAction.style.opacity = "1";
+                waitingAction.style.pointerEvents = "all";
+            }, 8000);
+        });
+    });
+</script>
