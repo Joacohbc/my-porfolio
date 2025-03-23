@@ -69,6 +69,7 @@
             "/svgs/salesforce.svg",
             "/svgs/tailwindcss.svg",
         ]);
+        sketch.pause();
         
         // Add CSS transitions to elements
         const container = document.querySelector("#container") as HTMLElement;
@@ -80,23 +81,10 @@
         waitingAction.style.transition = "opacity 0.8s ease-in-out";
         tvScanlines.style.transition = "opacity 0.8s ease-in-out";
 
-        // When the mouse don't move for 5 seconds, the icons will start to move
-        let timeout;
-        const timeoutDelay = 10000;
 
-        const startShowIcons = () => {
-            // Show the icons with animation
-            container.style.opacity = "1";
-            container.style.pointerEvents = "all";
-            waitingAction.style.opacity = "1";
-            waitingAction.style.pointerEvents = "all";
-            tvScanlines.style.opacity = "1";
-            sketch.resume();
-        };
+        const START_DELAY = 10000;
 
         const hideIcons = () => {
-            clearTimeout(timeout);  
-            // Hide the icons with animation
             container.style.opacity = "0";
             container.style.pointerEvents = "none";
             waitingAction.style.opacity = "0";
@@ -105,15 +93,44 @@
             sketch.pause();
         };
 
-        const animationWithDelay = (delay) => {
-            hideIcons();
-            setTimeout(() => {
-                startShowIcons();
-            }, delay);
+        const showIcons = () => {
+            container.style.opacity = "1";
+            container.style.pointerEvents = "all";
+            waitingAction.style.opacity = "1";
+            waitingAction.style.pointerEvents = "all";
+            tvScanlines.style.opacity = "1";
+            sketch.resume();
         };
 
-        document.addEventListener("mousemove", () => { animationWithDelay(timeoutDelay); });
-        document.addEventListener("touchstart", () => { animationWithDelay(timeoutDelay); });
-        animationWithDelay(timeoutDelay);
+
+        let running = false;
+        let timeout: number;
+        document.addEventListener("mousemove", () => {
+            if(running) {
+                running = false;
+                hideIcons();
+                return;
+            }
+
+            clearInterval(timeout);
+            timeout = setTimeout(() => {
+                running = true;
+                showIcons();
+            }, START_DELAY);
+        });
+
+        document.addEventListener("touchstart", () => { 
+            if(running) {
+                running = false;
+                hideIcons();
+                return;
+            }
+
+            clearInterval(timeout);
+            timeout = setTimeout(() => {
+                running = true;
+                showIcons();
+            }, START_DELAY);
+        });
     });
 </script>
