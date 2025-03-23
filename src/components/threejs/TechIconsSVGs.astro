@@ -2,12 +2,61 @@
 
 <div id="waiting-action" class="w-full h-full m-0 p-0 fixed top-0 left-0 pointer-events-none opacity-0 z-20">
     <div class="w-full h-full flex flex-col justify-center items-center">
-        <p class="text-white text-center mt-5 font-serif px-2 text-6xl md:text-7xl lg:text-9xl">¿Estás ahí querido usuario?</p>
+        <p class="text-white text-center mt-5 font-serif px-2 text-6xl md:text-7xl lg:text-9xl tv-text">¿Estás ahí querido usuario?</p>
     </div>
 </div>
 
 <div id="container" class="w-full h-full m-0 p-0 z-10 fixed top-0 left-0 pointer-events-none opacity-0 bg-lightblack/80">
 </div>
+
+<!-- TV effect overlays -->
+<div class="tv-scanlines opacity-0"></div>
+<div class="tv-frame opacity-0"></div>
+
+<style>
+    /* Old TV effect styles */
+    .tv-scanlines {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+        background-size: 100% 4px;
+        z-index: 30;
+        pointer-events: none;
+    }
+    
+    .tv-frame {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 98vw;
+        height: 96vh;
+        transform: translate(-50%, -50%);
+        border: 24px solid #111;
+        border-radius: 20px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6);
+        z-index: 25;
+        pointer-events: none;
+    }
+    
+    .tv-text {
+        text-shadow: 2px 2px 0px #75eafd, -2px -2px 0px #ea36af;
+        animation: flicker 5s infinite;
+    }
+    
+    @keyframes flicker {
+        0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+            opacity: 1;
+            text-shadow: 2px 2px 0px #75eafd, -2px -2px 0px #ea36af;
+        }
+        20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+            opacity: 0.8;
+            text-shadow: none;
+        }
+    }
+</style>
 
 <script>
     import Sketch from "./Sketch";
@@ -50,10 +99,14 @@
         // Add CSS transitions to elements
         const container = document.querySelector("#container") as HTMLElement;
         const waitingAction = document.querySelector("#waiting-action") as HTMLElement;
-        
+        const tvScanlines = document.querySelector(".tv-scanlines") as HTMLElement;
+        const tvFrame = document.querySelector(".tv-frame") as HTMLElement;
+
         // Apply transition styles
         container.style.transition = "opacity 0.8s ease-in-out";
         waitingAction.style.transition = "opacity 0.8s ease-in-out";
+        tvScanlines.style.transition = "opacity 0.8s ease-in-out";
+        tvFrame.style.transition = "opacity 0.8s ease-in-out";
         
         document.addEventListener("mousemove", () => {
             clearTimeout(timeout);
@@ -63,6 +116,8 @@
             container.style.pointerEvents = "none";
             waitingAction.style.opacity = "0";
             waitingAction.style.pointerEvents = "none";
+            tvScanlines.style.opacity = "0";
+            tvFrame.style.opacity = "0";
             
             timeout = setTimeout(() => {
                 // Show the icons with animation
@@ -70,6 +125,8 @@
                 container.style.pointerEvents = "all";
                 waitingAction.style.opacity = "1";
                 waitingAction.style.pointerEvents = "all";
+                tvScanlines.style.opacity = "1";
+                tvFrame.style.opacity = "1";
             }, 8000);
         });
     });
