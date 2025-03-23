@@ -122,8 +122,12 @@ export default class Sketch {
         this.setupInteraction(); // Add this line to initialize interaction
 
         this.loadSVGs(svgPaths).then(() => {
-            // Initially, all SVGs should be animated
-            this.animatingSVGs = [...this.svgGroups];
+            // Only animate SVGs if auto movement is enabled
+            if (this.autoMovementEnabled) {
+                this.animatingSVGs = [...this.svgGroups];
+            } else {
+                this.animatingSVGs = []; // No SVGs should animate initially
+            }
             this.render();
         });
     }
@@ -212,10 +216,11 @@ export default class Sketch {
                 // Store reference to the SVG group and initialize velocity properties
                 group.userData = { 
                     path: svgPath,
-                    velocity: {
+                    // Set initial velocity based on autoMovementEnabled setting
+                    velocity: this.autoMovementEnabled ? {
                         x: (Math.random() > 0.5 ? 0.015 : -0.015) + (Math.random() * 0.01),
                         y: (Math.random() > 0.5 ? 0.015 : -0.015) + (Math.random() * 0.01)
-                    },
+                    } : { x: 0, y: 0 }
                 };
                 
                 this.svgGroups.push(group);
@@ -673,14 +678,36 @@ export default class Sketch {
         // If enabling auto movement, make sure all SVGs have velocity properties
         if (enabled) {
             this.svgGroups.forEach(group => {
-                if (!group.userData.velocity) {
+                // Give all SVGs a velocity if they don't have one or if they were slowing down
+                // or if they have zero velocity (were static)
+                const vel = group.userData.velocity || { x: 0, y: 0 };
+                const isStatic = (vel.x === 0 && vel.y === 0);
+                
+                if (!vel || group.userData.slowingDown || isStatic) {
                     group.userData.velocity = {
                         x: (Math.random() > 0.5 ? 0.015 : -0.015) + (Math.random() * 0.01),
                         y: (Math.random() > 0.5 ? 0.015 : -0.015) + (Math.random() * 0.01)
                     };
                 }
+                
+                // Clear any slowing down flag
+                group.userData.slowingDown = false;
+                
+                // Make sure all SVGs are in the animating list
+                if (!this.animatingSVGs.includes(group)) {
+                    this.animatingSVGs.push(group);
+                }
+            });
+        } else {
+            // When disabling auto movement, mark all currently moving SVGs for slowing down
+            this.svgGroups.forEach(group => {
+                if (this.animatingSVGs.includes(group)) {
+                    group.userData.slowingDown = true;
+                }
             });
         }
+        
+        console.log(`Auto movement ${enabled ? 'enabled' : 'disabled'}`);
     }
 
     // Method to set maximum velocity
