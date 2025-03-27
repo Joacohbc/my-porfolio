@@ -5,6 +5,14 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Icons DVD" header={false} indexed={false} navItems={[]}>
     <div id="container" class="w-full h-full m-0 p-0 z-10 fixed top-0 left-0">
     </div>
+    <div class="fixed bottom-4 right-4 z-20 flex gap-2">
+        <button id="togglePlay" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">
+            Pause
+        </button>
+        <button id="toggleCollision" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700">
+            Disable Collisions
+        </button>
+    </div>
 </Layout>
 
 <script>
@@ -32,6 +40,29 @@ import Layout from "../layouts/Layout.astro";
         ]);
 
         sketch.resume();
+        
+        // Control buttons functionality
+        let isPlaying = true;
+        const togglePlayBtn = document.getElementById('togglePlay');
+        const toggleCollisionBtn = document.getElementById('toggleCollision');
+        
+        togglePlayBtn?.addEventListener('click', () => {
+            if (isPlaying) {
+                sketch.pause();
+                togglePlayBtn.textContent = 'Resume';
+            } else {
+                sketch.resume();
+                togglePlayBtn.textContent = 'Pause';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        let collisionsEnabled = true;
+        toggleCollisionBtn?.addEventListener('click', () => {
+            collisionsEnabled = !collisionsEnabled;
+            sketch.setCollisionsEnabled(collisionsEnabled);
+            toggleCollisionBtn.textContent = collisionsEnabled ? 'Disable Collisions' : 'Enable Collisions';
+        });
     });
 </script>
 
