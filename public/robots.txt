@@ -1,14 +1,11 @@
 User-agent: *
 Disallow: /
 
-# Permitir a Googlebot solo el sitemap
 User-agent: Googlebot
 Disallow: /
 Allow: /sitemap.xml
-
-Disallow: /images/*.webp
-Disallow: /images/*.png
-Disallow: /images/*.pdf
-
-# robots.txt file of https://joaquingenova.dev/sitemap.xml
+Disallow: /*.png$
+Disallow: /*.webp$
+Disallow: /*.pdf$
+Disallow: /*.gif$
 sitemap: https://joaquingenova.dev/sitemap.xml
