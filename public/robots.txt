@@ -3,9 +3,10 @@ Disallow: /
 
 User-agent: Googlebot
 Disallow: /
+Disallow: /*.png
+Disallow: /*.webp
+Disallow: /*.pdf
+Disallow: /*.gif
 Allow: /sitemap.xml
-Disallow: /*.png$
-Disallow: /*.webp$
-Disallow: /*.pdf$
-Disallow: /*.gif$
-sitemap: https://joaquingenova.dev/sitemap.xml
+
+Sitemap: https://joaquingenova.dev/sitemap.xml
