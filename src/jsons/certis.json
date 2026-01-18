@@ -35,6 +35,13 @@
         "group": "Programming"
     },
     {
+        "title": "React - The Complete Guide",
+        "imageUrl": "/images/certis/React_The_Complete_Guide.jpg",
+        "smallUrl": "/images/certis/React_The_Complete_Guide.webp",
+        "skills": ["React", "Redux", "Hooks"],
+        "group": "Programming"
+    },
+    {
         "title": "Introduction to Kubernetes",
         "imageUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.png",
         "smallUrl": "/images/certis/LFS158x_Introduction_to_Kubernetes.webp",
