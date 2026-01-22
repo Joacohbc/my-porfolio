@@ -1,23 +1,30 @@
 [
     {
         "title": "Platform Developer I",
-        "imageUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.png",
-        "smallUrl": "/images/certis/Cert3214468_PlatformDeveloperI_20230414-1.webp",
+        "imageUrl": "/images/certis/Cert3214468_PlatformDeveloper_20230414.png",
+        "smallUrl": "/images/certis/Cert3214468_PlatformDeveloper_20230414.webp",
         "skills": ["Apex & Triggers", "Lightning Web Component", "Flows & Declarative Tools"],
         "group": "Salesforce"
     },
     {
         "title": "JavaScript Developer I",
-        "imageUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.png",
-        "smallUrl": "/images/certis/Cert3997879_JavaScriptDeveloperI_20231230-1.webp",
+        "imageUrl": "/images/certis/Cert3997879_JavaScriptDeveloper_20231230.png",
+        "smallUrl": "/images/certis/Cert3997879_JavaScriptDeveloper_20231230.webp",
         "skills": ["Objects & Arrays", "DOM & Events", "Node.js"],
         "group": "Salesforce"
     },
     {
         "title": "Sharing and Visibility Architect",
-        "imageUrl": "/images/certis/Cert5819580_SharingandVisibilityArchitect_20250226-1.png",
-        "smallUrl": "/images/certis/Cert5819580_SharingandVisibilityArchitect_20250226-1.webp",
+        "imageUrl": "/images/certis/Cert5819580_PlatformSharingandVisibilityArchitect_20250226.png",
+        "smallUrl": "/images/certis/Cert5819580_PlatformSharingandVisibilityArchitect_20250226.webp",
         "skills": ["Internal & Community Sharing", "Visibility Optimization", "Large Data Management"],
+        "group": "Salesforce"
+    },
+    {
+        "title": "Salesforce Agentforce",
+        "imageUrl": "/images/certis/Cert7317076_AgentforceSpecialist_20251230.png",
+        "smallUrl": "/images/certis/Cert7317076_AgentforceSpecialist_20251230.webp",
+        "skills": ["AI Agents", "Prompt Engineering", "Data Cloud"],
         "group": "Salesforce"
     },
     {
@@ -25,6 +32,13 @@
         "imageUrl": "/images/certis/Microservicios_Spring_Boot_Spring_Cloud.jpg",
         "smallUrl": "/images/certis/Microservicios_Spring_Boot_Spring_Cloud.webp",
         "skills": ["Spring Boot", "Spring Cloud", "Microservices"],
+        "group": "Programming"
+    },
+    {
+        "title": "React - The Complete Guide",
+        "imageUrl": "/images/certis/React_The_Complete_Guide.jpg",
+        "smallUrl": "/images/certis/React_The_Complete_Guide.webp",
+        "skills": ["React", "Redux", "Hooks"],
         "group": "Programming"
     },
     {
