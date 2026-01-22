@@ -61,6 +61,7 @@ Lenguajes, frameworks, herramientas y tecnologías que domino y utilizo en mis p
 * Salesforce Platform Developer I
 * Salesforce JavaScript Developer I
 * Salesforce Sharing and Visibility Architect
+* Salesforce Certified Agentforce Specialist
 * AWS Academy Cloud Foundations
 * Google Cloud Computing Foundations
 * Microservicios con Spring Boot y Spring Cloud
