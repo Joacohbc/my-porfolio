@@ -1,12 +1,12 @@
 <div class="mb-3 mt-1">
-    <div class="flex flex-row items-center justify-center gap-1 email-info-container">
+    <button type="button" class="flex flex-row items-center justify-center gap-1 email-info-container w-full bg-transparent border-none focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded px-2">
         <span class="text-white email-text animate-pulse animate-infinite">Validando...</span>
         <svg class="w-5 hidden" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round" id="copy-icon">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M7 12l5 5l10 -10" />
             <path d="M2 12l5 5m5 -5l5 -5" />
         </svg>
-    </div>
+    </button>
     <div id="cf-turnstile-for-copy-email"/>
 </div>
 
@@ -33,11 +33,13 @@
                 <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
             </svg>
     </a>
-    <svg aria-label="Copiar el correo electronico desarrollador" class="w-10 email-icon" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" id="emailicon">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-        <path d="M3 7l9 6l9 -6" />
-    </svg>
+    <button type="button" aria-label="Copiar el correo electrónico del desarrollador" class="email-copy-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full">
+        <svg class="w-10 email-icon" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" id="emailicon">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+            <path d="M3 7l9 6l9 -6" />
+        </svg>
+    </button>
 </div>
 
 <div class="hidden" id="cf-site-key" data-cf-site-id={import.meta.env.TURNSTILE_SITE_KEY}/>
@@ -49,7 +51,7 @@
         
         const container = document.querySelector('.email-info-container');
         const emailText = document.querySelector(".email-text");
-        const emailIcon = document.querySelector('.email-icon');
+        const emailIcon = document.querySelector('.email-copy-btn');
         const copyIcon = document.getElementById('copy-icon');
 
         const copyEmail = async (token) => {
