@@ -88,7 +88,7 @@ const { navItems } = Astro.props;
 
         // If the page is not at the top, wait for the user to scroll to start observing the sections
         if (window.scrollY <= 0) {
-            document.addEventListener("scroll", () => {
+            const onScroll = () => {
                 if (window.scrollY <= 0) {
                     return;
                 }
@@ -96,7 +96,10 @@ const { navItems } = Astro.props;
                 sections.forEach((section) => {
                     observer.observe(section);
                 });
-            });
+                document.removeEventListener("scroll", onScroll);
+            };
+
+            document.addEventListener("scroll", onScroll, { passive: true });
         } else {
             // If the page is already scrolled, start observing the sections
             sections.forEach((section) => {
