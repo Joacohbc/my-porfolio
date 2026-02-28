@@ -2,8 +2,6 @@
 import TechIcons from '../components/TechIcons.astro';
 import SoftSkills from '../components/SoftSkills.astro';
 import Social from '../components/Social.astro';
-import { Image } from 'astro:assets';
-import photo from '../assets/images/photo.webp';
 
 ---
 <div class="font-serif">
@@ -35,7 +33,7 @@ import photo from '../assets/images/photo.webp';
             </p>
         </div>
         <div class="flex flex-col justify-center items-center">
-            <Image src={photo} class="rounded-full max-w-xs lg:max-w-md mb-5" alt="Foto de Perfil" />
+            <img src="/images/photo.webp" class="rounded-full max-w-xs lg:max-w-md mb-5" alt="Foto de Perfil">
             <div class="inline-flex gap-1 ">
                 <a aria-label="Ubicación: Montevideo, Uruguay" class="text-center text-white keywords text-lg" href="https://maps.app.goo.gl/FaGkXJHMDKN7tiDj7" target="_blank">Montevideo, Uruguay</a>
                 <svg class="w-5"  viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
